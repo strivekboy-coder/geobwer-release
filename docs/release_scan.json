@@ -1,0 +1,72 @@
+{
+  "status": "pass",
+  "file_count": 358,
+  "total_bytes": 4304634,
+  "counts_by_top_level": {
+    ".gitattributes": 1,
+    ".gitignore": 1,
+    "CITATION.cff": 1,
+    "configs": 33,
+    "docs": 5,
+    "FILES.txt": 1,
+    "LICENSE": 1,
+    "pyproject.toml": 1,
+    "README.md": 1,
+    "release_manifest.json": 1,
+    "requirements-croma.txt": 1,
+    "requirements-dofa.txt": 1,
+    "requirements-prithvi.txt": 1,
+    "requirements-test.in": 1,
+    "requirements-test.lock.txt": 1,
+    "scripts": 89,
+    "src": 116,
+    "tests": 102
+  },
+  "findings": [],
+  "known_private_values_checked": 22,
+  "original_tracked_files_verified": 517,
+  "original_tracked_files_changed": 0,
+  "scientific_core_unchanged": true,
+  "scope": "All release candidate files; existing source tree is read-only. New Git history is checked separately after the initial commit.",
+  "limits": "Pattern checks and known-value matching do not establish dataset redistribution rights. No external datasets/checkpoints are distributed.",
+  "test_verification": {
+    "clean_clone": true,
+    "isolated_environment": true,
+    "user_site_packages": false,
+    "platform": "Windows",
+    "python": "3.12.14",
+    "test_cases": 628,
+    "passed": 622,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "pip_check": "pass",
+    "cli_help_checks_passed": 14,
+    "skipped_integration_tests": [
+      {
+        "test": "tests.test_dofa_checkpoint_compatibility::test_official_dofav2_checkpoint_loads_exactly_through_adapter_when_assets_are_available",
+        "reason": "Set DOFAV2_OFFICIAL_REPO and DOFAV2_OFFICIAL_CHECKPOINT for the real compatibility test."
+      },
+      {
+        "test": "tests.test_prithvi_sen1_inference_contract::test_wrapped_cpu_model_is_moved_to_requested_cuda",
+        "reason": "CUDA is required to verify the real wrapped-model migration contract."
+      },
+      {
+        "test": "tests.test_terramind_sen1_config::test_generated_fit_yaml_parses_with_frozen_terratorch_cli",
+        "reason": "TerraTorch CLI integration test requires the frozen TerraTorch runtime."
+      },
+      {
+        "test": "tests.test_terramind_sen1_config::test_real_terratorch_dataset_builds_for_all_sensor_modes",
+        "reason": "Real TerraTorch dataset construction requires TerraTorch and rasterio."
+      },
+      {
+        "test": "tests.test_terramind_sen1_config::test_real_terratorch_fast_dev_run_uses_adapted_split",
+        "reason": "Set RSFM_RUN_TERRAMIND_GPU_INTEGRATION=1 with real Sen1 paths to run the GPU fast-dev regression."
+      },
+      {
+        "test": "tests.test_terratorch_predict_cli::test_exact_terratorch_1210_callback_and_mapping_writer_path",
+        "reason": "Exact TerraTorch callback integration requires the frozen Colab runtime."
+      }
+    ]
+  }
+}

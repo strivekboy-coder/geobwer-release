@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Please cite this software when using GeoBWER."
+type: software
+title: "GeoBWER: Geospatial Deployment-Tail Risk Auditing"
+authors:
+  - family-names: Zhong
+    given-names: Weilun
+version: 0.6.3
+date-released: 2026-10-28
+license: MIT
+repository-code: "https://github.com/strivekboy-coder/geobwer-release"
+abstract: >-
+  Reproducible code for support-aware geospatial slice-risk auditing,
+  composition standardisation, cluster-aware inference, and paired comparisons.
+keywords: [remote sensing, GeoBWER, reproducibility, deployment risk]

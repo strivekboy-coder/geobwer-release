@@ -1,0 +1,15 @@
+schema: geobwer.release.inputs.v1
+# Paths are relative to the working directory. Copy to inputs.local.yaml locally.
+project_root: data/project
+data_root: data/prepared
+cache_root: cache
+checkpoint_root: checkpoints
+output_root: outputs
+earth_engine_project: null
+inputs:
+  fmow: data/inputs/fmow
+  reben: data/inputs/reben
+  sen1floods11: data/inputs/sen1floods11
+  alphaearth: data/inputs/alphaearth
+# Each runner accepts explicit --help-documented paths. This file documents the
+# directory convention; it is not implicitly loaded by every historical runner.

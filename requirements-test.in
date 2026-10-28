@@ -1,0 +1,15 @@
+# Lock file is generated from the successful isolated verification environment.
+-e .[test]
+numpy==1.26.4
+matplotlib==3.9.4
+PyYAML==6.0.3
+scikit-learn==1.6.1
+scipy==1.15.3
+pandas==2.2.3
+pytest==8.3.5
+lmdb==1.7.5
+safetensors==0.5.3
+rasterio==1.4.3
+h5py==3.13.0
+huggingface-hub==0.28.1
+tifffile==2025.3.13

@@ -1,0 +1,1213 @@
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass, replace
+import copy
+import hashlib
+import json
+from pathlib import Path
+import random
+import shutil
+from typing import Any, Mapping, Sequence
+
+import numpy as np
+
+from rsfm_fairness_audit.bwer_protocol import BWERProtocol
+from rsfm_fairness_audit.config import load_yaml
+from rsfm_fairness_audit.fmow_dofav2_campaign import (
+    _copy_rows_with_protocol_hash,
+    _coordinate_or_nan,
+    _formal_rows,
+    _validate_split_contract,
+    _write_fmow_metadata_preflight,
+)
+from rsfm_fairness_audit.fmow_dofav2_postprocess import (
+    read_axis_geobwer_summary,
+)
+from rsfm_fairness_audit.fmow_geography_contract import (
+    FmowGeographyContractError,
+    geography_contract_lineage,
+    validate_fmow_geography_contract,
+)
+from rsfm_fairness_audit.fmow_sentinel_classification import (
+    FmowClassificationConfig,
+    _FmowTorchDataset,
+    _class_mapping,
+    _compute_or_load_norm_stats,
+    _evaluate_resnet50,
+    _limit_rows,
+    _load_metadata,
+    _row_hash,
+    _split_rows,
+    build_resnet50_multiband,
+)
+from rsfm_fairness_audit.formal_outputs import (
+    FormalOutputBundle,
+    file_sha256,
+    write_multiclass_bundle,
+)
+from rsfm_fairness_audit.geobwer import audit_rows
+from rsfm_fairness_audit.geobwer_extensions import run_multiclass_uncertainty_suite
+from rsfm_fairness_audit.io import ensure_dir, read_csv_rows, write_csv
+from rsfm_fairness_audit.persistent_cache import hydrate_output, persist_output
+from rsfm_fairness_audit.probe_selection import group_stratified_inner_split
+from rsfm_fairness_audit.spatial_conformal import SpatialConformalConfig
+
+
+class FmowResNet50CampaignError(RuntimeError):
+    """Raised when the protocol-matched fMoW baseline cannot be certified."""
+
+
+_COMPLETION_CONTRACT = "completion_contract.json"
+_SCIENTIFIC_CONFIG_FIELDS = (
+    "train_split",
+    "calibration_split",
+    "test_split",
+    "split_protocol",
+    "band_profile",
+    "image_size",
+    "max_epochs",
+    "patience",
+    "min_delta",
+    "inner_validation_fraction",
+    "batch_size",
+    "learning_rate",
+    "weight_decay",
+    "pretrained_encoder",
+    "amp",
+    "audit_bootstrap",
+    "conformal_alpha",
+    "diagnostic_max_samples_per_split",
+)
+
+
+@dataclass(frozen=True)
+class FmowResNet50CampaignConfig:
+    metadata_csv: Path
+    data_root: Path
+    output_dir: Path
+    persistent_output_dir: Path | None = None
+    geobwer_protocol: Path = Path("configs/geobwer/fmow_sentinel.yaml")
+    geography_contract: Path | None = None
+    train_split: str = "train"
+    calibration_split: str = "calibration"
+    test_split: str = "test"
+    split_protocol: str = "location_disjoint"
+    band_profile: str = "sentinel2_9_legacy"
+    image_size: int = 224
+    seeds: tuple[int, ...] = (42, 73, 101)
+    max_epochs: int = 100
+    patience: int = 12
+    min_delta: float = 1e-4
+    inner_validation_fraction: float = 0.15
+    batch_size: int = 64
+    num_workers: int = 4
+    learning_rate: float = 3e-4
+    weight_decay: float = 1e-4
+    pretrained_encoder: bool = False
+    device: str = "auto"
+    amp: bool = True
+    audit_bootstrap: int = 2000
+    conformal_alpha: float = 0.10
+    diagnostic_max_samples_per_split: int | None = None
+
+    def __post_init__(self) -> None:
+        if self.band_profile != "sentinel2_9_legacy":
+            raise ValueError(
+                "The protocol-matched fMoW baseline is frozen to common sentinel2_9_legacy bands."
+            )
+        if not self.seeds or len(set(self.seeds)) != len(self.seeds):
+            raise ValueError("seeds must be non-empty and unique.")
+        if self.diagnostic_max_samples_per_split is None and len(self.seeds) < 3:
+            raise ValueError("Formal fMoW ResNet-50 training requires at least three seeds.")
+        if min(self.max_epochs, self.patience, self.batch_size) <= 0:
+            raise ValueError("max_epochs, patience, and batch_size must be positive.")
+
+
+def _require_torch() -> Any:
+    try:
+        import torch
+    except ImportError as exc:  # pragma: no cover - Colab/runtime path
+        raise FmowResNet50CampaignError("PyTorch and torchvision are required.") from exc
+    return torch
+
+
+def _json_signature(value: Mapping[str, Any]) -> str:
+    return hashlib.sha256(
+        json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
+        ).encode("utf-8")
+    ).hexdigest()
+
+
+def _completion_config_payload(
+    config: FmowResNet50CampaignConfig,
+    *,
+    seed: int,
+    protocol: BWERProtocol,
+    geography_contract_hash: str,
+    normalization_sha256: str,
+) -> dict[str, Any]:
+    payload = {
+        field: getattr(config, field)
+        for field in _SCIENTIFIC_CONFIG_FIELDS
+    }
+    payload.update(
+        {
+            "seed": int(seed),
+            "metadata_sha256": file_sha256(config.metadata_csv),
+            "geography_contract_hash": str(geography_contract_hash),
+            "protocol_hash": protocol.signature,
+            "metric_version": protocol.metric_version,
+            "normalization_sha256": str(normalization_sha256),
+            "model_contract": {
+                "architecture": "torchvision_resnet50",
+                "input_channels": 9,
+                "adaptation_protocol": "supervised_common9_protocol_matched",
+            },
+        }
+    )
+    return payload
+
+
+def _required_seed_artifacts(run_dir: Path) -> dict[str, Path]:
+    return {
+        "checkpoint": run_dir / "resnet50_common9.pt",
+        "calibration_probabilities": run_dir / "calibration_probabilities.npz",
+        "formal_audit_table": run_dir / "formal_outputs" / "formal_audit_table.csv",
+        "formal_probabilities": run_dir / "formal_outputs" / "probabilities.npz",
+        "class_mapping": run_dir / "formal_outputs" / "class_mapping.json",
+        "formal_output_manifest": (
+            run_dir / "formal_outputs" / "formal_output_manifest.json"
+        ),
+        "calibration_manifest": run_dir / "calibration_manifest.json",
+        "run_manifest": run_dir / "run_manifest.json",
+        "raw_summary": run_dir / "geobwer_raw" / "geobwer_summary.csv",
+        "strict_standardized_summary": (
+            run_dir / "geobwer_standardized_strict" / "geobwer_summary.csv"
+        ),
+        "partial_standardized_summary": (
+            run_dir
+            / "geobwer_standardized_partial_bounds"
+            / "geobwer_summary.csv"
+        ),
+        "uncertainty_summary": (
+            run_dir / "uncertainty_extensions" / "uncertainty_summary.csv"
+        ),
+    }
+
+
+def _validate_probability_artifact(path: Path) -> str | None:
+    try:
+        with np.load(path, allow_pickle=False) as artifact:
+            probabilities = np.asarray(artifact["probabilities"])
+            targets = np.asarray(artifact["targets"])
+        if (
+            probabilities.ndim != 2
+            or probabilities.shape[0] <= 0
+            or targets.ndim != 1
+            or len(targets) != len(probabilities)
+            or not np.all(np.isfinite(probabilities))
+        ):
+            return f"invalid_probability_shape_or_values:{path.name}"
+    except (OSError, KeyError, ValueError) as exc:
+        return f"unreadable_probability_artifact:{path.name}:{exc}"
+    return None
+
+
+def _build_seed_completion_contract(
+    config: FmowResNet50CampaignConfig,
+    *,
+    seed: int,
+    protocol: BWERProtocol,
+    geography_contract_hash: str,
+    normalization_sha256: str,
+    run_dir: Path,
+) -> dict[str, Any]:
+    artifacts = _required_seed_artifacts(run_dir)
+    missing = [name for name, path in artifacts.items() if not path.is_file()]
+    if missing:
+        raise FmowResNet50CampaignError(
+            "Cannot certify incomplete fMoW ResNet-50 seed artifacts: "
+            + ", ".join(missing)
+        )
+    formal_manifest = json.loads(
+        artifacts["formal_output_manifest"].read_text(encoding="utf-8")
+    )
+    dataset_lineage = formal_manifest.get("dataset_lineage", {})
+    model_lineage = formal_manifest.get("model_lineage", {})
+    if (
+        formal_manifest.get("protocol_hash") != protocol.signature
+        or formal_manifest.get("protocol", {}).get("metric_version")
+        != protocol.metric_version
+        or dataset_lineage.get("metadata_sha256")
+        != file_sha256(config.metadata_csv)
+        or dataset_lineage.get("geography_contract_hash")
+        != geography_contract_hash
+        or int(model_lineage.get("seed", -1)) != int(seed)
+        or str(model_lineage.get("band_profile")) != config.band_profile
+    ):
+        raise FmowResNet50CampaignError(
+            "Formal output lineage does not match the current metadata, "
+            "geography, protocol, seed, or model contract."
+        )
+    manifest_artifacts = formal_manifest.get("artifacts", {})
+    if (
+        int(formal_manifest.get("row_count", 0)) <= 0
+        or manifest_artifacts.get("probability_sha256")
+        != file_sha256(artifacts["formal_probabilities"])
+        or manifest_artifacts.get("class_mapping_sha256")
+        != file_sha256(artifacts["class_mapping"])
+    ):
+        raise FmowResNet50CampaignError(
+            "Formal output manifest artifact hashes or row count are invalid."
+        )
+    calibration_manifest = json.loads(
+        artifacts["calibration_manifest"].read_text(encoding="utf-8")
+    )
+    if (
+        calibration_manifest.get("split_role") != "calibration"
+        or calibration_manifest.get("test_rows_used") is not False
+        or calibration_manifest.get("probabilities_sha256")
+        != file_sha256(artifacts["calibration_probabilities"])
+    ):
+        raise FmowResNet50CampaignError(
+            "Calibration artifact does not preserve the frozen isolation contract."
+        )
+    for name in ("calibration_probabilities", "formal_probabilities"):
+        error = _validate_probability_artifact(artifacts[name])
+        if error:
+            raise FmowResNet50CampaignError(error)
+    config_payload = _completion_config_payload(
+        config,
+        seed=seed,
+        protocol=protocol,
+        geography_contract_hash=geography_contract_hash,
+        normalization_sha256=normalization_sha256,
+    )
+    return {
+        "schema": "geobwer.fmow.resnet50_seed_completion.v1",
+        "complete": True,
+        "formal_evidence": True,
+        "seed": int(seed),
+        "protocol_hash": protocol.signature,
+        "metric_version": protocol.metric_version,
+        "metadata_sha256": file_sha256(config.metadata_csv),
+        "geography_contract_hash": geography_contract_hash,
+        "config_signature": _json_signature(config_payload),
+        "config_contract": config_payload,
+        "artifacts": {
+            name: {
+                "path": str(path.relative_to(run_dir)),
+                "sha256": file_sha256(path),
+                "size_bytes": path.stat().st_size,
+            }
+            for name, path in artifacts.items()
+        },
+    }
+
+
+def _write_seed_completion_contract(
+    config: FmowResNet50CampaignConfig,
+    *,
+    seed: int,
+    protocol: BWERProtocol,
+    geography_contract_hash: str,
+    normalization_sha256: str,
+    run_dir: Path,
+) -> Path:
+    contract = _build_seed_completion_contract(
+        config,
+        seed=seed,
+        protocol=protocol,
+        geography_contract_hash=geography_contract_hash,
+        normalization_sha256=normalization_sha256,
+        run_dir=run_dir,
+    )
+    path = run_dir / _COMPLETION_CONTRACT
+    temporary = path.with_suffix(".json.partial")
+    temporary.write_text(
+        json.dumps(contract, ensure_ascii=False, indent=2, default=str),
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+    return path
+
+
+def _validate_seed_completion_contract(
+    config: FmowResNet50CampaignConfig,
+    *,
+    seed: int,
+    protocol: BWERProtocol,
+    geography_contract_hash: str,
+    normalization_sha256: str,
+    run_dir: Path,
+) -> dict[str, Path] | None:
+    """Return certified artifacts, pending for an absent seed, or hard-fail."""
+
+    if not run_dir.exists() or not any(run_dir.iterdir()):
+        return None
+    path = run_dir / _COMPLETION_CONTRACT
+    if not path.is_file():
+        raise FmowResNet50CampaignError(
+            f"Seed {seed} has partial artifacts but no completion contract: {run_dir}"
+        )
+    try:
+        contract = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise FmowResNet50CampaignError(
+            f"Seed {seed} completion contract is unreadable: {exc}"
+        ) from exc
+    expected_payload = _completion_config_payload(
+        config,
+        seed=seed,
+        protocol=protocol,
+        geography_contract_hash=geography_contract_hash,
+        normalization_sha256=normalization_sha256,
+    )
+    if (
+        contract.get("schema")
+        != "geobwer.fmow.resnet50_seed_completion.v1"
+        or contract.get("complete") is not True
+        or contract.get("formal_evidence") is not True
+        or int(contract.get("seed", -1)) != int(seed)
+        or contract.get("protocol_hash") != protocol.signature
+        or contract.get("metric_version") != protocol.metric_version
+        or contract.get("metadata_sha256") != file_sha256(config.metadata_csv)
+        or contract.get("geography_contract_hash") != geography_contract_hash
+        or contract.get("config_signature") != _json_signature(expected_payload)
+    ):
+        raise FmowResNet50CampaignError(
+            f"Seed {seed} completion contract does not match the current campaign."
+        )
+    artifacts = _required_seed_artifacts(run_dir)
+    recorded = contract.get("artifacts")
+    if not isinstance(recorded, Mapping):
+        raise FmowResNet50CampaignError(
+            f"Seed {seed} completion contract has no artifact inventory."
+        )
+    for name, artifact in artifacts.items():
+        item = recorded.get(name)
+        if not isinstance(item, Mapping) or not artifact.is_file():
+            raise FmowResNet50CampaignError(
+                f"Seed {seed} completion artifact is missing: {name}"
+            )
+        if (
+            int(item.get("size_bytes", -1)) != artifact.stat().st_size
+            or item.get("sha256") != file_sha256(artifact)
+        ):
+            raise FmowResNet50CampaignError(
+                f"Seed {seed} completion artifact signature mismatch: {name}"
+            )
+    return {
+        "formal_audit_table": artifacts["formal_audit_table"],
+        "formal_manifest": artifacts["formal_output_manifest"],
+        "calibration": artifacts["calibration_probabilities"],
+        "raw_summary": artifacts["raw_summary"],
+        "strict_standardized_summary": artifacts[
+            "strict_standardized_summary"
+        ],
+        "partial_standardized_summary": artifacts[
+            "partial_standardized_summary"
+        ],
+        "uncertainty_summary": artifacts["uncertainty_summary"],
+        "run_manifest": artifacts["run_manifest"],
+        "completion_contract": path,
+    }
+
+
+def _device(name: str) -> Any:
+    torch = _require_torch()
+    if name == "auto":
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(name)
+    if device.type == "cuda" and not torch.cuda.is_available():
+        raise FmowResNet50CampaignError("CUDA was requested but is unavailable.")
+    return device
+
+
+def _prepare_geography_contract(
+    config: FmowResNet50CampaignConfig,
+    output: Path,
+) -> tuple[dict[str, Any] | None, dict[str, Any], Path | None]:
+    formal = config.diagnostic_max_samples_per_split is None
+    if config.geography_contract is None:
+        if formal:
+            raise FmowResNet50CampaignError(
+                "Formal fMoW ResNet-50 requires --geography-contract before "
+                "model loading or training."
+            )
+        return None, {}, None
+    try:
+        contract = validate_fmow_geography_contract(
+            config.geography_contract,
+            metadata_csv=config.metadata_csv,
+            require_formal=formal,
+        )
+    except FmowGeographyContractError as exc:
+        raise FmowResNet50CampaignError(str(exc)) from exc
+    contract_copy = output / "geography_contract.json"
+    if Path(config.geography_contract).resolve() != contract_copy.resolve():
+        shutil.copy2(config.geography_contract, contract_copy)
+    copied = validate_fmow_geography_contract(
+        contract_copy,
+        metadata_csv=config.metadata_csv,
+        require_formal=formal,
+    )
+    return copied, geography_contract_lineage(contract_copy, copied), contract_copy
+
+
+def _loader(
+    rows: Sequence[dict[str, Any]],
+    config: FmowClassificationConfig,
+    class_to_index: Mapping[str, int],
+    normalization: Mapping[str, Any],
+    *,
+    shuffle: bool,
+    seed: int,
+) -> Any:
+    torch = _require_torch()
+    generator = torch.Generator()
+    generator.manual_seed(int(seed))
+    return torch.utils.data.DataLoader(
+        _FmowTorchDataset(rows, config, class_to_index, normalization),
+        batch_size=config.batch_size,
+        shuffle=shuffle,
+        num_workers=config.num_workers,
+        pin_memory=True,
+        persistent_workers=bool(config.num_workers > 0),
+        generator=generator,
+    )
+
+
+def _fit_seed(
+    train_rows: Sequence[dict[str, Any]],
+    calibration_rows: Sequence[dict[str, Any]],
+    test_rows: Sequence[dict[str, Any]],
+    *,
+    normalization: Mapping[str, Any],
+    runner_config: FmowClassificationConfig,
+    campaign: FmowResNet50CampaignConfig,
+    seed: int,
+    output_dir: Path,
+) -> dict[str, Any]:
+    torch = _require_torch()
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    classes, class_to_index = _class_mapping(train_rows)
+    labels = [str(row["category"]) for row in train_rows]
+    groups = [str(row["site_id"]) for row in _formal_rows(train_rows)]
+    fit_indices, validation_indices = group_stratified_inner_split(
+        labels,
+        groups,
+        validation_fraction=campaign.inner_validation_fraction,
+        seed=seed,
+    )
+    inner_fit = [dict(train_rows[index]) for index in fit_indices]
+    inner_validation = [dict(train_rows[index]) for index in validation_indices]
+    device = _device(campaign.device)
+    model = build_resnet50_multiband(
+        len(classes),
+        in_channels=9,
+        pretrained=campaign.pretrained_encoder,
+    ).to(device)
+    optimizer = torch.optim.AdamW(
+        model.parameters(),
+        lr=campaign.learning_rate,
+        weight_decay=campaign.weight_decay,
+    )
+    criterion = torch.nn.CrossEntropyLoss()
+    use_amp = bool(campaign.amp and device.type == "cuda")
+    scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
+    fit_loader = _loader(
+        inner_fit,
+        runner_config,
+        class_to_index,
+        normalization,
+        shuffle=True,
+        seed=seed,
+    )
+    inner_validation_loader = _loader(
+        inner_validation,
+        runner_config,
+        class_to_index,
+        normalization,
+        shuffle=False,
+        seed=seed,
+    )
+    best_loss = float("inf")
+    best_epoch = 0
+    best_state: dict[str, Any] | None = None
+    no_improvement = 0
+    history: list[dict[str, Any]] = []
+    for epoch in range(1, campaign.max_epochs + 1):
+        model.train()
+        losses: list[float] = []
+        counts: list[int] = []
+        for images, targets, _indices in fit_loader:
+            images = images.to(device, non_blocking=True)
+            targets = targets.to(device, non_blocking=True)
+            optimizer.zero_grad(set_to_none=True)
+            with torch.amp.autocast("cuda", enabled=use_amp):
+                logits = model(images)
+                loss = criterion(logits, targets)
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
+            losses.append(float(loss.detach().cpu()))
+            counts.append(int(images.shape[0]))
+        inner_predictions, inner_metrics = _evaluate_resnet50(
+            model,
+            inner_validation_loader,
+            inner_validation,
+            classes,
+            device,
+        )
+        true_index = np.asarray(
+            [class_to_index[str(item["row"]["category"])] for item in inner_predictions],
+            dtype=np.int64,
+        )
+        probabilities = np.stack([item["probability_vector"] for item in inner_predictions])
+        validation_loss = float(
+            -np.mean(np.log(np.clip(probabilities[np.arange(len(true_index)), true_index], 1e-12, 1.0)))
+        )
+        history.append(
+            {
+                "epoch": epoch,
+                "train_cross_entropy": float(np.average(losses, weights=counts)),
+                "inner_validation_cross_entropy": validation_loss,
+                **inner_metrics,
+            }
+        )
+        print(
+            f"[fmow:resnet50] seed={seed} epoch={epoch}/{campaign.max_epochs} "
+            f"train_ce={history[-1]['train_cross_entropy']:.6f} "
+            f"inner_val_ce={validation_loss:.6f} inner_val_acc={inner_metrics['accuracy']:.6f}",
+            flush=True,
+        )
+        if validation_loss < best_loss - campaign.min_delta:
+            best_loss = validation_loss
+            best_epoch = epoch
+            best_state = copy.deepcopy(model.state_dict())
+            no_improvement = 0
+        else:
+            no_improvement += 1
+        if no_improvement >= campaign.patience:
+            break
+    if best_state is None:
+        raise FmowResNet50CampaignError("No finite inner-validation checkpoint was selected.")
+
+    # Refit from a fresh initialization on every outer-training row for the
+    # selected number of epochs. Outer calibration/test labels remain unseen.
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    model = build_resnet50_multiband(
+        len(classes),
+        in_channels=9,
+        pretrained=campaign.pretrained_encoder,
+    ).to(device)
+    optimizer = torch.optim.AdamW(
+        model.parameters(),
+        lr=campaign.learning_rate,
+        weight_decay=campaign.weight_decay,
+    )
+    scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
+    full_loader = _loader(
+        train_rows,
+        runner_config,
+        class_to_index,
+        normalization,
+        shuffle=True,
+        seed=seed + 100_003,
+    )
+    full_history: list[dict[str, Any]] = []
+    for epoch in range(1, best_epoch + 1):
+        model.train()
+        losses: list[float] = []
+        counts: list[int] = []
+        for images, targets, _indices in full_loader:
+            images = images.to(device, non_blocking=True)
+            targets = targets.to(device, non_blocking=True)
+            optimizer.zero_grad(set_to_none=True)
+            with torch.amp.autocast("cuda", enabled=use_amp):
+                loss = criterion(model(images), targets)
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
+            losses.append(float(loss.detach().cpu()))
+            counts.append(int(images.shape[0]))
+        full_history.append(
+            {
+                "epoch": epoch,
+                "train_cross_entropy": float(np.average(losses, weights=counts)),
+            }
+        )
+    outputs: dict[str, Any] = {}
+    for split, split_rows in (
+        ("calibration", calibration_rows),
+        ("test", test_rows),
+    ):
+        predictions, metrics = _evaluate_resnet50(
+            model,
+            _loader(
+                split_rows,
+                runner_config,
+                class_to_index,
+                normalization,
+                shuffle=False,
+                seed=seed,
+            ),
+            split_rows,
+            classes,
+            device,
+        )
+        outputs[split] = {
+            "probabilities": np.stack(
+                [item["probability_vector"] for item in predictions]
+            ).astype(np.float32),
+            "logits": np.stack([item["logit_vector"] for item in predictions]).astype(
+                np.float32
+            ),
+            "metrics": metrics,
+        }
+    output_dir.mkdir(parents=True, exist_ok=True)
+    checkpoint = output_dir / "resnet50_common9.pt"
+    torch.save(
+        {
+            "model_state_dict": model.state_dict(),
+            "classes": classes,
+            "class_to_index": class_to_index,
+            "normalization": dict(normalization),
+            "seed": seed,
+            "selected_epoch": best_epoch,
+            "inner_validation_cross_entropy": best_loss,
+            "band_profile": campaign.band_profile,
+            "pretrained_encoder": campaign.pretrained_encoder,
+        },
+        checkpoint,
+    )
+    return {
+        "classes": classes,
+        "class_to_index": class_to_index,
+        "checkpoint": checkpoint,
+        "selected_epoch": best_epoch,
+        "inner_validation_cross_entropy": best_loss,
+        "search_history": history,
+        "full_history": full_history,
+        "outputs": outputs,
+    }
+
+
+def _audit_seed(
+    config: FmowResNet50CampaignConfig,
+    *,
+    seed: int,
+    train_rows: Sequence[dict[str, Any]],
+    calibration_rows: Sequence[dict[str, Any]],
+    test_rows: Sequence[dict[str, Any]],
+    fit: Mapping[str, Any],
+    protocol: BWERProtocol,
+    geography_lineage: Mapping[str, Any],
+    output_dir: Path,
+) -> dict[str, Path]:
+    class_names = list(fit["classes"])
+    class_to_index = dict(fit["class_to_index"])
+    calibration_targets = np.asarray(
+        [class_to_index[str(row["category"])] for row in calibration_rows],
+        dtype=np.int64,
+    )
+    test_targets = np.asarray(
+        [class_to_index[str(row["category"])] for row in test_rows], dtype=np.int64
+    )
+    checkpoint = Path(fit["checkpoint"])
+    model_name = f"resnet50_common9_seed_{seed}"
+    model_lineage = {
+        "model": model_name,
+        "architecture": "torchvision_resnet50",
+        "input_channels": 9,
+        "band_profile": config.band_profile,
+        "pretrained_encoder": config.pretrained_encoder,
+        "adaptation_protocol": "supervised_common9_protocol_matched",
+        "checkpoint": str(checkpoint),
+        "checkpoint_sha256": file_sha256(checkpoint),
+        "seed": seed,
+        "selected_epoch": fit["selected_epoch"],
+        "model_selection": "outer_train_only_category_site_disjoint_inner_holdout",
+        "outer_calibration_or_test_labels_used_for_model_selection": False,
+    }
+    dataset_lineage = {
+        "dataset": "fMoW-Sentinel",
+        "metadata_sha256": file_sha256(config.metadata_csv),
+        "split_protocol": config.split_protocol,
+        "train_row_hash": _row_hash(train_rows),
+        "calibration_row_hash": _row_hash(calibration_rows),
+        "test_row_hash": _row_hash(test_rows),
+        **dict(geography_lineage),
+    }
+    bundle: FormalOutputBundle = write_multiclass_bundle(
+        output_dir / "formal_outputs",
+        sample_rows=_formal_rows(test_rows),
+        probabilities=np.asarray(fit["outputs"]["test"]["probabilities"]),
+        targets=test_targets,
+        class_names=class_names,
+        dataset="fmow_sentinel",
+        model=model_name,
+        split=config.test_split,
+        protocol=protocol,
+        model_lineage=model_lineage,
+        dataset_lineage=dataset_lineage,
+        independent_unit_column="sample_id",
+        split_role="evaluation",
+    )
+    calibration_path = output_dir / "calibration_probabilities.npz"
+    np.savez_compressed(
+        calibration_path,
+        probabilities=np.asarray(fit["outputs"]["calibration"]["probabilities"]),
+        logits=np.asarray(fit["outputs"]["calibration"]["logits"]),
+        targets=calibration_targets,
+        class_names=np.asarray(class_names, dtype=str),
+        sample_id=np.asarray([row["sample_id"] for row in calibration_rows], dtype=str),
+        latitude=np.asarray(
+            [_coordinate_or_nan(row, "latitude", "lat") for row in calibration_rows],
+            dtype=np.float64,
+        ),
+        longitude=np.asarray(
+            [_coordinate_or_nan(row, "longitude", "lon", "lng") for row in calibration_rows],
+            dtype=np.float64,
+        ),
+        split_role=np.asarray("calibration"),
+        test_rows_used=np.asarray(False),
+    )
+    calibration_manifest = output_dir / "calibration_manifest.json"
+    calibration_manifest.write_text(
+        json.dumps(
+            {
+                "schema": "geobwer.fmow.multiclass_calibration.v2",
+                "split_role": "calibration",
+                "test_rows_used": False,
+                "probabilities_sha256": file_sha256(calibration_path),
+                "sample_count": len(calibration_rows),
+                "class_mapping": class_names,
+                "model_selection_data": "outer_train_only",
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    rows = read_csv_rows(bundle.audit_table)
+    axes = tuple(
+        column
+        for column in ("country", "region", "class_label", "country_class", "region_class")
+        if all(str(row.get(column, "")).strip() for row in rows)
+    )
+    raw = audit_rows(
+        rows,
+        group_columns=axes,
+        protocol=protocol,
+        loss_column="risk",
+        unit_column="independent_unit_id",
+        cluster_column="site_id",
+        formal=True,
+        require_probabilities=True,
+        n_bootstrap=config.audit_bootstrap,
+        seed=seed,
+    ).to_report(output_dir / "geobwer_raw")
+    strict = audit_rows(
+        rows,
+        group_columns=("country",),
+        protocol=protocol,
+        loss_column="risk",
+        unit_column="independent_unit_id",
+        cluster_column="site_id",
+        balance_column="class_label",
+        formal=True,
+        require_probabilities=True,
+        n_bootstrap=config.audit_bootstrap,
+        seed=seed,
+    ).to_report(output_dir / "geobwer_standardized_strict")
+    partial_protocol = replace(
+        protocol,
+        missingness_rule="partial_bounds",
+        metadata=tuple(
+            sorted(
+                {
+                    **dict(protocol.metadata),
+                    "standardization_sensitivity": "partial_identification_bounds",
+                }.items()
+            )
+        ),
+    )
+    partial_rows = _copy_rows_with_protocol_hash(rows, partial_protocol)
+    partial = audit_rows(
+        partial_rows,
+        group_columns=("country",),
+        protocol=partial_protocol,
+        loss_column="risk",
+        unit_column="independent_unit_id",
+        cluster_column="site_id",
+        balance_column="class_label",
+        formal=True,
+        require_probabilities=True,
+        n_bootstrap=config.audit_bootstrap,
+        seed=seed,
+    ).to_report(output_dir / "geobwer_standardized_partial_bounds")
+    uncertainty = run_multiclass_uncertainty_suite(
+        calibration_path,
+        bundle.output_dir,
+        output_dir / "uncertainty_extensions",
+        protocol=protocol,
+        group_columns=axes,
+        calibration_manifest=calibration_manifest,
+        alpha=config.conformal_alpha,
+        n_bootstrap=config.audit_bootstrap,
+        seed=seed,
+        spatial_conformal_config=SpatialConformalConfig(),
+    )
+    manifest = output_dir / "run_manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema": "geobwer.fmow.resnet50_common9_seed.v2",
+                "model_lineage": model_lineage,
+                "dataset_lineage": dataset_lineage,
+                "formal_output_manifest": str(bundle.manifest),
+                "calibration_manifest": str(calibration_manifest),
+                "raw_geobwer": {key: str(value) for key, value in raw.items()},
+                "standardized_strict": {key: str(value) for key, value in strict.items()},
+                "standardized_partial_bounds": {
+                    key: str(value) for key, value in partial.items()
+                },
+                "uncertainty": {key: str(value) for key, value in uncertainty.items()},
+                "training": {
+                    "selected_epoch": fit["selected_epoch"],
+                    "inner_validation_cross_entropy": fit[
+                        "inner_validation_cross_entropy"
+                    ],
+                    "search_history": fit["search_history"],
+                    "full_history": fit["full_history"],
+                    "calibration_metrics": fit["outputs"]["calibration"]["metrics"],
+                    "test_metrics": fit["outputs"]["test"]["metrics"],
+                },
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    return {
+        "formal_audit_table": bundle.audit_table,
+        "formal_manifest": bundle.manifest,
+        "calibration": calibration_path,
+        "raw_summary": raw["summary"],
+        "strict_standardized_summary": strict["summary"],
+        "partial_standardized_summary": partial["summary"],
+        "uncertainty_summary": uncertainty["summary"],
+        "run_manifest": manifest,
+    }
+
+
+def _completed_seed_summary(
+    seed: int,
+    artifacts: Mapping[str, Path],
+) -> dict[str, Any]:
+    manifest = json.loads(
+        Path(artifacts["run_manifest"]).read_text(encoding="utf-8")
+    )
+    training = manifest.get("training", {})
+    calibration_metrics = training.get("calibration_metrics", {})
+    test_metrics = training.get("test_metrics", {})
+    country_summary = read_axis_geobwer_summary(
+        artifacts["raw_summary"],
+        axis="country",
+    )
+    return {
+        "seed": int(seed),
+        "selected_epoch": training.get("selected_epoch"),
+        "inner_validation_cross_entropy": training.get(
+            "inner_validation_cross_entropy"
+        ),
+        **{
+            f"calibration_{key}": value
+            for key, value in calibration_metrics.items()
+        },
+        **{f"test_{key}": value for key, value in test_metrics.items()},
+        "country_geobwer": country_summary["geobwer"],
+        "country_geobwer_validity": country_summary["validity"],
+        "country_geobwer_ci_low": country_summary["ci_low"],
+        "country_geobwer_ci_high": country_summary["ci_high"],
+        "country_geobwer_lower_confidence_bound": country_summary[
+            "lower_confidence_bound"
+        ],
+    }
+
+
+def run_fmow_resnet50_campaign(
+    config: FmowResNet50CampaignConfig,
+) -> dict[str, Any]:
+    hydrate_output(config.output_dir, config.persistent_output_dir)
+    output = ensure_dir(config.output_dir)
+    geography_contract, geography_lineage, geography_contract_path = (
+        _prepare_geography_contract(config, output)
+    )
+    rows = _load_metadata(config.metadata_csv)
+    metadata_preflight = _write_fmow_metadata_preflight(
+        rows,
+        output / "fmow_metadata_preflight.json",
+        expected_splits=(
+            config.train_split,
+            config.calibration_split,
+            config.test_split,
+        ),
+    )
+    if (
+        config.diagnostic_max_samples_per_split is None
+        and not metadata_preflight["ok"]
+    ):
+        persist_output(
+            output,
+            config.persistent_output_dir,
+            label="fmow-metadata-preflight-failed",
+        )
+        raise FmowResNet50CampaignError(
+            "Formal fMoW metadata preflight failed before model loading/training: "
+            + ", ".join(metadata_preflight["errors"])
+            + f". See {output / 'fmow_metadata_preflight.json'}."
+        )
+    limit = config.diagnostic_max_samples_per_split
+    train_rows = _limit_rows(_split_rows(rows, config.train_split), limit, 42)
+    calibration_rows = _limit_rows(
+        _split_rows(rows, config.calibration_split), limit, 43
+    )
+    test_rows = _limit_rows(_split_rows(rows, config.test_split), limit, 44)
+    _validate_split_contract(train_rows, calibration_rows, test_rows)
+    for split_rows in (train_rows, calibration_rows, test_rows):
+        for row in split_rows:
+            row.update(_formal_rows([row])[0])
+    runner_config = FmowClassificationConfig(
+        metadata_csv=config.metadata_csv,
+        data_root=config.data_root,
+        output_dir=output,
+        model="resnet50",
+        train_split=config.train_split,
+        eval_split=config.calibration_split,
+        image_size=config.image_size,
+        batch_size=config.batch_size,
+        num_workers=config.num_workers,
+        learning_rate=config.learning_rate,
+        weight_decay=config.weight_decay,
+        device=config.device,
+        seed=42,
+        split_protocol=config.split_protocol,
+        band_profile=config.band_profile,
+        amp=config.amp,
+    )
+    normalization_path = output / "norm_stats_common9.json"
+    if normalization_path.exists():
+        normalization = json.loads(normalization_path.read_text(encoding="utf-8"))
+        train_ok = list(train_rows)
+        warnings: list[str] = []
+    else:
+        normalization, train_ok, warnings, generated = _compute_or_load_norm_stats(
+            train_rows, runner_config, output
+        )
+        generated.replace(normalization_path)
+    if warnings or len(train_ok) != len(train_rows):
+        raise FmowResNet50CampaignError(
+            "Formal common-9 baseline refuses unreadable-row dropping; repair the raster cache."
+        )
+    protocol = BWERProtocol.from_mapping(load_yaml(config.geobwer_protocol))
+    if geography_contract is None:
+        geography_contract_hash = ""
+    else:
+        geography_contract_hash = str(geography_contract["contract_hash"])
+    normalization_sha256 = file_sha256(normalization_path)
+    runs: dict[str, Any] = {}
+    seed_rows: list[dict[str, Any]] = []
+    completed: dict[int, dict[str, Path]] = {}
+    pending: list[int] = []
+    if config.diagnostic_max_samples_per_split is None:
+        for seed in config.seeds:
+            run_dir = output / f"seed_{int(seed)}"
+            artifacts = _validate_seed_completion_contract(
+                config,
+                seed=int(seed),
+                protocol=protocol,
+                geography_contract_hash=geography_contract_hash,
+                normalization_sha256=normalization_sha256,
+                run_dir=run_dir,
+            )
+            if artifacts is None:
+                pending.append(int(seed))
+            else:
+                completed[int(seed)] = artifacts
+        print("[fmow:resnet50:resume] completed:", flush=True)
+        for seed in completed:
+            print(f"  seed {seed}", flush=True)
+        if not completed:
+            print("  <none>", flush=True)
+        print("[fmow:resnet50:resume] pending:", flush=True)
+        for seed in pending:
+            print(f"  seed {seed}", flush=True)
+        if not pending:
+            print("  <none>", flush=True)
+    for seed in config.seeds:
+        run_dir = output / f"seed_{int(seed)}"
+        if int(seed) in completed:
+            runs[str(seed)] = completed[int(seed)]
+            seed_rows.append(
+                _completed_seed_summary(int(seed), completed[int(seed)])
+            )
+            continue
+        fit = _fit_seed(
+            train_rows,
+            calibration_rows,
+            test_rows,
+            normalization=normalization,
+            runner_config=replace(runner_config, seed=int(seed)),
+            campaign=config,
+            seed=int(seed),
+            output_dir=run_dir,
+        )
+        if config.diagnostic_max_samples_per_split is not None:
+            diagnostic = run_dir / "diagnostic_manifest.json"
+            diagnostic.write_text(
+                json.dumps(
+                    {
+                        "schema": "geobwer.fmow.resnet50_common9_diagnostic.v1",
+                        "formal_evidence": False,
+                        "seed": seed,
+                        "calibration_metrics": fit["outputs"]["calibration"]["metrics"],
+                        "test_metrics": fit["outputs"]["test"]["metrics"],
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+            runs[str(seed)] = {"diagnostic_manifest": diagnostic}
+        else:
+            runs[str(seed)] = _audit_seed(
+                config,
+                seed=int(seed),
+                train_rows=train_rows,
+                calibration_rows=calibration_rows,
+                test_rows=test_rows,
+                fit=fit,
+                protocol=protocol,
+                geography_lineage=geography_lineage,
+                output_dir=run_dir,
+            )
+            completion = _write_seed_completion_contract(
+                config,
+                seed=int(seed),
+                protocol=protocol,
+                geography_contract_hash=geography_contract_hash,
+                normalization_sha256=normalization_sha256,
+                run_dir=run_dir,
+            )
+            runs[str(seed)]["completion_contract"] = completion
+        seed_row = {
+            "seed": seed,
+            "selected_epoch": fit["selected_epoch"],
+            "inner_validation_cross_entropy": fit[
+                "inner_validation_cross_entropy"
+            ],
+            **{
+                f"calibration_{key}": value
+                for key, value in fit["outputs"]["calibration"]["metrics"].items()
+            },
+            **{
+                f"test_{key}": value
+                for key, value in fit["outputs"]["test"]["metrics"].items()
+            },
+        }
+        if config.diagnostic_max_samples_per_split is None:
+            country_summary = read_axis_geobwer_summary(
+                runs[str(seed)]["raw_summary"],
+                axis="country",
+            )
+            seed_row.update(
+                {
+                    "country_geobwer": country_summary["geobwer"],
+                    "country_geobwer_validity": country_summary["validity"],
+                    "country_geobwer_ci_low": country_summary["ci_low"],
+                    "country_geobwer_ci_high": country_summary["ci_high"],
+                    "country_geobwer_lower_confidence_bound": country_summary[
+                        "lower_confidence_bound"
+                    ],
+                }
+            )
+        seed_rows.append(seed_row)
+        persist_output(
+            run_dir,
+            (
+                config.persistent_output_dir / f"seed_{int(seed)}"
+                if config.persistent_output_dir
+                else None
+            ),
+            label=f"fmow-resnet50-seed-{seed}-complete",
+        )
+    seed_summary = output / "seed_robustness.csv"
+    write_csv(seed_summary, seed_rows)
+    campaign_manifest = output / "campaign_manifest.json"
+    campaign_manifest.write_text(
+        json.dumps(
+            {
+                "schema": "geobwer.fmow.resnet50_common9_panel.v2",
+                "formal_evidence": config.diagnostic_max_samples_per_split is None,
+                "role": "protocol_matched_supervised_baseline",
+                "config": asdict(config),
+                "geography_contract": (
+                    {
+                        "path": str(geography_contract_path),
+                        **geography_lineage,
+                    }
+                    if geography_contract is not None
+                    else None
+                ),
+                "normalization": str(normalization_path),
+                "normalization_sha256": normalization_sha256,
+                "resume": {
+                    "completed_on_entry": sorted(completed),
+                    "trained_this_invocation": [
+                        int(seed)
+                        for seed in config.seeds
+                        if int(seed) not in completed
+                    ],
+                },
+                "runs": {
+                    seed: {
+                        key: str(value) if isinstance(value, Path) else value
+                        for key, value in artifacts.items()
+                    }
+                    for seed, artifacts in runs.items()
+                },
+                "seed_robustness": str(seed_summary),
+            },
+            ensure_ascii=False,
+            indent=2,
+            default=str,
+        ),
+        encoding="utf-8",
+    )
+    persist_output(output, config.persistent_output_dir, label="fmow-resnet50-panel-complete")
+    return {
+        "runs": runs,
+        "geography_contract": geography_contract_path,
+        "seed_robustness": seed_summary,
+        "campaign_manifest": campaign_manifest,
+    }
+
+
+__all__ = [
+    "FmowResNet50CampaignConfig",
+    "FmowResNet50CampaignError",
+    "_prepare_geography_contract",
+    "run_fmow_resnet50_campaign",
+]

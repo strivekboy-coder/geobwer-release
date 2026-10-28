@@ -1,0 +1,4 @@
+# Model-specific registry/checkpoint compatibility must be checked before inference.
+-e .[models,geo]
+terratorch>=1.2.5,<1.3
+numpy>=1.24,<2.1

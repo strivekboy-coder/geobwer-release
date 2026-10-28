@@ -1,0 +1,233 @@
+from __future__ import annotations
+
+from pathlib import Path
+import json
+
+from rsfm_fairness_audit.cli import main
+from rsfm_fairness_audit.io import read_csv_rows, write_csv
+from rsfm_fairness_audit.slice_support import evaluate_slice_support
+
+
+def _rows() -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for index in range(10):
+        rows.append(
+            {
+                "dataset": "ben_ge_800",
+                "model": "croma",
+                "task": "classification",
+                "split": "all",
+                "unit_id": f"a-{index}",
+                "sensor_mode": "sar" if index < 5 else "optical",
+                "climatezone": "climatezone_0",
+                "class_label": "0" if index < 5 else "1",
+                "score": 1.0,
+            }
+        )
+    rows.extend(
+        [
+            {
+                "dataset": "ben_ge_800",
+                "model": "croma",
+                "task": "classification",
+                "split": "all",
+                "unit_id": "a-extra",
+                "sensor_mode": "optical",
+                "climatezone": "climatezone_0",
+                "class_label": "2",
+                "score": 1.0,
+            },
+            {
+                "dataset": "ben_ge_800",
+                "model": "croma",
+                "task": "classification",
+                "split": "all",
+                "unit_id": "b-0",
+                "sensor_mode": "both",
+                "climatezone": "climatezone_26",
+                "class_label": "0",
+                "score": 0.0,
+            },
+            {
+                "dataset": "ben_ge_800",
+                "model": "croma",
+                "task": "classification",
+                "split": "all",
+                "unit_id": "b-1",
+                "sensor_mode": "both",
+                "climatezone": "climatezone_26",
+                "class_label": "0",
+                "score": 0.0,
+            },
+        ]
+    )
+    return rows
+
+
+def test_slice_support_recommends_against_sparse_balanced_candidate() -> None:
+    artifacts = evaluate_slice_support(
+        _rows(),
+        "ben_ge_800",
+        "croma",
+        "classification",
+        "outputs/test_slice_support_sparse",
+        candidates=["climatezone|class_label", "sensor_mode|class_label"],
+        min_samples_per_slice=1,
+        min_units_required=1,
+        min_slices_required=2,
+    )
+    recommendations = {row["candidate"]: row for row in read_csv_rows(artifacts["recommendations"])}
+    climate = recommendations["BWER(climatezone | class_label)"]
+    assert climate["recommendation"] == "caution"
+    assert float(climate["missing_slice_balance_ratio"]) > 0.30
+    assert climate["preferred_bwer"] == "balanced"
+    assert Path(artifacts["report"]).exists()
+
+
+def test_slice_support_marks_missing_candidate_not_recommended() -> None:
+    artifacts = evaluate_slice_support(
+        _rows(),
+        "ben_ge_800",
+        "croma",
+        "classification",
+        "outputs/test_slice_support_missing",
+        candidates=["country|class_label"],
+    )
+    row = read_csv_rows(artifacts["recommendations"])[0]
+    assert row["recommendation"] == "not_recommended"
+    assert "missing slice column" in row["reason"]
+
+
+def test_sen1floods11_classification_uses_sample_level_support() -> None:
+    rows = [
+        {"dataset": "sen1floods11", "model": "prithvi", "task": "classification", "split": "all", "unit_id": "a1", "event_id": "A", "class_label": "0", "score": 1.0},
+        {"dataset": "sen1floods11", "model": "prithvi", "task": "classification", "split": "all", "unit_id": "b1", "event_id": "B", "class_label": "1", "score": 0.0},
+    ]
+    artifacts = evaluate_slice_support(
+        rows,
+        "sen1floods11",
+        "prithvi",
+        "classification",
+        "outputs/test_slice_support_sen1_classification",
+        candidates=["event_id"],
+        min_samples_per_slice=1,
+        min_units_required=1,
+        min_slices_required=2,
+    )
+    row = read_csv_rows(artifacts["recommendations"])[0]
+    assert row["recommendation"] == "recommended"
+    assert row["formal_bwer_runnable"] == "True"
+
+
+def test_sen1floods11_segmentation_keeps_pixel_positive_support_threshold() -> None:
+    rows = [
+        {"dataset": "sen1floods11", "model": "prithvi", "task": "segmentation", "split": "all", "unit_id": "a1", "event_id": "A", "class_label": "water", "score": 1.0, "positive_pixels": 500},
+        {"dataset": "sen1floods11", "model": "prithvi", "task": "segmentation", "split": "all", "unit_id": "b1", "event_id": "B", "class_label": "water", "score": 0.0, "positive_pixels": 500},
+    ]
+    artifacts = evaluate_slice_support(
+        rows,
+        "sen1floods11",
+        "prithvi",
+        "segmentation",
+        "outputs/test_slice_support_sen1_segmentation",
+        candidates=["event_id"],
+        min_samples_per_slice=1,
+        min_units_required=1,
+        min_slices_required=2,
+    )
+    row = read_csv_rows(artifacts["recommendations"])[0]
+    assert row["recommendation"] == "not_recommended"
+    assert row["formal_bwer_runnable"] == "False"
+
+
+def test_preflight_bwer_cli_reads_predictions(monkeypatch) -> None:
+    root = Path("outputs/test_slice_support_cli")
+    root.mkdir(parents=True, exist_ok=True)
+    predictions = root / "predictions.csv"
+    write_csv(
+        predictions,
+        [
+            {"sample_id": "s1", "label": "0", "prediction": "0", "region": "A", "correct": 1},
+            {"sample_id": "s2", "label": "1", "prediction": "0", "region": "B", "correct": 0},
+        ],
+    )
+    output = root / "support"
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "rsfm-audit",
+            "preflight-bwer",
+            "--predictions",
+            str(predictions),
+            "--dataset",
+            "bigearthnet",
+            "--model",
+            "dofa",
+            "--task",
+            "classification",
+            "--candidate",
+            "region|class_label",
+            "--output-dir",
+            str(output),
+            "--min-samples-per-slice",
+            "1",
+            "--min-units-required",
+            "1",
+        ],
+    )
+    main()
+    assert (output / "slice_support_recommendations.csv").exists()
+    assert read_csv_rows(output / "slice_support_recommendations.csv")[0]["candidate"] == "BWER(region | class_label)"
+
+
+def test_preflight_bwer_cli_reads_segmentation_metrics(monkeypatch) -> None:
+    root = Path("outputs/test_slice_support_cli_segmentation")
+    root.mkdir(parents=True, exist_ok=True)
+    metrics = root / "segmentation_metrics.csv"
+    write_csv(
+        metrics,
+        [
+            {"sample_id": "s1", "event_id": "e1", "country": "C1", "water_iou": 0.7, "positive_pixels": 1500},
+            {"sample_id": "s2", "event_id": "e2", "country": "C2", "water_iou": 0.2, "positive_pixels": 1600},
+        ],
+    )
+    output = root / "support"
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "rsfm-audit",
+            "preflight-bwer",
+            "--segmentation-metrics",
+            str(metrics),
+            "--dataset",
+            "sen1floods11",
+            "--model",
+            "prithvi",
+            "--task",
+            "segmentation",
+            "--candidate",
+            "event_id|class_label",
+            "--output-dir",
+            str(output),
+            "--min-samples-per-slice",
+            "1",
+            "--min-units-required",
+            "1",
+        ],
+    )
+    main()
+    rows = read_csv_rows(output / "slice_support_recommendations.csv")
+    assert rows[0]["candidate"] == "BWER(event_id | class_label)"
+
+
+def test_release_cli_exposes_prithvi_preflight_and_evaluation() -> None:
+    from rsfm_fairness_audit.cli import build_parser
+    parser = build_parser()
+    common = ["--audit-table", "data/audit.csv", "--dataset", "sen1floods11", "--model", "prithvi",
+              "--task", "segmentation", "--output-dir", "outputs/prithvi_sen1floods11_bwer"]
+    preflight = parser.parse_args(["preflight-bwer", *common])
+    evaluation = parser.parse_args(["evaluate-bwer", *common])
+    assert preflight.command == "preflight-bwer"
+    assert evaluation.command == "evaluate-bwer"
+    assert preflight.task == evaluation.task == "segmentation"
+    assert evaluation.missing_balance_policy == "renormalize"

@@ -1,0 +1,2795 @@
+{
+  "schema": "geobwer.release.manifest.v1",
+  "note": "Generated report hashes are omitted to avoid self-reference. All paths are relative.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 19,
+      "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 744,
+      "sha256": "4b3525637d8cd9667e8fb5275113979a9d1f91fbcf8fd83857238a4e043f0bd6"
+    },
+    {
+      "path": "CITATION.cff",
+      "bytes": 565,
+      "sha256": "1db4cfc44124d43ce9ecb0c4ab31308b12014e2562156b337c240fd2d3b7d1db"
+    },
+    {
+      "path": "FILES.txt",
+      "bytes": 15277,
+      "sha256": null
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1069,
+      "sha256": "49d0fab216809fb211470eaf116df9fe34df0ddbbeb40d922a3df6f40f7c0e5e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3972,
+      "sha256": "2ec085e955a25e1436625c114a558601ec86c1e7859f5126c6551a16c394d25c"
+    },
+    {
+      "path": "configs/analysis/geographic_risk_association_v1.yaml",
+      "bytes": 2500,
+      "sha256": "e6c26735df628da609f44f2e0c2df714f423a51159a2d2d6012f30a305284eca",
+      "source_path": "configs/analysis/geographic_risk_association_v1.yaml",
+      "source_sha256": "e6c26735df628da609f44f2e0c2df714f423a51159a2d2d6012f30a305284eca",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/analysis/geographic_risk_atlas_v1.yaml",
+      "bytes": 2285,
+      "sha256": "e43ea17275c5fbb742bafafd6ff4ac5deea48023c18ba6fc0f59ca965cb8d2bb",
+      "source_path": "configs/analysis/geographic_risk_atlas_v1.yaml",
+      "source_sha256": "e43ea17275c5fbb742bafafd6ff4ac5deea48023c18ba6fc0f59ca965cb8d2bb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/analysis/geographic_risk_covariates_v1.yaml",
+      "bytes": 1494,
+      "sha256": "ef337d344b34f048e63203fc1ab788cfc77abedfa53cbdc6bffe7eb433e76025",
+      "source_path": "configs/analysis/geographic_risk_covariates_v1.yaml",
+      "source_sha256": "ef337d344b34f048e63203fc1ab788cfc77abedfa53cbdc6bffe7eb433e76025",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/analysis/optimization_1_7_v1.yaml",
+      "bytes": 2820,
+      "sha256": "3adf59167598653b2baabe91c869b592caad91d0194325b29c8901e41d10bb2c",
+      "source_path": "configs/analysis/optimization_1_7_v1.yaml",
+      "source_sha256": "3adf59167598653b2baabe91c869b592caad91d0194325b29c8901e41d10bb2c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/analysis/paper_supplementary_analyses_v1.json",
+      "bytes": 2655,
+      "sha256": "ead0243765d96b3043e1908a0f486d99b3a0d804df2f789740e2a221506476cd",
+      "source_path": "configs/analysis/paper_supplementary_analyses_v1.json",
+      "source_sha256": "ead0243765d96b3043e1908a0f486d99b3a0d804df2f789740e2a221506476cd",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/dataset_registry.yaml",
+      "bytes": 11338,
+      "sha256": "3d4bbc404eab338507365ac63bc2a1978e96544d753f93ce0c5c30729fe8404f",
+      "source_path": "configs/dataset_registry.yaml",
+      "source_sha256": "3d4bbc404eab338507365ac63bc2a1978e96544d753f93ce0c5c30729fe8404f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/experiments/experiment8_reben_s2_to_s1_adaptation_v1.yaml",
+      "bytes": 1197,
+      "sha256": "f330c3a1d649dd74755301ed70665db77b2519fc8a55dfc1bbe567aa9cbed574",
+      "source_path": "configs/experiments/experiment8_reben_s2_to_s1_adaptation_v1.yaml",
+      "source_sha256": "380aa01051f3006eb4fb2d206009400a283c364d838d53bd5e9a3217106b87b2",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "configs/experiments/experiment9_model_task_2x2_v1.yaml",
+      "bytes": 1487,
+      "sha256": "8d5f03b78242b615e314dfa896b6a3c3d8579f9273808e26a95a89fc523dfe0c",
+      "source_path": "configs/experiments/experiment9_model_task_2x2_v1.yaml",
+      "source_sha256": "f86d7d4e69b7b421bf45c9715a83b6e6b5a8819b124473707c142a2378fc643c",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "configs/fmow/fmow_superclass_axis_role_freeze_v1.json",
+      "bytes": 7946,
+      "sha256": "723ba1c818ae1613dca36badb5a8af63d8272cf99017766c1c33138bd972a7eb",
+      "source_path": "configs/fmow/fmow_superclass_axis_role_freeze_v1.json",
+      "source_sha256": "723ba1c818ae1613dca36badb5a8af63d8272cf99017766c1c33138bd972a7eb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/fmow/geography_code_policy_v1.json",
+      "bytes": 1365,
+      "sha256": "83f371b5432204853f3f1827d32fe1e0e84cedd0acee89c1bb33e2db2bf7292a",
+      "source_path": "configs/fmow/geography_code_policy_v1.json",
+      "source_sha256": "83f371b5432204853f3f1827d32fe1e0e84cedd0acee89c1bb33e2db2bf7292a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/fmow/superclass_taxonomy_v1.json",
+      "bytes": 3472,
+      "sha256": "f4424ca6a25432fd0cf5399383efa0f33087b9c62e88d96a4855e3ca66297e4d",
+      "source_path": "configs/fmow/superclass_taxonomy_v1.json",
+      "source_sha256": "f4424ca6a25432fd0cf5399383efa0f33087b9c62e88d96a4855e3ca66297e4d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/alphaearth.yaml",
+      "bytes": 874,
+      "sha256": "64c72c54d762f606ce7c43834787f850bc99433f8608293767409a1d3ea8eb88",
+      "source_path": "configs/geobwer/alphaearth.yaml",
+      "source_sha256": "64c72c54d762f606ce7c43834787f850bc99433f8608293767409a1d3ea8eb88",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/certification_v12.yaml",
+      "bytes": 1090,
+      "sha256": "50b5b39b60d73ccfae74438753fc2adcf4a9a58d6b11221835bbc79e7b2780f6",
+      "source_path": "configs/geobwer/certification_v12.yaml",
+      "source_sha256": "50b5b39b60d73ccfae74438753fc2adcf4a9a58d6b11221835bbc79e7b2780f6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/cluster_eligibility_calibration_v1.json",
+      "bytes": 2600,
+      "sha256": "a30cdd301cc0b984dbeb791b0d3b5165894f0ac60c6e084abfdeb774f4306b8b",
+      "source_path": "configs/geobwer/cluster_eligibility_calibration_v1.json",
+      "source_sha256": "a30cdd301cc0b984dbeb791b0d3b5165894f0ac60c6e084abfdeb774f4306b8b",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/default.yaml",
+      "bytes": 664,
+      "sha256": "130d692775458e7e274c640d3c3788199e2444ea888b3e6c31b32e372d578a5c",
+      "source_path": "configs/geobwer/default.yaml",
+      "source_sha256": "130d692775458e7e274c640d3c3788199e2444ea888b3e6c31b32e372d578a5c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/fmow_sentinel.yaml",
+      "bytes": 866,
+      "sha256": "59766f2abeb553354a52d605457cb0b7a969a7ed6d8f2a6eecc7743243a979d8",
+      "source_path": "configs/geobwer/fmow_sentinel.yaml",
+      "source_sha256": "59766f2abeb553354a52d605457cb0b7a969a7ed6d8f2a6eecc7743243a979d8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/reben.yaml",
+      "bytes": 873,
+      "sha256": "87378a00451dabd1384346089a34a3151b664c48860f45192b7059d3c0c9e034",
+      "source_path": "configs/geobwer/reben.yaml",
+      "source_sha256": "87378a00451dabd1384346089a34a3151b664c48860f45192b7059d3c0c9e034",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/geobwer/sen1floods11.yaml",
+      "bytes": 821,
+      "sha256": "5081375c82389ad68b3fb503b84c74b32f5ad4b40038a917fd8b82d5ab4b77fd",
+      "source_path": "configs/geobwer/sen1floods11.yaml",
+      "source_sha256": "5081375c82389ad68b3fb503b84c74b32f5ad4b40038a917fd8b82d5ab4b77fd",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/inputs.example.yaml",
+      "bytes": 561,
+      "sha256": "153566219c07578ba75ce88689a366306a1435991051ccb17993f6cd4b06aed7"
+    },
+    {
+      "path": "configs/min_sample_thresholds.yaml",
+      "bytes": 979,
+      "sha256": "3261eb734da570117661325b0ec039a51ea4c94818d086281328f24a5cd16d60",
+      "source_path": "configs/min_sample_thresholds.yaml",
+      "source_sha256": "3261eb734da570117661325b0ec039a51ea4c94818d086281328f24a5cd16d60",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/model_registry.yaml",
+      "bytes": 16268,
+      "sha256": "7af9c88ed6a0efe19f79f8b34593dd8983514c21f295fbdfd454f24b4694d208",
+      "source_path": "configs/model_registry.yaml",
+      "source_sha256": "7af9c88ed6a0efe19f79f8b34593dd8983514c21f295fbdfd454f24b4694d208",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/croma.yaml",
+      "bytes": 326,
+      "sha256": "c5454678463de645fc017536587a0af52de64d91ed6a2f9417d881b71ba2a5a8",
+      "source_path": "configs/models/croma.yaml",
+      "source_sha256": "c5454678463de645fc017536587a0af52de64d91ed6a2f9417d881b71ba2a5a8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/croma_both.yaml",
+      "bytes": 345,
+      "sha256": "d3d8c21ee2d57f0c7b779c9137c748f7bb323732faea9e44186bdf9b2101e77c",
+      "source_path": "configs/models/croma_both.yaml",
+      "source_sha256": "d3d8c21ee2d57f0c7b779c9137c748f7bb323732faea9e44186bdf9b2101e77c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/croma_optical_benge.yaml",
+      "bytes": 369,
+      "sha256": "40a5bf8eab7a8ebf99e00812334a6b4d80b217d8aa73fd0243bd721f7d3dddfd",
+      "source_path": "configs/models/croma_optical_benge.yaml",
+      "source_sha256": "40a5bf8eab7a8ebf99e00812334a6b4d80b217d8aa73fd0243bd721f7d3dddfd",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/croma_reben_formal.yaml",
+      "bytes": 693,
+      "sha256": "b19bde5af67c7cbbf39cfdbfe76f85c5876c996540e97d7277f4415895a71cad",
+      "source_path": "configs/models/croma_reben_formal.yaml",
+      "source_sha256": "b19bde5af67c7cbbf39cfdbfe76f85c5876c996540e97d7277f4415895a71cad",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/croma_sar.yaml",
+      "bytes": 342,
+      "sha256": "533e1ac9aa0ef20c696ac5ea50b9e7817b2dd6d4a6a26584d1046a43cedf9ef9",
+      "source_path": "configs/models/croma_sar.yaml",
+      "source_sha256": "533e1ac9aa0ef20c696ac5ea50b9e7817b2dd6d4a6a26584d1046a43cedf9ef9",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/dofa.yaml",
+      "bytes": 276,
+      "sha256": "c4f2f9a8398444b6393c3d8e152555ce308a4beedf1a54d958b0ca2fb8dfee3c",
+      "source_path": "configs/models/dofa.yaml",
+      "source_sha256": "c4f2f9a8398444b6393c3d8e152555ce308a4beedf1a54d958b0ca2fb8dfee3c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/dofa_fmow_sentinel.yaml",
+      "bytes": 271,
+      "sha256": "d9ae1bf4d91cd0577b2a61fed1d06a0db9048bfc74b251d4e85d28a7a96e3682",
+      "source_path": "configs/models/dofa_fmow_sentinel.yaml",
+      "source_sha256": "d9ae1bf4d91cd0577b2a61fed1d06a0db9048bfc74b251d4e85d28a7a96e3682",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/dofav2_fmow_sentinel.yaml",
+      "bytes": 979,
+      "sha256": "f125b4b02f105d938cbf5b6b0635c182330ded0f126aa48eef305eeecc9dd93c",
+      "source_path": "configs/models/dofav2_fmow_sentinel.yaml",
+      "source_sha256": "f125b4b02f105d938cbf5b6b0635c182330ded0f126aa48eef305eeecc9dd93c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/prithvi.yaml",
+      "bytes": 389,
+      "sha256": "88040ddbdb6575e1bcd5380933cecfb2d8a3416e7642bdc837d8baeed2bb994f",
+      "source_path": "configs/models/prithvi.yaml",
+      "source_sha256": "88040ddbdb6575e1bcd5380933cecfb2d8a3416e7642bdc837d8baeed2bb994f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/prithvi_tl_sen1floods11.yaml",
+      "bytes": 489,
+      "sha256": "b333897900ad07d2e1f20e4c69cf8901cf77d441d1e96085d4ca4c8f356d57e6",
+      "source_path": "configs/models/prithvi_tl_sen1floods11.yaml",
+      "source_sha256": "b333897900ad07d2e1f20e4c69cf8901cf77d441d1e96085d4ca4c8f356d57e6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/models/terramind_v1_base_formal.yaml",
+      "bytes": 572,
+      "sha256": "dbf2a177605528c9401dbb0bfccfbd0445688999d6e47cf80414b38c076c2129",
+      "source_path": "configs/models/terramind_v1_base_formal.yaml",
+      "source_sha256": "dbf2a177605528c9401dbb0bfccfbd0445688999d6e47cf80414b38c076c2129",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "configs/slice_taxonomy.yaml",
+      "bytes": 4209,
+      "sha256": "c292711b4f3280e95dc3b445004145b480c9a5fcd798a903150c8e6df01318ad",
+      "source_path": "configs/slice_taxonomy.yaml",
+      "source_sha256": "c292711b4f3280e95dc3b445004145b480c9a5fcd798a903150c8e6df01318ad",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "docs/data.md",
+      "bytes": 2188,
+      "sha256": "ebcc326c4fff9aa85e0a351bc3c4eaf0ef1e0dd51fac0bb8b0d7b3d0ab1571d9"
+    },
+    {
+      "path": "docs/models.md",
+      "bytes": 1204,
+      "sha256": "ee55b8623a934fa9a21c9d1422edc323095ff5f07c1238a29801d2d9c6084a9e"
+    },
+    {
+      "path": "docs/release_scan.json",
+      "bytes": 2776,
+      "sha256": null
+    },
+    {
+      "path": "docs/reproduction.md",
+      "bytes": 3358,
+      "sha256": "781b511785b5cae196ea5baf72ee4dd446623be4d4dd506a611f36094476bfba"
+    },
+    {
+      "path": "docs/validation.md",
+      "bytes": 3293,
+      "sha256": null
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 1132,
+      "sha256": "584db983016c96eb9ac2811b61a503836c3e8e5dc30490b66d44885918862370"
+    },
+    {
+      "path": "release_manifest.json",
+      "bytes": 129932,
+      "sha256": null
+    },
+    {
+      "path": "requirements-croma.txt",
+      "bytes": 29,
+      "sha256": "254a992b2b64241fae3f53a6daf7539f8c607ab00fa649769f745779c1f15401"
+    },
+    {
+      "path": "requirements-dofa.txt",
+      "bytes": 118,
+      "sha256": "2ba9b9efe123a9f1f7278bfdf7b38cfb3247b231684ec903905df42a85239bd8"
+    },
+    {
+      "path": "requirements-prithvi.txt",
+      "bytes": 142,
+      "sha256": "783b7562a17e9283e84f8b200d0bdec9c4b2bfe41a5aa308e23a746fc63d861d"
+    },
+    {
+      "path": "requirements-test.in",
+      "bytes": 303,
+      "sha256": "d3f0b45fee943c992c071e12e0e0cd54fd2103e348e7a0fe3369fa3f58a7a550"
+    },
+    {
+      "path": "requirements-test.lock.txt",
+      "bytes": 1010,
+      "sha256": "b640e415f3392cd7f814662a93ccc9b579df79021c548c4390d524300894cf3f"
+    },
+    {
+      "path": "scripts/analysis/build_alphaearth_boundary_distance_analysis.py",
+      "bytes": 7408,
+      "sha256": "48f9b272bc65b2e34f7b097890df293f5387b2b7c92f2b2dbbb596a1221ec152",
+      "source_path": "scripts/analysis/build_alphaearth_boundary_distance_analysis.py",
+      "source_sha256": "48f9b272bc65b2e34f7b097890df293f5387b2b7c92f2b2dbbb596a1221ec152",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_alphaearth_full_paper_diagnostics.py",
+      "bytes": 19840,
+      "sha256": "07e17bf91472609bebac6788ce2f38d670d5ec916f875389de42011a6bab7f59",
+      "source_path": "scripts/analysis/build_alphaearth_full_paper_diagnostics.py",
+      "source_sha256": "07e17bf91472609bebac6788ce2f38d670d5ec916f875389de42011a6bab7f59",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_alphaearth_full_shard_manifest.py",
+      "bytes": 1460,
+      "sha256": "515df6d47c6aa7d3d3800ce122cc8fbd5d6a77f72a96a8e61ae2d68dcb0ea486",
+      "source_path": "scripts/analysis/build_alphaearth_full_shard_manifest.py",
+      "source_sha256": "515df6d47c6aa7d3d3800ce122cc8fbd5d6a77f72a96a8e61ae2d68dcb0ea486",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_bwer_robustness_v1.py",
+      "bytes": 12287,
+      "sha256": "c8795349fec6d2da95d0078ab20bb526a5b4bdbf0a5f84a28298d4378aeaac37",
+      "source_path": "scripts/analysis/build_bwer_robustness_v1.py",
+      "source_sha256": "36930863332b2fcc02270026499ecfc302f267b3e1e56599362849693767ca9b",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/analysis/build_cluster_mtd_intervals.py",
+      "bytes": 11678,
+      "sha256": "6a00d40940db14203092e5e24a1965be80b898dd66c58b3aee39185ed14e85a5",
+      "source_path": "scripts/analysis/build_cluster_mtd_intervals.py",
+      "source_sha256": "6a00d40940db14203092e5e24a1965be80b898dd66c58b3aee39185ed14e85a5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_final_paper_package.py",
+      "bytes": 6329,
+      "sha256": "185f90fea3f1dd2f88620e392a8f9f66f3474271c74b347dd6d61c9e311d0d15",
+      "source_path": "scripts/analysis/build_final_paper_package.py",
+      "source_sha256": "f7e627c7a38b9b5f9c6dcd735c39d7a45be9ee24e0cb9c30dd28e60de43dcddd",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/analysis/build_fmow_conformal_selective_audit.py",
+      "bytes": 44230,
+      "sha256": "c036cfcb39ca9d1f3139efc81e2f6b9b394c1e28008a0d105bae983f4f76b54d",
+      "source_path": "scripts/analysis/build_fmow_conformal_selective_audit.py",
+      "source_sha256": "ecaa2575329220b7114ef09aff50e9f6ca16ae526d4682d768382c946c80a8e6",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/analysis/build_geographic_risk_association.py",
+      "bytes": 1806,
+      "sha256": "45f8153389a8dfb5f970a2282663fe6aa43934efd4a06a4f9854c3dad30e88e1",
+      "source_path": "scripts/analysis/build_geographic_risk_association.py",
+      "source_sha256": "45f8153389a8dfb5f970a2282663fe6aa43934efd4a06a4f9854c3dad30e88e1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_geographic_risk_atlas.py",
+      "bytes": 2486,
+      "sha256": "0106f65a91f5492f87b80d7a7216bf07fb8b4787a1cf981c02e800feb4449c0b",
+      "source_path": "scripts/analysis/build_geographic_risk_atlas.py",
+      "source_sha256": "0106f65a91f5492f87b80d7a7216bf07fb8b4787a1cf981c02e800feb4449c0b",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_reben_paired_cross_model_review.py",
+      "bytes": 945,
+      "sha256": "7a1ef9cee3accbb96e885e091ce556db3c579970ccf4c131772e43885c4c0a1a",
+      "source_path": "scripts/analysis/build_reben_paired_cross_model_review.py",
+      "source_sha256": "7a1ef9cee3accbb96e885e091ce556db3c579970ccf4c131772e43885c4c0a1a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_reben_shift_error_structure.py",
+      "bytes": 10078,
+      "sha256": "d82e00f5bc4669916b5b510bf3b827b4adb9f750aa6597adf40800b222006359",
+      "source_path": "scripts/analysis/build_reben_shift_error_structure.py",
+      "source_sha256": "d82e00f5bc4669916b5b510bf3b827b4adb9f750aa6597adf40800b222006359",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_selective_risk_audit.py",
+      "bytes": 35035,
+      "sha256": "97c6017f62ac65d246cb6a9708bac5f29fa6f56a37955495ee8fda009f0c907a",
+      "source_path": "scripts/analysis/build_selective_risk_audit.py",
+      "source_sha256": "9cea933e70eec91d98a48f1cfe45144bf22b32dc01e21aaa73df8865c1a8b0a4",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/analysis/build_sen1_event_descriptors.py",
+      "bytes": 6040,
+      "sha256": "19808da19194362144c48e0c5b635300779e2b704e0e7f4d55ae7b81d615ce7a",
+      "source_path": "scripts/analysis/build_sen1_event_descriptors.py",
+      "source_sha256": "19808da19194362144c48e0c5b635300779e2b704e0e7f4d55ae7b81d615ce7a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/build_sen1_mean_tail_decision_scenario.py",
+      "bytes": 6382,
+      "sha256": "d6aafa6eb8e72950439bdb25cc6f5e1c4cdaba16aea2b3a1b8e174a3452f0495",
+      "source_path": "scripts/analysis/build_sen1_mean_tail_decision_scenario.py",
+      "source_sha256": "d6aafa6eb8e72950439bdb25cc6f5e1c4cdaba16aea2b3a1b8e174a3452f0495",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/calibrate_geobwer_cluster_eligibility.py",
+      "bytes": 2088,
+      "sha256": "eb4512b8d7a8adfcc16c92314a2f8a7ff63f8924a7e5eeec1f64fb3e2d83f71a",
+      "source_path": "scripts/analysis/calibrate_geobwer_cluster_eligibility.py",
+      "source_sha256": "eb4512b8d7a8adfcc16c92314a2f8a7ff63f8924a7e5eeec1f64fb3e2d83f71a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/check_alphaearth_export_schema.py",
+      "bytes": 4437,
+      "sha256": "b3b011efd98c1e52563e3d7b2d3d50c2f25a11c4d8d82ed5880ab6f17696b934",
+      "source_path": "scripts/analysis/check_alphaearth_export_schema.py",
+      "source_sha256": "b3b011efd98c1e52563e3d7b2d3d50c2f25a11c4d8d82ed5880ab6f17696b934",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/check_alphaearth_full_export_schema.py",
+      "bytes": 8313,
+      "sha256": "e43e93d1040e0d30e2e168f63e2808f1d57f4e157ffe5e4b88e05622c0d79abb",
+      "source_path": "scripts/analysis/check_alphaearth_full_export_schema.py",
+      "source_sha256": "e43e93d1040e0d30e2e168f63e2808f1d57f4e157ffe5e4b88e05622c0d79abb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/check_audit_contract.py",
+      "bytes": 18042,
+      "sha256": "830e429231c09a5580f9b01cddf42ad71ed4b9d2c216f3096dfd9c93051c2699",
+      "source_path": "scripts/analysis/check_audit_contract.py",
+      "source_sha256": "c5456fbd233450479b9d82717e337289944d49bda229a58d69c1f3cdbc44ae12",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/analysis/finalize_optimization_1_7.py",
+      "bytes": 1822,
+      "sha256": "ea1a58a794491cfbc63fe06ac5d3002cd035c598958dcbf955ac8033ccf42a5b",
+      "source_path": "scripts/analysis/finalize_optimization_1_7.py",
+      "source_sha256": "ea1a58a794491cfbc63fe06ac5d3002cd035c598958dcbf955ac8033ccf42a5b",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/finish_sen1_event_descriptor_analysis.py",
+      "bytes": 9762,
+      "sha256": "a5e5fae16a1fcd03fd2e536204f4e68696ca26676d83aa44ed0bcb8820e52fb8",
+      "source_path": "scripts/analysis/finish_sen1_event_descriptor_analysis.py",
+      "source_sha256": "a5e5fae16a1fcd03fd2e536204f4e68696ca26676d83aa44ed0bcb8820e52fb8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/prepare_geographic_risk_covariates.py",
+      "bytes": 1970,
+      "sha256": "6d2ea8fb7b9d5bd352501ca42adcfd8df360f6e7551f143505c177bc84f1d2a2",
+      "source_path": "scripts/analysis/prepare_geographic_risk_covariates.py",
+      "source_sha256": "6d2ea8fb7b9d5bd352501ca42adcfd8df360f6e7551f143505c177bc84f1d2a2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/run_alphaearth_landcover_full_audit.py",
+      "bytes": 44656,
+      "sha256": "5a435e230f79ed1b8ed94a9f4b3251cfaed85ca91b8a6b3573a647d5c604dec6",
+      "source_path": "scripts/analysis/run_alphaearth_landcover_full_audit.py",
+      "source_sha256": "5a435e230f79ed1b8ed94a9f4b3251cfaed85ca91b8a6b3573a647d5c604dec6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/run_alphaearth_landcover_pilot_audit.py",
+      "bytes": 20740,
+      "sha256": "b4343ec29b8e7830868a0ebe6a2dcf049e4278c473859637a03f2ef2be4f2f22",
+      "source_path": "scripts/analysis/run_alphaearth_landcover_pilot_audit.py",
+      "source_sha256": "b4343ec29b8e7830868a0ebe6a2dcf049e4278c473859637a03f2ef2be4f2f22",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/run_evidence_rebuild_v060.py",
+      "bytes": 6379,
+      "sha256": "6a59b6305626a5f169e3d4c3730eba38299b2702bce0a1e5719b22592850e3f7",
+      "source_path": "scripts/analysis/run_evidence_rebuild_v060.py",
+      "source_sha256": "6a59b6305626a5f169e3d4c3730eba38299b2702bce0a1e5719b22592850e3f7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/run_geobwer_model_panel.py",
+      "bytes": 2831,
+      "sha256": "e3086dd157ebb8e2108eb73b83ad058c4fa1ef5fc3396f91423f3da46c6d6a6a",
+      "source_path": "scripts/analysis/run_geobwer_model_panel.py",
+      "source_sha256": "e3086dd157ebb8e2108eb73b83ad058c4fa1ef5fc3396f91423f3da46c6d6a6a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analysis/run_optimization_1_7.py",
+      "bytes": 1081,
+      "sha256": "b1777ecaddde4ab9e355bece4dcc323b9dc46f33bfffe81493775c9bdc459be8",
+      "source_path": "scripts/analysis/run_optimization_1_7.py",
+      "source_sha256": "d7c43f5458cffabdada3968021680615703cadbcec2dc3dee11e8974e6556183",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/analysis/validate_geobwer_production.py",
+      "bytes": 1106,
+      "sha256": "f9e0bf3deb8c2b85f37df4ffc2ddc350cb5f2aaaa707002fc823d6529267890d",
+      "source_path": "scripts/analysis/validate_geobwer_production.py",
+      "source_sha256": "f9e0bf3deb8c2b85f37df4ffc2ddc350cb5f2aaaa707002fc823d6529267890d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/analyze_fmow_patch_size_diagnostics.py",
+      "bytes": 14706,
+      "sha256": "8d71d8ea242a59ed6333f8fbe20b5a86e4d794464caa2899082a91d2609ae7e5",
+      "source_path": "scripts/analyze_fmow_patch_size_diagnostics.py",
+      "source_sha256": "8d71d8ea242a59ed6333f8fbe20b5a86e4d794464caa2899082a91d2609ae7e5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/benchmark_reben_resnet50_io_colab.py",
+      "bytes": 4991,
+      "sha256": "8e828fb71e851d9284b2cce40ad6868b55845ce01e37f6845a409eb3b50caf01",
+      "source_path": "scripts/colab/benchmark_reben_resnet50_io_colab.py",
+      "source_sha256": "8e828fb71e851d9284b2cce40ad6868b55845ce01e37f6845a409eb3b50caf01",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/build_fmow_geography_contract_colab.py",
+      "bytes": 2024,
+      "sha256": "1c12ff6d82e1c1c811129003d0708c9bf2e300ba99a1b3672a676a5ac20b2430",
+      "source_path": "scripts/colab/build_fmow_geography_contract_colab.py",
+      "source_sha256": "1c12ff6d82e1c1c811129003d0708c9bf2e300ba99a1b3672a676a5ac20b2430",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/compare_reben_croma_sensor_modes_colab.py",
+      "bytes": 22047,
+      "sha256": "3d7c0605fe4b1bac388f6be4e03e39d50347ec6c18a43d21b8643af7f7650fdb",
+      "source_path": "scripts/colab/compare_reben_croma_sensor_modes_colab.py",
+      "source_sha256": "3d7c0605fe4b1bac388f6be4e03e39d50347ec6c18a43d21b8643af7f7650fdb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/export_alphaearth_worldcover_full_colab.py",
+      "bytes": 15017,
+      "sha256": "b7e54a4692eb30459b35b9d49f83c176cd2e9f13fb1387c90324f2b13c389460",
+      "source_path": "scripts/colab/export_alphaearth_worldcover_full_colab.py",
+      "source_sha256": "f36cd8002344cd7178663ad065eb1d0a47c4e84c54212474eb8b02777b05d35a",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/export_alphaearth_worldcover_pilot_colab.py",
+      "bytes": 10888,
+      "sha256": "18910de875cd45c42ae8547f4f7051291b5a524a8ca23c39f00b6a8e0fa6b82a",
+      "source_path": "scripts/colab/export_alphaearth_worldcover_pilot_colab.py",
+      "source_sha256": "2842365a0bb9e70a2c20ee504082ac2a43b0979f25a393d777caa2506f986ac4",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/finalize_fmow_extended_panel_colab.py",
+      "bytes": 7494,
+      "sha256": "fb02cdb75bcc654e6919b79f1a00d23aa93ea1b89fa6869b946122b5c635da23",
+      "source_path": "scripts/colab/finalize_fmow_extended_panel_colab.py",
+      "source_sha256": "fb02cdb75bcc654e6919b79f1a00d23aa93ea1b89fa6869b946122b5c635da23",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/finalize_sen1_extended_panel_colab.py",
+      "bytes": 2330,
+      "sha256": "0719fa6b7fd6a9e2aeccad61ce3e9dcd9669ccdd77ab39fdade3c00103fbe826",
+      "source_path": "scripts/colab/finalize_sen1_extended_panel_colab.py",
+      "source_sha256": "0719fa6b7fd6a9e2aeccad61ce3e9dcd9669ccdd77ab39fdade3c00103fbe826",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/gate_sen1_prithvi_prepared_masks_colab.py",
+      "bytes": 1523,
+      "sha256": "dda514a9ecf9580978c52946fd73ea68b059920df908b9d891d79ca0a7df69a1",
+      "source_path": "scripts/colab/gate_sen1_prithvi_prepared_masks_colab.py",
+      "source_sha256": "dda514a9ecf9580978c52946fd73ea68b059920df908b9d891d79ca0a7df69a1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/postprocess_fmow_dofav2_provenance_colab.py",
+      "bytes": 1489,
+      "sha256": "46e0ce7aa13b864e048b3b34cab380190db54a80650f6512ad7b486f2f3fa2f7",
+      "source_path": "scripts/colab/postprocess_fmow_dofav2_provenance_colab.py",
+      "source_sha256": "46e0ce7aa13b864e048b3b34cab380190db54a80650f6512ad7b486f2f3fa2f7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/postprocess_fmow_superclass_frozen_colab.py",
+      "bytes": 2538,
+      "sha256": "c882c4edc96a7f74de22f21ef373d7f2b8725af316c76c2b1cd3609672029cb4",
+      "source_path": "scripts/colab/postprocess_fmow_superclass_frozen_colab.py",
+      "source_sha256": "c882c4edc96a7f74de22f21ef373d7f2b8725af316c76c2b1cd3609672029cb4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/postprocess_reben_27run_scientific_colab.py",
+      "bytes": 3560,
+      "sha256": "1aea61cc4b570de5b04d6c01bea51cda5c4792725c6bc8b61b725856725a8816",
+      "source_path": "scripts/colab/postprocess_reben_27run_scientific_colab.py",
+      "source_sha256": "1aea61cc4b570de5b04d6c01bea51cda5c4792725c6bc8b61b725856725a8816",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/postprocess_sen1_19model_descriptive_colab.py",
+      "bytes": 16718,
+      "sha256": "900188f2b3f111ad019ddde039dc1b6c6be3d6d489105a885358a09dcba308c6",
+      "source_path": "scripts/colab/postprocess_sen1_19model_descriptive_colab.py",
+      "source_sha256": "900188f2b3f111ad019ddde039dc1b6c6be3d6d489105a885358a09dcba308c6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/preflight_alphaearth_full_countries_colab.py",
+      "bytes": 2119,
+      "sha256": "4c3af151943d391be418239a0572f21932dfd46ad0779c6e1e5ea3ac9f929c9a",
+      "source_path": "scripts/colab/preflight_alphaearth_full_countries_colab.py",
+      "source_sha256": "4c3af151943d391be418239a0572f21932dfd46ad0779c6e1e5ea3ac9f929c9a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/preflight_geobwer_drive_artifacts_colab.py",
+      "bytes": 1193,
+      "sha256": "08975794faca00b773fc0f7dd7772ccffe017f2d34b870ec44597476549447cc",
+      "source_path": "scripts/colab/preflight_geobwer_drive_artifacts_colab.py",
+      "source_sha256": "0ac685a4bb6d25dd597e1f477823ae71098d92cfe384b5ba8163a5151c8a7733",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/prepare_fmow_formal_splits_colab.py",
+      "bytes": 1332,
+      "sha256": "fa8a6b1c857b0a434eb868f75699aea0f04b71428193a573d448ac1e836b5c27",
+      "source_path": "scripts/colab/prepare_fmow_formal_splits_colab.py",
+      "source_sha256": "fa8a6b1c857b0a434eb868f75699aea0f04b71428193a573d448ac1e836b5c27",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/prepare_geobwer_model_assets_colab.py",
+      "bytes": 9300,
+      "sha256": "a0613d8f820efdb9c541359b8891b448370d3929b8d1d39850324add161a1393",
+      "source_path": "scripts/colab/prepare_geobwer_model_assets_colab.py",
+      "source_sha256": "5b2cbd846ddd722c18c6dc0b9499dd406ea5d2039d8567992c24590019ed8348",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/prepare_reben_croma_sensor_audit_colab.py",
+      "bytes": 17065,
+      "sha256": "d2b59c2405729f9673a1c3fcd4e4b3d8bcdf4b7357247d6f1549a6915c46873b",
+      "source_path": "scripts/colab/prepare_reben_croma_sensor_audit_colab.py",
+      "source_sha256": "d2b59c2405729f9673a1c3fcd4e4b3d8bcdf4b7357247d6f1549a6915c46873b",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/reaudit_frozen_geobwer_v12_colab.py",
+      "bytes": 5384,
+      "sha256": "e789f902546d28137e25b01be7f2d9408e14692caafb7fa72dc51623abb1cd82",
+      "source_path": "scripts/colab/reaudit_frozen_geobwer_v12_colab.py",
+      "source_sha256": "312cf0d578b1d7b739daafd14470b064f858208d8161141387714dddfe97c663",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_alphaearth_geobwer_final_colab.py",
+      "bytes": 2231,
+      "sha256": "d3227bc68365df7e100283c12785bf5aade9af53e9ee6ce9029dbf9976fbddad",
+      "source_path": "scripts/colab/run_alphaearth_geobwer_final_colab.py",
+      "source_sha256": "d3227bc68365df7e100283c12785bf5aade9af53e9ee6ce9029dbf9976fbddad",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_experiment8_reben_adaptation_colab.py",
+      "bytes": 2595,
+      "sha256": "5b68cb971372fda43ee7143062aab48ab4a257342e99ad432e50199d58f640c4",
+      "source_path": "scripts/colab/run_experiment8_reben_adaptation_colab.py",
+      "source_sha256": "5b68cb971372fda43ee7143062aab48ab4a257342e99ad432e50199d58f640c4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_experiment9_model_task_generalization_colab.py",
+      "bytes": 7608,
+      "sha256": "6517e379c1bebfa0c622d5b6a35286d49fd06abed3ddfea45d9d08126552af35",
+      "source_path": "scripts/colab/run_experiment9_model_task_generalization_colab.py",
+      "source_sha256": "6517e379c1bebfa0c622d5b6a35286d49fd06abed3ddfea45d9d08126552af35",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_fmow_dofav2_final_colab.py",
+      "bytes": 4234,
+      "sha256": "42f11564286d15dd42c80bac50e111eec9c6bc9a1b1f0263ce2d3d9be12ae750",
+      "source_path": "scripts/colab/run_fmow_dofav2_final_colab.py",
+      "source_sha256": "42f11564286d15dd42c80bac50e111eec9c6bc9a1b1f0263ce2d3d9be12ae750",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_fmow_resnet50_common9_final_colab.py",
+      "bytes": 3147,
+      "sha256": "8de564d53731a6b0e007e6e61e46726782fcec7d48a9812408e1d632381c8dfa",
+      "source_path": "scripts/colab/run_fmow_resnet50_common9_final_colab.py",
+      "source_sha256": "8de564d53731a6b0e007e6e61e46726782fcec7d48a9812408e1d632381c8dfa",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_geographic_risk_atlas_final_colab.py",
+      "bytes": 8870,
+      "sha256": "2e453fb8063e24c86c71524e891a3b0a4c4c80aa24c4711a48b58398b99cd0b3",
+      "source_path": "scripts/colab/run_geographic_risk_atlas_final_colab.py",
+      "source_sha256": "1e004a0f257da8dcd25cdd1942125daf4b7000d803399f0cdb6e1813676ee84f",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_geographic_risk_covariates_and_association_colab.py",
+      "bytes": 3805,
+      "sha256": "48e76df8ae572b82cba8935d10743f7d6f029209b95e59998bb6b94d9c348a48",
+      "source_path": "scripts/colab/run_geographic_risk_covariates_and_association_colab.py",
+      "source_sha256": "1c322c00811c25c5fa67d2b206374c41efeac4bd17baf920ae4d731b664e1d89",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_paper_supplementary_analyses_v1_colab.py",
+      "bytes": 27091,
+      "sha256": "b6e12c96b315bd6cf17fd3fe29bc71043e5dec88116bb0ee9e2823e7f4346ad1",
+      "source_path": "scripts/colab/run_paper_supplementary_analyses_v1_colab.py",
+      "source_sha256": "85023466b5244d4d01d1226b89be14c9ddc01d9730a3a2e9546c51fdc7355a0a",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_prithvi_sen1_geobwer_migration_colab.py",
+      "bytes": 4033,
+      "sha256": "205f8192fbc65abb4a86f94d2ef59dea512d8ffc3c4781e92b855a4d8e236758",
+      "source_path": "scripts/colab/run_prithvi_sen1_geobwer_migration_colab.py",
+      "source_sha256": "205f8192fbc65abb4a86f94d2ef59dea512d8ffc3c4781e92b855a4d8e236758",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_reben_croma_paired_shift_sensitivity_colab.py",
+      "bytes": 3140,
+      "sha256": "7c7b9f3700f03fc18e1a695be39223564cbf23acccc4448d8986dccaccee30b3",
+      "source_path": "scripts/colab/run_reben_croma_paired_shift_sensitivity_colab.py",
+      "source_sha256": "0edf4b72ae307f9ec4fddd186fbe0b610b77544952e656f1f0fece1cdf79c22b",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_reben_croma_sensor_mode_audit_colab.py",
+      "bytes": 18295,
+      "sha256": "81a2333aa33a852d8ba5f8441deebf6f50b43f382b901d42983152158eac5f7d",
+      "source_path": "scripts/colab/run_reben_croma_sensor_mode_audit_colab.py",
+      "source_sha256": "81a2333aa33a852d8ba5f8441deebf6f50b43f382b901d42983152158eac5f7d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_reben_geofm_full_panel_colab.py",
+      "bytes": 15319,
+      "sha256": "a9abd6a7912a0659f1d87bede5fb33fb7f0dfd36cbd16c59de259bf6ddcf59b1",
+      "source_path": "scripts/colab/run_reben_geofm_full_panel_colab.py",
+      "source_sha256": "a9abd6a7912a0659f1d87bede5fb33fb7f0dfd36cbd16c59de259bf6ddcf59b1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_reben_labelwise_sensitivity_colab.py",
+      "bytes": 4448,
+      "sha256": "c1792e6772ee736a897291386175d0cecfe30a5a91c86e23906ad88c6ea57035",
+      "source_path": "scripts/colab/run_reben_labelwise_sensitivity_colab.py",
+      "source_sha256": "c42f90ffe47f4f64b3b56d830bc73bc070270c41811354e357a63e7c8784e72c",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_reben_resnet50_final_colab.py",
+      "bytes": 3873,
+      "sha256": "9af7a9e8b5a2d6b05d588dbc7e3fb2227386f15c2030e6fa394e5ae01b8955d0",
+      "source_path": "scripts/colab/run_reben_resnet50_final_colab.py",
+      "source_sha256": "9af7a9e8b5a2d6b05d588dbc7e3fb2227386f15c2030e6fa394e5ae01b8955d0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_reben_terramind_all_modes_colab.py",
+      "bytes": 6072,
+      "sha256": "a06bef0bf8a8f56740159e8acc3bdb89fffa59e6ed7cf93af179ba1bce0870cf",
+      "source_path": "scripts/colab/run_reben_terramind_all_modes_colab.py",
+      "source_sha256": "a06bef0bf8a8f56740159e8acc3bdb89fffa59e6ed7cf93af179ba1bce0870cf",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_reben_terramind_final_colab.py",
+      "bytes": 3732,
+      "sha256": "4c5934c42b3e940077dd667cd6d99ade70da4d408850ea558a84e40c7e1d50bf",
+      "source_path": "scripts/colab/run_reben_terramind_final_colab.py",
+      "source_sha256": "4c5934c42b3e940077dd667cd6d99ade70da4d408850ea558a84e40c7e1d50bf",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_sen1_supervised_panel_colab.py",
+      "bytes": 4131,
+      "sha256": "cf0cc295a5e48164c42534e72c7c81439d3314d63872ff6ccc282a1c37fa0863",
+      "source_path": "scripts/colab/run_sen1_supervised_panel_colab.py",
+      "source_sha256": "cf0cc295a5e48164c42534e72c7c81439d3314d63872ff6ccc282a1c37fa0863",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_sen1_validation_locked_threshold_profile_colab.py",
+      "bytes": 25645,
+      "sha256": "704342a25b68a35a533815cbad2536d9a67c2684d2a1b96890256c87a262c9d1",
+      "source_path": "scripts/colab/run_sen1_validation_locked_threshold_profile_colab.py",
+      "source_sha256": "2e4433f5b019f96f2f59232a83dec35ddf8639214713d3d2710c851ea5c73b47",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/run_sen1floods11_gpu_smoke_colab.py",
+      "bytes": 18877,
+      "sha256": "c5f11636526e04b833dabba4f3e108a95e51b428e2d676bc726b489218d151f2",
+      "source_path": "scripts/colab/run_sen1floods11_gpu_smoke_colab.py",
+      "source_sha256": "c5f11636526e04b833dabba4f3e108a95e51b428e2d676bc726b489218d151f2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/run_terramind_sen1floods11_final_colab.py",
+      "bytes": 87131,
+      "sha256": "1161dc31935792b7b5ef6203540b2ff8e21d807f768faf466b71703e12ec1c0e",
+      "source_path": "scripts/colab/run_terramind_sen1floods11_final_colab.py",
+      "source_sha256": "f5baaec5d78740223f6bca4d8180f0ca558087697d68ae2b2e63fa74d3c35231",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/colab/scan_fmow_superclass_feasibility_colab.py",
+      "bytes": 2393,
+      "sha256": "2079d633bbab28bc3008b7e231c74606be868eaf612d13159bd81bce0b22aee3",
+      "source_path": "scripts/colab/scan_fmow_superclass_feasibility_colab.py",
+      "source_sha256": "2079d633bbab28bc3008b7e231c74606be868eaf612d13159bd81bce0b22aee3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/validate_sen1_amp_overflow_cuda_colab.py",
+      "bytes": 4239,
+      "sha256": "aea2f7e73d36525e993a49e6f3dcb6df8ab8d2406c39ceb557758f8176b891e0",
+      "source_path": "scripts/colab/validate_sen1_amp_overflow_cuda_colab.py",
+      "source_sha256": "aea2f7e73d36525e993a49e6f3dcb6df8ab8d2406c39ceb557758f8176b891e0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/validate_sen1_complete_modality_missing_colab.py",
+      "bytes": 7706,
+      "sha256": "7528f08df36430c4a8fff95c9b97cb1dd63b70d18cd9ef7b935c5c6b9880d4d7",
+      "source_path": "scripts/colab/validate_sen1_complete_modality_missing_colab.py",
+      "source_sha256": "7528f08df36430c4a8fff95c9b97cb1dd63b70d18cd9ef7b935c5c6b9880d4d7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/colab/validate_sen1_unet_v0427_carry_forward_colab.py",
+      "bytes": 1663,
+      "sha256": "f41c175c6e31882cbbf0ad0837d465f29473403dfcad6f67ed4a3decf35609d1",
+      "source_path": "scripts/colab/validate_sen1_unet_v0427_carry_forward_colab.py",
+      "source_sha256": "f41c175c6e31882cbbf0ad0837d465f29473403dfcad6f67ed4a3decf35609d1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/diagnose_dofa_checkpoint_compatibility.py",
+      "bytes": 9025,
+      "sha256": "92fca3028cd5a92537ca055afc8412e03b6f4f6c5f5e4ba8871a2785e2a8e73d",
+      "source_path": "scripts/diagnose_dofa_checkpoint_compatibility.py",
+      "source_sha256": "92fca3028cd5a92537ca055afc8412e03b6f4f6c5f5e4ba8871a2785e2a8e73d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/download_bigearthnet_hf_subset.py",
+      "bytes": 12798,
+      "sha256": "dd7bc7587189924753246158915ad993daa4f22b2a1c799ed172072b898f2be2",
+      "source_path": "scripts/download_bigearthnet_hf_subset.py",
+      "source_sha256": "dd7bc7587189924753246158915ad993daa4f22b2a1c799ed172072b898f2be2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/download_bigearthnet_lccol_subset.py",
+      "bytes": 10050,
+      "sha256": "ba8b7919917012f7e048b35f4a26d23743b643527f9273c3893419007476d30e",
+      "source_path": "scripts/download_bigearthnet_lccol_subset.py",
+      "source_sha256": "ba8b7919917012f7e048b35f4a26d23743b643527f9273c3893419007476d30e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/fmow_sanity_common.py",
+      "bytes": 2883,
+      "sha256": "40e81ec228fcc4cc5634be5708ad058cbabc56a9d40d47b5c6cb2e793a2220b4",
+      "source_path": "scripts/fmow_sanity_common.py",
+      "source_sha256": "40e81ec228fcc4cc5634be5708ad058cbabc56a9d40d47b5c6cb2e793a2220b4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/inspect_fmow_dofa_pooling_ablation.py",
+      "bytes": 9064,
+      "sha256": "5869ab51a1bfd2a2b7594221c621cf13a12e963a8be2a05d0d32bc6bea00468b",
+      "source_path": "scripts/inspect_fmow_dofa_pooling_ablation.py",
+      "source_sha256": "5869ab51a1bfd2a2b7594221c621cf13a12e963a8be2a05d0d32bc6bea00468b",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/prepare_ben_ge_800_subset.py",
+      "bytes": 10974,
+      "sha256": "32d131ac07fc701ba4e9b6db616c9b19a6fb8defd490db28d09a958b303b44d9",
+      "source_path": "scripts/prepare_ben_ge_800_subset.py",
+      "source_sha256": "32d131ac07fc701ba4e9b6db616c9b19a6fb8defd490db28d09a958b303b44d9",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/prepare_bigearthnet_subset.py",
+      "bytes": 15006,
+      "sha256": "106d88757e8c553345294c75e820b1aa79d46c45b5f3e5a6a97a4b638f22cee0",
+      "source_path": "scripts/prepare_bigearthnet_subset.py",
+      "source_sha256": "106d88757e8c553345294c75e820b1aa79d46c45b5f3e5a6a97a4b638f22cee0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/prepare_fmow_sentinel_clean_subset.py",
+      "bytes": 29025,
+      "sha256": "151d9696879a27160d83aebed8f4fcd66453607affd78d4854136888061100f1",
+      "source_path": "scripts/prepare_fmow_sentinel_clean_subset.py",
+      "source_sha256": "151d9696879a27160d83aebed8f4fcd66453607affd78d4854136888061100f1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/prepare_sen1floods11_subset.py",
+      "bytes": 24357,
+      "sha256": "7ba086541671e753e7b49cca2728fe930c8bb40851f053671b5ed90b2310a594",
+      "source_path": "scripts/prepare_sen1floods11_subset.py",
+      "source_sha256": "7ba086541671e753e7b49cca2728fe930c8bb40851f053671b5ed90b2310a594",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/run_bwer_v2_from_colab_zip.py",
+      "bytes": 4030,
+      "sha256": "34113f32d3b9651af21f801c986f2100162fcbb93d5d69fe51da33c6105c80dc",
+      "source_path": "scripts/run_bwer_v2_from_colab_zip.py",
+      "source_sha256": "4da06fc592cf0977dcd301129846ac05774d80a046737633e56063520d536702",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/run_reben_croma_paired_shift_colab.py",
+      "bytes": 2673,
+      "sha256": "f5f5652301124313fd0bd0f2b17d46f349df1404c2cbba682de9ed803230e990",
+      "source_path": "scripts/run_reben_croma_paired_shift_colab.py",
+      "source_sha256": "f5f5652301124313fd0bd0f2b17d46f349df1404c2cbba682de9ed803230e990",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/run_reben_label_budget_colab.py",
+      "bytes": 2445,
+      "sha256": "280ff49a81444c0d1379a8e3d7fa4436d63f37ba06d2daff3e369c48ed064806",
+      "source_path": "scripts/run_reben_label_budget_colab.py",
+      "source_sha256": "280ff49a81444c0d1379a8e3d7fa4436d63f37ba06d2daff3e369c48ed064806",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/run_reben_terramind_paired_shift_colab.py",
+      "bytes": 2577,
+      "sha256": "242efadf92d4db322147d7f06057e0430b99a3948615ac05175ffcc544846ee3",
+      "source_path": "scripts/run_reben_terramind_paired_shift_colab.py",
+      "source_sha256": "242efadf92d4db322147d7f06057e0430b99a3948615ac05175ffcc544846ee3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "scripts/run_sen1floods11_advanced_closure_colab.py",
+      "bytes": 3552,
+      "sha256": "c857fc1da2d20106674a57402126472e431f5492982318166f9da21fd9746be0",
+      "source_path": "scripts/run_sen1floods11_advanced_closure_colab.py",
+      "source_sha256": "dc07ad106c9c19db33a6015712e5185433c9203e6717a3f98f417aef0bf20b3e",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/run_sen1floods11_closure_colab.py",
+      "bytes": 4271,
+      "sha256": "fbfb9a7a1915941de5a826003259d303e7c065a167b6f115f6609f7236d9ff88",
+      "source_path": "scripts/run_sen1floods11_closure_colab.py",
+      "source_sha256": "b6f44893e006c8b8363e1c0cf8c145e1861a5636a4ad4f36dd8e160c47c330cd",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/run_sen1floods11_comparison_colab.py",
+      "bytes": 4653,
+      "sha256": "cc41d499f5d214058d95b74502e8d4f28334f042d7fd763c70ff715369db1a4d",
+      "source_path": "scripts/run_sen1floods11_comparison_colab.py",
+      "source_sha256": "53cf3e0aee52cd35c7b00fb6518e7595b75dc34edeec05d7cfb8e03bc9ea900e",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/run_spectral_sen1floods11_colab.py",
+      "bytes": 4687,
+      "sha256": "da3e68098113385b94844073e161dd65230618263472747c4f4c58c2f8f82e8b",
+      "source_path": "scripts/run_spectral_sen1floods11_colab.py",
+      "source_sha256": "c5c5295ee85e724e0eabdfa5eba478603487eab4707f99af4cca60b6d42758b0",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/run_unet_sen1floods11_colab.py",
+      "bytes": 7939,
+      "sha256": "4059f7fb971b60c6539c18b9c0741d87a3b46a2894dbedb348cc8c0596ace1e2",
+      "source_path": "scripts/run_unet_sen1floods11_colab.py",
+      "source_sha256": "0f822ff350990a515ca3d737fcd9986a1ceac7768e60366822f7b07b969c0bdf",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "scripts/run_unet_sen1floods11_loeo_colab.py",
+      "bytes": 5165,
+      "sha256": "8de9eecafe5b37d9426a46ce5b43112d24d39332991cda3d3757c4a9f7052ed1",
+      "source_path": "scripts/run_unet_sen1floods11_loeo_colab.py",
+      "source_sha256": "7ffd6d9f39e2712ab57ca1a1c0c27e08466dbc44eebf1475232a3288e099e4eb",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/__init__.py",
+      "bytes": 1070,
+      "sha256": "da5492552393b2c8c45ec57bb4448ab78dd3608abdd77cbb7173a6bfd424e56f",
+      "source_path": "src/rsfm_fairness_audit/__init__.py",
+      "source_sha256": "da5492552393b2c8c45ec57bb4448ab78dd3608abdd77cbb7173a6bfd424e56f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/__init__.py",
+      "bytes": 44,
+      "sha256": "b754e72b1e4fd7f8744bd4ff6e67cc79787eb230fe669e0b71d65caec7195777",
+      "source_path": "src/rsfm_fairness_audit/adapters/__init__.py",
+      "source_sha256": "b754e72b1e4fd7f8744bd4ff6e67cc79787eb230fe669e0b71d65caec7195777",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/base.py",
+      "bytes": 1607,
+      "sha256": "8a11a9db9f66fedd8601599ce3b97a4740d74dad67f50340c5b29b9bc498aa04",
+      "source_path": "src/rsfm_fairness_audit/adapters/base.py",
+      "source_sha256": "8a11a9db9f66fedd8601599ce3b97a4740d74dad67f50340c5b29b9bc498aa04",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/ben_ge.py",
+      "bytes": 6838,
+      "sha256": "c0f6c939a8e647432f155cb6e19616b5d3dd442ca88d0635b7422e6da95c94b6",
+      "source_path": "src/rsfm_fairness_audit/adapters/ben_ge.py",
+      "source_sha256": "c0f6c939a8e647432f155cb6e19616b5d3dd442ca88d0635b7422e6da95c94b6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/bigearthnet.py",
+      "bytes": 11430,
+      "sha256": "84f57a9f1b550af1ac96f09ca10db9f4d3ad07c6a41d1b8d32c699fa0f2e5430",
+      "source_path": "src/rsfm_fairness_audit/adapters/bigearthnet.py",
+      "source_sha256": "84f57a9f1b550af1ac96f09ca10db9f4d3ad07c6a41d1b8d32c699fa0f2e5430",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/croma.py",
+      "bytes": 26372,
+      "sha256": "4272e817949029245829b593d4e4409c0fb8cce5d717a1f36559bc72c54f6cb2",
+      "source_path": "src/rsfm_fairness_audit/adapters/croma.py",
+      "source_sha256": "4272e817949029245829b593d4e4409c0fb8cce5d717a1f36559bc72c54f6cb2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/dofa.py",
+      "bytes": 40252,
+      "sha256": "8abfbd673875c6eebb28cf18289238aa8a51264753e44198ffb0c6ead43317a2",
+      "source_path": "src/rsfm_fairness_audit/adapters/dofa.py",
+      "source_sha256": "8abfbd673875c6eebb28cf18289238aa8a51264753e44198ffb0c6ead43317a2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/dummy.py",
+      "bytes": 5497,
+      "sha256": "94e933eba39058336ba257ee85976a4dcaf943f18a495931bbe38da285a89eac",
+      "source_path": "src/rsfm_fairness_audit/adapters/dummy.py",
+      "source_sha256": "94e933eba39058336ba257ee85976a4dcaf943f18a495931bbe38da285a89eac",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/placeholders.py",
+      "bytes": 1557,
+      "sha256": "f9bdf87a82112169ac3a08ffa15ccfb114e6650899789f0a908022dd109e121f",
+      "source_path": "src/rsfm_fairness_audit/adapters/placeholders.py",
+      "source_sha256": "f9bdf87a82112169ac3a08ffa15ccfb114e6650899789f0a908022dd109e121f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/prithvi.py",
+      "bytes": 43208,
+      "sha256": "89ea9461c3c89e44283d658f7f6395541a6fae367b080bc88b720d36b754b0fb",
+      "source_path": "src/rsfm_fairness_audit/adapters/prithvi.py",
+      "source_sha256": "89ea9461c3c89e44283d658f7f6395541a6fae367b080bc88b720d36b754b0fb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/reben.py",
+      "bytes": 50415,
+      "sha256": "03b5cb6ac6b9ec58bb377fe7a5e5b552540c006f8e96bfec7dc0823ff39244d6",
+      "source_path": "src/rsfm_fairness_audit/adapters/reben.py",
+      "source_sha256": "03b5cb6ac6b9ec58bb377fe7a5e5b552540c006f8e96bfec7dc0823ff39244d6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/sen1floods11.py",
+      "bytes": 5545,
+      "sha256": "4201b70603b7f8cc6bd5e26124e8f7a9cc0a3bf2cc06b77eb0ee4e9eaa583798",
+      "source_path": "src/rsfm_fairness_audit/adapters/sen1floods11.py",
+      "source_sha256": "4201b70603b7f8cc6bd5e26124e8f7a9cc0a3bf2cc06b77eb0ee4e9eaa583798",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/adapters/terramind.py",
+      "bytes": 24483,
+      "sha256": "a8e4b3b5569cf320d7a299759606935903d851b04b862ba36a6c4964cf9e76c0",
+      "source_path": "src/rsfm_fairness_audit/adapters/terramind.py",
+      "source_sha256": "a8e4b3b5569cf320d7a299759606935903d851b04b862ba36a6c4964cf9e76c0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/advanced_closure.py",
+      "bytes": 17428,
+      "sha256": "aad3bfbeb66fc2c7e57118e1d6fc91d02b9e92240cd8b05948378d5acbf3c6d9",
+      "source_path": "src/rsfm_fairness_audit/advanced_closure.py",
+      "source_sha256": "aad3bfbeb66fc2c7e57118e1d6fc91d02b9e92240cd8b05948378d5acbf3c6d9",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/alphaearth_existing_upgrade.py",
+      "bytes": 43039,
+      "sha256": "465fa92568c37a4ff498961487a6256d7271d63a9d2e397260d26f85e4f66a52",
+      "source_path": "src/rsfm_fairness_audit/alphaearth_existing_upgrade.py",
+      "source_sha256": "37eea2dcd4f22f598957e8c8d16566b9279e578df5abb3a62736d3a838200ba5",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/alphaearth_geobwer_campaign.py",
+      "bytes": 20999,
+      "sha256": "141483c8f6b303ea708d4d32ea5e06f9f3296365884f71cfb936537e3f0d1f66",
+      "source_path": "src/rsfm_fairness_audit/alphaearth_geobwer_campaign.py",
+      "source_sha256": "141483c8f6b303ea708d4d32ea5e06f9f3296365884f71cfb936537e3f0d1f66",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/alphaearth_reference_diagnostics.py",
+      "bytes": 13214,
+      "sha256": "93d136175ab5d8d67bd3054bf805f89f5f1615b4b3640e509d88399c76e8017e",
+      "source_path": "scripts/analysis/build_alphaearth_final_evidence_hardening_v2.py",
+      "source_sha256": "99acb94ecb63f04228ff2389a05e3614e30641d5e073e7f9f7e54d86e893175f",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/audit_pipeline.py",
+      "bytes": 9233,
+      "sha256": "62405cf9cfef542a5715f819ff41530b680e468ff23a45f55bbdf7022f44ae30",
+      "source_path": "src/rsfm_fairness_audit/audit_pipeline.py",
+      "source_sha256": "62405cf9cfef542a5715f819ff41530b680e468ff23a45f55bbdf7022f44ae30",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/audit_table.py",
+      "bytes": 13183,
+      "sha256": "2cc46da41fe79cf04f9657e55700b461602f7f081bd13b0ddc8b8e72fdb24141",
+      "source_path": "src/rsfm_fairness_audit/audit_table.py",
+      "source_sha256": "2cc46da41fe79cf04f9657e55700b461602f7f081bd13b0ddc8b8e72fdb24141",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/band_profiles.py",
+      "bytes": 4961,
+      "sha256": "8f7dea8c3f80aefbdbf4cdf284faca695448b2fa96d40af984c2bca34df9eafa",
+      "source_path": "src/rsfm_fairness_audit/band_profiles.py",
+      "source_sha256": "8f7dea8c3f80aefbdbf4cdf284faca695448b2fa96d40af984c2bca34df9eafa",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer.py",
+      "bytes": 31242,
+      "sha256": "6573e03f108a56578bfbd2186c7a9d0eadb2ecc558399707e714fc7d1ee8e995",
+      "source_path": "src/rsfm_fairness_audit/bwer.py",
+      "source_sha256": "6573e03f108a56578bfbd2186c7a9d0eadb2ecc558399707e714fc7d1ee8e995",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_core.py",
+      "bytes": 9996,
+      "sha256": "e6fa6222f16adec622c7a36b34dcc6a8ce62f08e642a13a03f404c5a7a7da858",
+      "source_path": "src/rsfm_fairness_audit/bwer_core.py",
+      "source_sha256": "e6fa6222f16adec622c7a36b34dcc6a8ce62f08e642a13a03f404c5a7a7da858",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_inference.py",
+      "bytes": 49724,
+      "sha256": "24e19dbb068fdb455d00bdc61fae2b537a74b08aba6c9cba461d484053122fe1",
+      "source_path": "src/rsfm_fairness_audit/bwer_inference.py",
+      "source_sha256": "24e19dbb068fdb455d00bdc61fae2b537a74b08aba6c9cba461d484053122fe1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_plots.py",
+      "bytes": 5967,
+      "sha256": "1466b0d8d871938c8056c32ab9d5987456a5b0baaa393afb78f0bfc4aa267d0c",
+      "source_path": "src/rsfm_fairness_audit/bwer_plots.py",
+      "source_sha256": "1466b0d8d871938c8056c32ab9d5987456a5b0baaa393afb78f0bfc4aa267d0c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_protocol.py",
+      "bytes": 10002,
+      "sha256": "468737f47f83e766effd37415bbd69e329dfb61c7dc173c10527d79a2a08624c",
+      "source_path": "src/rsfm_fairness_audit/bwer_protocol.py",
+      "source_sha256": "468737f47f83e766effd37415bbd69e329dfb61c7dc173c10527d79a2a08624c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_report.py",
+      "bytes": 4434,
+      "sha256": "1e1e4d20233603952a218e4c26a9e91ade17b2d2149e3d813a6e79c902434661",
+      "source_path": "src/rsfm_fairness_audit/bwer_report.py",
+      "source_sha256": "1e1e4d20233603952a218e4c26a9e91ade17b2d2149e3d813a6e79c902434661",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_risk_adapters.py",
+      "bytes": 9948,
+      "sha256": "d66e5519d376f079c7b9fcd1b62872f3e3970341bf0d1ba58b066b5c7783a1ee",
+      "source_path": "src/rsfm_fairness_audit/bwer_risk_adapters.py",
+      "source_sha256": "d66e5519d376f079c7b9fcd1b62872f3e3970341bf0d1ba58b066b5c7783a1ee",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_schema.py",
+      "bytes": 6382,
+      "sha256": "9558ea35c86c8dc2f3052734a6b5d22786779624c419f8f59aa462fcc5971063",
+      "source_path": "src/rsfm_fairness_audit/bwer_schema.py",
+      "source_sha256": "9558ea35c86c8dc2f3052734a6b5d22786779624c419f8f59aa462fcc5971063",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_standardization.py",
+      "bytes": 12582,
+      "sha256": "a9d220cd2c4aff25e0777f1cb892178f5fb82a6faf4469979362b92057b2d9fe",
+      "source_path": "src/rsfm_fairness_audit/bwer_standardization.py",
+      "source_sha256": "a9d220cd2c4aff25e0777f1cb892178f5fb82a6faf4469979362b92057b2d9fe",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/bwer_v2.py",
+      "bytes": 55896,
+      "sha256": "939981ad6db9d78c941b86d96386bfccb7b8c87172b1f5bc6122fcded976aa7c",
+      "source_path": "src/rsfm_fairness_audit/bwer_v2.py",
+      "source_sha256": "939981ad6db9d78c941b86d96386bfccb7b8c87172b1f5bc6122fcded976aa7c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/cli.py",
+      "bytes": 58081,
+      "sha256": "3a8d26915624c942aae9e16f8679830e4fc3534c2524215c930a2dd90e1b3943",
+      "source_path": "src/rsfm_fairness_audit/cli.py",
+      "source_sha256": "3a8d26915624c942aae9e16f8679830e4fc3534c2524215c930a2dd90e1b3943",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/cluster_eligibility.py",
+      "bytes": 11137,
+      "sha256": "37fde9a6a41fc04af365435a890363ba604db5c2f5f2af2cc3d12f740adc740f",
+      "source_path": "src/rsfm_fairness_audit/cluster_eligibility.py",
+      "source_sha256": "37fde9a6a41fc04af365435a890363ba604db5c2f5f2af2cc3d12f740adc740f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/cluster_uncertainty.py",
+      "bytes": 8095,
+      "sha256": "e29ded940da1d0004c3be8b2715a2fd04232f3b66e1dbf675a87fc05da7735cb",
+      "source_path": "src/rsfm_fairness_audit/cluster_uncertainty.py",
+      "source_sha256": "e29ded940da1d0004c3be8b2715a2fd04232f3b66e1dbf675a87fc05da7735cb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/config.py",
+      "bytes": 837,
+      "sha256": "afff8d1073d45fae531691768a69dc6f2aaa696c45bdd415f12fa377f9ac08fd",
+      "source_path": "src/rsfm_fairness_audit/config.py",
+      "source_sha256": "afff8d1073d45fae531691768a69dc6f2aaa696c45bdd415f12fa377f9ac08fd",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/drive_artifact_preflight.py",
+      "bytes": 13544,
+      "sha256": "0c8e5ba605e0043bdfb6301fe8de377731514c925a37297df26692450710b486",
+      "source_path": "src/rsfm_fairness_audit/drive_artifact_preflight.py",
+      "source_sha256": "0c8e5ba605e0043bdfb6301fe8de377731514c925a37297df26692450710b486",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/embedding.py",
+      "bytes": 4994,
+      "sha256": "d6dc95cb77a83be95df5b903448bfe1c10ff336e2326607bb2eb84c0fced926c",
+      "source_path": "src/rsfm_fairness_audit/embedding.py",
+      "source_sha256": "d6dc95cb77a83be95df5b903448bfe1c10ff336e2326607bb2eb84c0fced926c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/estimand_identity.py",
+      "bytes": 2377,
+      "sha256": "939aed61e5c70f86200d74f851be87d9c0bfe6f64b20787e6e7d9f989b4d78b8",
+      "source_path": "src/rsfm_fairness_audit/estimand_identity.py",
+      "source_sha256": "939aed61e5c70f86200d74f851be87d9c0bfe6f64b20787e6e7d9f989b4d78b8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/evidence_rebuild_v060.py",
+      "bytes": 43440,
+      "sha256": "9f5156026cfe2b78690c8a6cd28ab71c3950022b6b114f024a012b434f537d60",
+      "source_path": "src/rsfm_fairness_audit/evidence_rebuild_v060.py",
+      "source_sha256": "9f5156026cfe2b78690c8a6cd28ab71c3950022b6b114f024a012b434f537d60",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/evidence_registry.py",
+      "bytes": 5856,
+      "sha256": "7102773f568563d21473e0e4bb6208087a29c80b507faf6730252780924e33ec",
+      "source_path": "src/rsfm_fairness_audit/evidence_registry.py",
+      "source_sha256": "e7f9eda42458d6f46a6fcb3b9478077760277328cef715bb9320620ae0167703",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/final_paper_cleanup.py",
+      "bytes": 11470,
+      "sha256": "238725c58e8839e799d0acc76c2bc5d696ed0a1d802f2903ac8bb302568032e8",
+      "source_path": "src/rsfm_fairness_audit/final_paper_cleanup.py",
+      "source_sha256": "238725c58e8839e799d0acc76c2bc5d696ed0a1d802f2903ac8bb302568032e8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_dofav2_campaign.py",
+      "bytes": 38828,
+      "sha256": "e793cbcf0aff60c9906588f262d668f17e71f4e8157f30aa3d183820c9b51789",
+      "source_path": "src/rsfm_fairness_audit/fmow_dofav2_campaign.py",
+      "source_sha256": "e793cbcf0aff60c9906588f262d668f17e71f4e8157f30aa3d183820c9b51789",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_dofav2_postprocess.py",
+      "bytes": 10848,
+      "sha256": "0580da773c29949d9bce5b6826d90c7854901753d0c0f20e6c2b1a42e52011af",
+      "source_path": "src/rsfm_fairness_audit/fmow_dofav2_postprocess.py",
+      "source_sha256": "0580da773c29949d9bce5b6826d90c7854901753d0c0f20e6c2b1a42e52011af",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_formal_split.py",
+      "bytes": 10597,
+      "sha256": "4f1736293cd2d262de96960b77ebf5a872acb493d39fa2fc99b069489da19ed2",
+      "source_path": "src/rsfm_fairness_audit/fmow_formal_split.py",
+      "source_sha256": "4f1736293cd2d262de96960b77ebf5a872acb493d39fa2fc99b069489da19ed2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_geographic_identity.py",
+      "bytes": 4950,
+      "sha256": "82c8eb5ef660ae42c896261f0a11daf9a9b301119103dd0880f43d1446787dfb",
+      "source_path": "src/rsfm_fairness_audit/fmow_geographic_identity.py",
+      "source_sha256": "82c8eb5ef660ae42c896261f0a11daf9a9b301119103dd0880f43d1446787dfb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_geography.py",
+      "bytes": 4475,
+      "sha256": "f0e6189cd98f4408b12f2dea17be7ecafef0e49567a6bd27ebe07d45bb7263c7",
+      "source_path": "src/rsfm_fairness_audit/fmow_geography.py",
+      "source_sha256": "f0e6189cd98f4408b12f2dea17be7ecafef0e49567a6bd27ebe07d45bb7263c7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_geography_contract.py",
+      "bytes": 26649,
+      "sha256": "0af5fae1223a7f5ec9d12b9bd5f526b0ad1739861171c19d4a1026d392f5a136",
+      "source_path": "src/rsfm_fairness_audit/fmow_geography_contract.py",
+      "source_sha256": "0af5fae1223a7f5ec9d12b9bd5f526b0ad1739861171c19d4a1026d392f5a136",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_resnet50_campaign.py",
+      "bytes": 44472,
+      "sha256": "be846609d30d1552ee9a7c3e6d63608731049b71d7cf53e29638b72ae01dc2e4",
+      "source_path": "src/rsfm_fairness_audit/fmow_resnet50_campaign.py",
+      "source_sha256": "be846609d30d1552ee9a7c3e6d63608731049b71d7cf53e29638b72ae01dc2e4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_sentinel_classification.py",
+      "bytes": 67871,
+      "sha256": "f0cfa84d3a776bd68fbf2ae4565f359734f435197ec300e5879f8a0f550ddef3",
+      "source_path": "src/rsfm_fairness_audit/fmow_sentinel_classification.py",
+      "source_sha256": "f0cfa84d3a776bd68fbf2ae4565f359734f435197ec300e5879f8a0f550ddef3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_sentinel_enrichment.py",
+      "bytes": 18878,
+      "sha256": "7d7ca63c9d10bd2788a0b05c16e85df0bed4906573208b758a58dc36f7357ba3",
+      "source_path": "src/rsfm_fairness_audit/fmow_sentinel_enrichment.py",
+      "source_sha256": "7d7ca63c9d10bd2788a0b05c16e85df0bed4906573208b758a58dc36f7357ba3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_sentinel_preflight.py",
+      "bytes": 31319,
+      "sha256": "dbfddc79c812a569bfa68467176320a9ff710a0db9db16987b26d00d848fce2f",
+      "source_path": "src/rsfm_fairness_audit/fmow_sentinel_preflight.py",
+      "source_sha256": "dbfddc79c812a569bfa68467176320a9ff710a0db9db16987b26d00d848fce2f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_spatial_upgrade.py",
+      "bytes": 18460,
+      "sha256": "ce1f910d9b6b8549902758dd7b261949fb51f730de633bf785ea87c3534b8263",
+      "source_path": "src/rsfm_fairness_audit/fmow_spatial_upgrade.py",
+      "source_sha256": "ce1f910d9b6b8549902758dd7b261949fb51f730de633bf785ea87c3534b8263",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_step3_contract.py",
+      "bytes": 21282,
+      "sha256": "fd171db53e0563d8aaef60b5d9d2675d0f51416d10a79cd894e5f2d7aa9d1dd0",
+      "source_path": "src/rsfm_fairness_audit/fmow_step3_contract.py",
+      "source_sha256": "fd171db53e0563d8aaef60b5d9d2675d0f51416d10a79cd894e5f2d7aa9d1dd0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_superclass_feasibility.py",
+      "bytes": 19544,
+      "sha256": "e9a42ee5745a8ad4d7c9d65d9e6a6491189047b4ab879cf9cc043e4698ef4ab3",
+      "source_path": "src/rsfm_fairness_audit/fmow_superclass_feasibility.py",
+      "source_sha256": "e9a42ee5745a8ad4d7c9d65d9e6a6491189047b4ab879cf9cc043e4698ef4ab3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_superclass_postprocess.py",
+      "bytes": 43728,
+      "sha256": "e645689f3138a0158526c7646e93375da606c3f9b311f7417f4baa167bc08669",
+      "source_path": "src/rsfm_fairness_audit/fmow_superclass_postprocess.py",
+      "source_sha256": "e645689f3138a0158526c7646e93375da606c3f9b311f7417f4baa167bc08669",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/fmow_terramind_campaign.py",
+      "bytes": 19576,
+      "sha256": "01083132d9f7923d7056469ddb11f0dc1c180b0795badbfda73857f26b7d0c39",
+      "source_path": "src/rsfm_fairness_audit/fmow_terramind_campaign.py",
+      "source_sha256": "01083132d9f7923d7056469ddb11f0dc1c180b0795badbfda73857f26b7d0c39",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/formal_outputs.py",
+      "bytes": 21747,
+      "sha256": "06803417839590aac5b33058c9f96324aa08e68d3f10ad001440d27bb871e0b8",
+      "source_path": "src/rsfm_fairness_audit/formal_outputs.py",
+      "source_sha256": "06803417839590aac5b33058c9f96324aa08e68d3f10ad001440d27bb871e0b8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/frozen_evidence_reaudit.py",
+      "bytes": 7124,
+      "sha256": "af4d041ddb35bb6eaa628774b9116c523bdab243d53f8109c413f6b07d24bb8a",
+      "source_path": "src/rsfm_fairness_audit/frozen_evidence_reaudit.py",
+      "source_sha256": "af4d041ddb35bb6eaa628774b9116c523bdab243d53f8109c413f6b07d24bb8a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer.py",
+      "bytes": 38193,
+      "sha256": "bb1a3985e430a2e2e8bc46b5d8c5db95518107cc4830860901726214cad07288",
+      "source_path": "src/rsfm_fairness_audit/geobwer.py",
+      "source_sha256": "bb1a3985e430a2e2e8bc46b5d8c5db95518107cc4830860901726214cad07288",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer_certification.py",
+      "bytes": 10108,
+      "sha256": "d445d9779d752ef3e3407cf22d9629a594f0bdbdb6c64a63f1f8d14cd8fb7d95",
+      "source_path": "src/rsfm_fairness_audit/geobwer_certification.py",
+      "source_sha256": "d445d9779d752ef3e3407cf22d9629a594f0bdbdb6c64a63f1f8d14cd8fb7d95",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer_extensions.py",
+      "bytes": 49173,
+      "sha256": "c8db19528efca1acdf129e84b6a6aaa00fc12a70526166e4e0bbb7ce7a5da648",
+      "source_path": "src/rsfm_fairness_audit/geobwer_extensions.py",
+      "source_sha256": "c8db19528efca1acdf129e84b6a6aaa00fc12a70526166e4e0bbb7ce7a5da648",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer_inventory.py",
+      "bytes": 7412,
+      "sha256": "b73443ecc2d75d8a97b2b94d60a8af19e77c0bd40cd1a11f6d848d07b28828ee",
+      "source_path": "src/rsfm_fairness_audit/geobwer_inventory.py",
+      "source_sha256": "b73443ecc2d75d8a97b2b94d60a8af19e77c0bd40cd1a11f6d848d07b28828ee",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer_panel.py",
+      "bytes": 12209,
+      "sha256": "81a3d5df9e170fdcd38dccb3b7cc893c41491caa26c20c24249f0be53b293fe0",
+      "source_path": "src/rsfm_fairness_audit/geobwer_panel.py",
+      "source_sha256": "81a3d5df9e170fdcd38dccb3b7cc893c41491caa26c20c24249f0be53b293fe0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer_uncertainty.py",
+      "bytes": 16553,
+      "sha256": "2ce6cb203d03a82b0dadb726572e44715a3847a560c9dbf0874c2d2122bc20dc",
+      "source_path": "src/rsfm_fairness_audit/geobwer_uncertainty.py",
+      "source_sha256": "2ce6cb203d03a82b0dadb726572e44715a3847a560c9dbf0874c2d2122bc20dc",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geobwer_validation.py",
+      "bytes": 20542,
+      "sha256": "9369bc919d553fe80ed8abe48666d2166de8b67664510739b0ed44e6d1c98e19",
+      "source_path": "src/rsfm_fairness_audit/geobwer_validation.py",
+      "source_sha256": "9369bc919d553fe80ed8abe48666d2166de8b67664510739b0ed44e6d1c98e19",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geographic_risk_association.py",
+      "bytes": 38020,
+      "sha256": "098372cd6c5d2691178a8eb093e943127ee156740e0014f1e32eb0b8a2349329",
+      "source_path": "src/rsfm_fairness_audit/geographic_risk_association.py",
+      "source_sha256": "098372cd6c5d2691178a8eb093e943127ee156740e0014f1e32eb0b8a2349329",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geographic_risk_atlas.py",
+      "bytes": 44947,
+      "sha256": "ddda584c5f9399146fad17a3f07843104a09480d178544ddbd0b6769c9b53b80",
+      "source_path": "src/rsfm_fairness_audit/geographic_risk_atlas.py",
+      "source_sha256": "ddda584c5f9399146fad17a3f07843104a09480d178544ddbd0b6769c9b53b80",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/geographic_risk_covariates.py",
+      "bytes": 32367,
+      "sha256": "9ee59a8e47585f3a22747b0a0f7f37dacac08b7e536ae802229b1433da1ea721",
+      "source_path": "src/rsfm_fairness_audit/geographic_risk_covariates.py",
+      "source_sha256": "9ee59a8e47585f3a22747b0a0f7f37dacac08b7e536ae802229b1433da1ea721",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/io.py",
+      "bytes": 1475,
+      "sha256": "caba509534557f6be54b68c480c9ca4b1e7f8fa0bf411f78c01b17490db47c27",
+      "source_path": "src/rsfm_fairness_audit/io.py",
+      "source_sha256": "caba509534557f6be54b68c480c9ca4b1e7f8fa0bf411f78c01b17490db47c27",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/loeo.py",
+      "bytes": 7075,
+      "sha256": "681755c776cf55927b68ac8e17090e3637448d9369fb40d8d51f67ca43851515",
+      "source_path": "src/rsfm_fairness_audit/loeo.py",
+      "source_sha256": "681755c776cf55927b68ac8e17090e3637448d9369fb40d8d51f67ca43851515",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/memory.py",
+      "bytes": 1415,
+      "sha256": "2120f35161df89156ccfd0021c0afd336fab15b535b1cac925d271778596012a",
+      "source_path": "src/rsfm_fairness_audit/memory.py",
+      "source_sha256": "2120f35161df89156ccfd0021c0afd336fab15b535b1cac925d271778596012a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/metrics.py",
+      "bytes": 4273,
+      "sha256": "29336d9bcf22f7ce55e4967d40b0f94942a4fda00f2317c8d10e239bbb901964",
+      "source_path": "src/rsfm_fairness_audit/metrics.py",
+      "source_sha256": "29336d9bcf22f7ce55e4967d40b0f94942a4fda00f2317c8d10e239bbb901964",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/model_task_generalization.py",
+      "bytes": 27120,
+      "sha256": "e11963da63d76fd65afcc20def151575eec0715ded204601ca39b5dee0b60abe",
+      "source_path": "src/rsfm_fairness_audit/model_task_generalization.py",
+      "source_sha256": "e11963da63d76fd65afcc20def151575eec0715ded204601ca39b5dee0b60abe",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/optimization_phase1.py",
+      "bytes": 37763,
+      "sha256": "d4c7f54177d7291f5dd2357e3df55fdb4ca0737fa842062303447ada7a46a9dc",
+      "source_path": "src/rsfm_fairness_audit/optimization_phase1.py",
+      "source_sha256": "91a56a8b8c4bed82f087fa80e3d6eb2b78d35346de40a2719cd62760b5c9c0b3",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/paired_cross_model_review.py",
+      "bytes": 9890,
+      "sha256": "10fb1d3470c438250d13b120a3be41b49867181dda804d54dea4310243670164",
+      "source_path": "src/rsfm_fairness_audit/paired_cross_model_review.py",
+      "source_sha256": "10fb1d3470c438250d13b120a3be41b49867181dda804d54dea4310243670164",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/paired_probability_diagnostics.py",
+      "bytes": 15804,
+      "sha256": "249c3376a4d6ce9ff481afd3f13a032c178fbfffb856303831d3efbdd7cd4957",
+      "source_path": "src/rsfm_fairness_audit/paired_probability_diagnostics.py",
+      "source_sha256": "249c3376a4d6ce9ff481afd3f13a032c178fbfffb856303831d3efbdd7cd4957",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/paper_supplementary.py",
+      "bytes": 24987,
+      "sha256": "4da5c7a4b50e588080b8a2523d5c94b0e764f0bcf16c387a7a62b6c3ebe7113d",
+      "source_path": "src/rsfm_fairness_audit/paper_supplementary.py",
+      "source_sha256": "4da5c7a4b50e588080b8a2523d5c94b0e764f0bcf16c387a7a62b6c3ebe7113d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/persistent_cache.py",
+      "bytes": 4078,
+      "sha256": "346ab3fff1e1421595acf1d7e249030edba29eac7746f74202a85946eaeb209e",
+      "source_path": "src/rsfm_fairness_audit/persistent_cache.py",
+      "source_sha256": "346ab3fff1e1421595acf1d7e249030edba29eac7746f74202a85946eaeb209e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/pipeline.py",
+      "bytes": 22122,
+      "sha256": "b0a8dea0efc40f6f161536f3e0688ff71298d6ab1be9d2315c6400743eca59c9",
+      "source_path": "src/rsfm_fairness_audit/pipeline.py",
+      "source_sha256": "b0a8dea0efc40f6f161536f3e0688ff71298d6ab1be9d2315c6400743eca59c9",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/preflight.py",
+      "bytes": 15151,
+      "sha256": "a798c31792ff5352a3fbe4efd856f8bac2fecb9c7dc35d867cfb293f0c90b096",
+      "source_path": "src/rsfm_fairness_audit/preflight.py",
+      "source_sha256": "a798c31792ff5352a3fbe4efd856f8bac2fecb9c7dc35d867cfb293f0c90b096",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/prithvi_sen1_campaign.py",
+      "bytes": 19448,
+      "sha256": "574a397d665065c4339304b5f0ebac7ff56a0c10c64a2be3a045de6db634ada5",
+      "source_path": "src/rsfm_fairness_audit/prithvi_sen1_campaign.py",
+      "source_sha256": "574a397d665065c4339304b5f0ebac7ff56a0c10c64a2be3a045de6db634ada5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/probe_selection.py",
+      "bytes": 19157,
+      "sha256": "b28607008c20e87da708d20096ff420100675531ba453b140f2ac66adbd4dfac",
+      "source_path": "src/rsfm_fairness_audit/probe_selection.py",
+      "source_sha256": "b28607008c20e87da708d20096ff420100675531ba453b140f2ac66adbd4dfac",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/probes.py",
+      "bytes": 3526,
+      "sha256": "9f32e9cbb56a498afe8800c2e219796205bd9ba647d953bc9d72ff18ed194ff0",
+      "source_path": "src/rsfm_fairness_audit/probes.py",
+      "source_sha256": "9f32e9cbb56a498afe8800c2e219796205bd9ba647d953bc9d72ff18ed194ff0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_adaptation_ablation.py",
+      "bytes": 24746,
+      "sha256": "42934b9171b529cdbdb4afe5d9f648fa65969d9fab7aa3c52767ef367abbd9db",
+      "source_path": "src/rsfm_fairness_audit/reben_adaptation_ablation.py",
+      "source_sha256": "42934b9171b529cdbdb4afe5d9f648fa65969d9fab7aa3c52767ef367abbd9db",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_croma_geobwer_campaign.py",
+      "bytes": 10175,
+      "sha256": "11f64b60aeb5679207cce8f320d817407faebc8e8403027ee7df6a0c651e51f1",
+      "source_path": "src/rsfm_fairness_audit/reben_croma_geobwer_campaign.py",
+      "source_sha256": "11f64b60aeb5679207cce8f320d817407faebc8e8403027ee7df6a0c651e51f1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_data_benchmark.py",
+      "bytes": 13228,
+      "sha256": "b4524ea1b2c72f65d0c564759f198e3ad23f068c1142ea5fbd9c050c5e38766f",
+      "source_path": "src/rsfm_fairness_audit/reben_data_benchmark.py",
+      "source_sha256": "b4524ea1b2c72f65d0c564759f198e3ad23f068c1142ea5fbd9c050c5e38766f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_dofav2_campaign.py",
+      "bytes": 2903,
+      "sha256": "451771edf6b08da4c48c96414954290da21b43433ce91a00bd666753f1fe2182",
+      "source_path": "src/rsfm_fairness_audit/reben_dofav2_campaign.py",
+      "source_sha256": "451771edf6b08da4c48c96414954290da21b43433ce91a00bd666753f1fe2182",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_phase1_postprocess.py",
+      "bytes": 35582,
+      "sha256": "c3ebbf8260fe55ad6070de3bf9952303ce7e433090d529332f6c0376368ece48",
+      "source_path": "src/rsfm_fairness_audit/reben_phase1_postprocess.py",
+      "source_sha256": "c3ebbf8260fe55ad6070de3bf9952303ce7e433090d529332f6c0376368ece48",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_phase1_runners.py",
+      "bytes": 36398,
+      "sha256": "839841d6e125e7c6a95951b9eba4297d9db9b9d5a08fd0fb7c2430c869cb7076",
+      "source_path": "src/rsfm_fairness_audit/reben_phase1_runners.py",
+      "source_sha256": "839841d6e125e7c6a95951b9eba4297d9db9b9d5a08fd0fb7c2430c869cb7076",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_resnet50_campaign.py",
+      "bytes": 65785,
+      "sha256": "b06be89f8b22412f299fde3fe0c14a4e830002e8ea4fcc824c149e556d3c0867",
+      "source_path": "src/rsfm_fairness_audit/reben_resnet50_campaign.py",
+      "source_sha256": "b06be89f8b22412f299fde3fe0c14a4e830002e8ea4fcc824c149e556d3c0867",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_scientific_postprocess.py",
+      "bytes": 32945,
+      "sha256": "dba8e071097a779e124df613760876c1e6b4e1eef1c0ed9caf4e9d5facd5fb53",
+      "source_path": "src/rsfm_fairness_audit/reben_scientific_postprocess.py",
+      "source_sha256": "dba8e071097a779e124df613760876c1e6b4e1eef1c0ed9caf4e9d5facd5fb53",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_sensor_audit.py",
+      "bytes": 59684,
+      "sha256": "ce254a20776e198c4335142bd8239dbc3c94a5e97dc8eab77c84045e2211b492",
+      "source_path": "src/rsfm_fairness_audit/reben_sensor_audit.py",
+      "source_sha256": "ce254a20776e198c4335142bd8239dbc3c94a5e97dc8eab77c84045e2211b492",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/reben_terramind_campaign.py",
+      "bytes": 32656,
+      "sha256": "9261cd1bf544089244d5e8da38b4b904b27b134c4ae420b3ab5b1501c93c1089",
+      "source_path": "src/rsfm_fairness_audit/reben_terramind_campaign.py",
+      "source_sha256": "9261cd1bf544089244d5e8da38b4b904b27b134c4ae420b3ab5b1501c93c1089",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/report.py",
+      "bytes": 3568,
+      "sha256": "1344848f3143061da3b283ae540f25ace60841a3e8286beebdd2d2b4351c7339",
+      "source_path": "src/rsfm_fairness_audit/report.py",
+      "source_sha256": "1344848f3143061da3b283ae540f25ace60841a3e8286beebdd2d2b4351c7339",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/risk_spec.py",
+      "bytes": 3362,
+      "sha256": "8e99aa57231906209c32abc3c1d99ea44fd59e716c141bd36f5fcba7e6451ab5",
+      "source_path": "src/rsfm_fairness_audit/risk_spec.py",
+      "source_sha256": "8e99aa57231906209c32abc3c1d99ea44fd59e716c141bd36f5fcba7e6451ab5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sampling.py",
+      "bytes": 1027,
+      "sha256": "e4656efedea324d1df8d495db235326c029aa757fdf5a1161b67e9e6f1d17d9f",
+      "source_path": "src/rsfm_fairness_audit/sampling.py",
+      "source_sha256": "e4656efedea324d1df8d495db235326c029aa757fdf5a1161b67e9e6f1d17d9f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/segmentation.py",
+      "bytes": 35683,
+      "sha256": "27b5da8d1fd3ad1921e8e2a563b87106ccb1248c1d0c77fe16118d5fbeeda26e",
+      "source_path": "src/rsfm_fairness_audit/segmentation.py",
+      "source_sha256": "27b5da8d1fd3ad1921e8e2a563b87106ccb1248c1d0c77fe16118d5fbeeda26e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/segmentation_comparison.py",
+      "bytes": 19482,
+      "sha256": "a3b82733e628d42351c2a8b1ce3e218534ab8a8783a6eb47f6f964c171331125",
+      "source_path": "src/rsfm_fairness_audit/segmentation_comparison.py",
+      "source_sha256": "a3b82733e628d42351c2a8b1ce3e218534ab8a8783a6eb47f6f964c171331125",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_19model_descriptive.py",
+      "bytes": 27896,
+      "sha256": "2e1db2113a8c2e880e510bdf277e5922c1580a4da3a84d00400a589e9434db1f",
+      "source_path": "src/rsfm_fairness_audit/sen1_19model_descriptive.py",
+      "source_sha256": "2e1db2113a8c2e880e510bdf277e5922c1580a4da3a84d00400a589e9434db1f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_amp_carry_forward.py",
+      "bytes": 14948,
+      "sha256": "d3212e0812c25c11ad1e4e9b0aec910f30b89e8bc90f65d7eca21930576efb61",
+      "source_path": "src/rsfm_fairness_audit/sen1_amp_carry_forward.py",
+      "source_sha256": "d3212e0812c25c11ad1e4e9b0aec910f30b89e8bc90f65d7eca21930576efb61",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_extended_panel.py",
+      "bytes": 19506,
+      "sha256": "49bfcc07b352ea3c49fead65516b2efc902eb806b8468da0912d6f3d697f1acf",
+      "source_path": "src/rsfm_fairness_audit/sen1_extended_panel.py",
+      "source_sha256": "49bfcc07b352ea3c49fead65516b2efc902eb806b8468da0912d6f3d697f1acf",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_input_quality.py",
+      "bytes": 15380,
+      "sha256": "20be3b8914e0cbef08c91001bb5078c75a993186d8434f8f88e007be38b97101",
+      "source_path": "src/rsfm_fairness_audit/sen1_input_quality.py",
+      "source_sha256": "20be3b8914e0cbef08c91001bb5078c75a993186d8434f8f88e007be38b97101",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_prithvi_artifact_audit.py",
+      "bytes": 22225,
+      "sha256": "d09a14c1ca8aec9ca173cbb9de0d4f1b164de3a53a4068776ac4653c4a6db6ba",
+      "source_path": "src/rsfm_fairness_audit/sen1_prithvi_artifact_audit.py",
+      "source_sha256": "d09a14c1ca8aec9ca173cbb9de0d4f1b164de3a53a4068776ac4653c4a6db6ba",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_prithvi_mask_gate.py",
+      "bytes": 9706,
+      "sha256": "fa882a1cf8b65ea52c3bc98aad313f8ab4d95b2b3d743a94397d3689b5b9fed6",
+      "source_path": "src/rsfm_fairness_audit/sen1_prithvi_mask_gate.py",
+      "source_sha256": "fa882a1cf8b65ea52c3bc98aad313f8ab4d95b2b3d743a94397d3689b5b9fed6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_prithvi_v0432_artifact_audit.py",
+      "bytes": 15051,
+      "sha256": "b65188b98d03f03c2c2028b7378d54f498f3109902f3834a4846b5f14e8f1ba7",
+      "source_path": "src/rsfm_fairness_audit/sen1_prithvi_v0432_artifact_audit.py",
+      "source_sha256": "b65188b98d03f03c2c2028b7378d54f498f3109902f3834a4846b5f14e8f1ba7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_supervised_campaign.py",
+      "bytes": 69368,
+      "sha256": "8067e22c798558dea505555162d690d713ed00f1c1fbe96b99f7dc68f9f055e4",
+      "source_path": "src/rsfm_fairness_audit/sen1_supervised_campaign.py",
+      "source_sha256": "8067e22c798558dea505555162d690d713ed00f1c1fbe96b99f7dc68f9f055e4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_terramind_v0434_artifact_audit.py",
+      "bytes": 21429,
+      "sha256": "d346a55bda8c52a8bc6a32852ef126e9a605435e203230d7ddfd4e10fba57427",
+      "source_path": "src/rsfm_fairness_audit/sen1_terramind_v0434_artifact_audit.py",
+      "source_sha256": "d346a55bda8c52a8bc6a32852ef126e9a605435e203230d7ddfd4e10fba57427",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1_unet_artifact_audit.py",
+      "bytes": 34191,
+      "sha256": "0064c3d5400576e62360c75fec2284b4278567a227f631603ad638f85d3d041a",
+      "source_path": "src/rsfm_fairness_audit/sen1_unet_artifact_audit.py",
+      "source_sha256": "0064c3d5400576e62360c75fec2284b4278567a227f631603ad638f85d3d041a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/sen1floods11_formal.py",
+      "bytes": 57593,
+      "sha256": "553838fde6b8f09a1e5ef0d6e1f2483d27487f632778e832ea559ffa58ea63c8",
+      "source_path": "src/rsfm_fairness_audit/sen1floods11_formal.py",
+      "source_sha256": "553838fde6b8f09a1e5ef0d6e1f2483d27487f632778e832ea559ffa58ea63c8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/slice_support.py",
+      "bytes": 17246,
+      "sha256": "898fc9bf7131ee9c98b241da76b1831112cd816f2d9761095309aa5f606674cf",
+      "source_path": "src/rsfm_fairness_audit/slice_support.py",
+      "source_sha256": "898fc9bf7131ee9c98b241da76b1831112cd816f2d9761095309aa5f606674cf",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/spatial_conformal.py",
+      "bytes": 16013,
+      "sha256": "aed7081feb84118769e387deda8a19f1ac46332173ddc3935df562bde2e002e2",
+      "source_path": "src/rsfm_fairness_audit/spatial_conformal.py",
+      "source_sha256": "aed7081feb84118769e387deda8a19f1ac46332173ddc3935df562bde2e002e2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/spectral_baseline.py",
+      "bytes": 17280,
+      "sha256": "f1374522931358f74c4deb5c964673b8e36b8ec706d881b08d1e2ec8c2b097b8",
+      "source_path": "src/rsfm_fairness_audit/spectral_baseline.py",
+      "source_sha256": "f1374522931358f74c4deb5c964673b8e36b8ec706d881b08d1e2ec8c2b097b8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/terramind_sen1_config.py",
+      "bytes": 26701,
+      "sha256": "40f22e09ca6470685f2fa4e9eb31fa6b9eaa0077c07110982ddb37b150c412fd",
+      "source_path": "src/rsfm_fairness_audit/terramind_sen1_config.py",
+      "source_sha256": "40f22e09ca6470685f2fa4e9eb31fa6b9eaa0077c07110982ddb37b150c412fd",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/terratorch_exports.py",
+      "bytes": 39814,
+      "sha256": "b8c2c9c0c05d1ffd2fee7d4215ce572a54d16ac572b5526127af694b01c6ca1d",
+      "source_path": "src/rsfm_fairness_audit/terratorch_exports.py",
+      "source_sha256": "b8c2c9c0c05d1ffd2fee7d4215ce572a54d16ac572b5526127af694b01c6ca1d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/terratorch_predict_cli.py",
+      "bytes": 4338,
+      "sha256": "9459210ada8adfcfd6dcd51af95899f41da05df6b45e999a5fa5606d298b8df2",
+      "source_path": "src/rsfm_fairness_audit/terratorch_predict_cli.py",
+      "source_sha256": "9459210ada8adfcfd6dcd51af95899f41da05df6b45e999a5fa5606d298b8df2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/unet_baseline.py",
+      "bytes": 34037,
+      "sha256": "ff636bafbc58c0f9742077b7e304b26ef45309ebed8ba2279786db300b1bc0f9",
+      "source_path": "src/rsfm_fairness_audit/unet_baseline.py",
+      "source_sha256": "ff636bafbc58c0f9742077b7e304b26ef45309ebed8ba2279786db300b1bc0f9",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "src/rsfm_fairness_audit/viz.py",
+      "bytes": 5440,
+      "sha256": "902cd38bfdd2717798d1db015460e721a86c6299e8ab7052b993795f0289768f",
+      "source_path": "src/rsfm_fairness_audit/viz.py",
+      "source_sha256": "902cd38bfdd2717798d1db015460e721a86c6299e8ab7052b993795f0289768f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/conftest.py",
+      "bytes": 1119,
+      "sha256": "a9965b1d4f55c14d5e741f529d213e19530aa3a207d781398aabd3befd2c01fa"
+    },
+    {
+      "path": "tests/fixtures/README.md",
+      "bytes": 350,
+      "sha256": "3132b69ee21d5abcdb3884a967b6d78577cca42a0be0e27eb12c4173df79c738"
+    },
+    {
+      "path": "tests/fixtures/evidence_registry.yaml",
+      "bytes": 2101,
+      "sha256": "e4c8a4c229671748bcf193d1d9b0d05e1601f6f3de9c44bf9654b167da96c61e"
+    },
+    {
+      "path": "tests/fixtures/paper_supplementary/geobwer_summary.csv",
+      "bytes": 86,
+      "sha256": "e4d92695723611541efde28e840b5845bd07b475a750b18abc3ee5fdff3a35db"
+    },
+    {
+      "path": "tests/fixtures/paper_supplementary/reben_label_audit.csv",
+      "bytes": 274,
+      "sha256": "3719151dd677546d8e486fbdd0b109a2429820de8165629cd89459ba3d4ab6be"
+    },
+    {
+      "path": "tests/test_advanced_closure.py",
+      "bytes": 5533,
+      "sha256": "7ea6709f2d30f3b6606c29058479dc0f3d03df5720e051db5811839b28c862fe",
+      "source_path": "tests/test_advanced_closure.py",
+      "source_sha256": "7ea6709f2d30f3b6606c29058479dc0f3d03df5720e051db5811839b28c862fe",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_alphaearth_existing_upgrade.py",
+      "bytes": 10365,
+      "sha256": "ef242501155c42baad9f1aa0ffad651e2b795ac7402aabfad85a73eefc9730e7",
+      "source_path": "tests/test_alphaearth_existing_upgrade.py",
+      "source_sha256": "473466a17b99c0105ae18e3e8a2296876a770d1fcef5d277e9a9090e5f5692f9",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_alphaearth_full_audit.py",
+      "bytes": 5236,
+      "sha256": "b94451cc07bd776fcb126ae1b4d538140515d99320af6c98c15c2735f95504b3",
+      "source_path": "tests/test_alphaearth_full_audit.py",
+      "source_sha256": "b94451cc07bd776fcb126ae1b4d538140515d99320af6c98c15c2735f95504b3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_alphaearth_gee_pilot.py",
+      "bytes": 3841,
+      "sha256": "c5b9a098e51ffdd8af70361607bcb9fad99273f98b07e9fc51f4b29404e3799f",
+      "source_path": "tests/test_alphaearth_gee_pilot.py",
+      "source_sha256": "c5b9a098e51ffdd8af70361607bcb9fad99273f98b07e9fc51f4b29404e3799f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_alphaearth_geobwer_campaign.py",
+      "bytes": 3169,
+      "sha256": "17e879f6827388d7050d25fed6578a2128d7b73d708536d39e289ac92f1a6f17",
+      "source_path": "tests/test_alphaearth_geobwer_campaign.py",
+      "source_sha256": "17e879f6827388d7050d25fed6578a2128d7b73d708536d39e289ac92f1a6f17",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_audit_contract.py",
+      "bytes": 4776,
+      "sha256": "312b08da8ff38e573586130791bffbdf40f573185613be4f9eebd700283f67eb",
+      "source_path": "tests/test_audit_contract.py",
+      "source_sha256": "312b08da8ff38e573586130791bffbdf40f573185613be4f9eebd700283f67eb",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_audit_table.py",
+      "bytes": 4594,
+      "sha256": "6c5513b597d77988f5f047d7a9bb6f4729675de458798c7685719d860c1daa45",
+      "source_path": "tests/test_audit_table.py",
+      "source_sha256": "6c5513b597d77988f5f047d7a9bb6f4729675de458798c7685719d860c1daa45",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_ben_ge_phase2b.py",
+      "bytes": 7061,
+      "sha256": "7265b83432854233da4fb6351f85902aa6a0cd03c9265959d72d7202b08de5d1",
+      "source_path": "tests/test_ben_ge_phase2b.py",
+      "source_sha256": "7265b83432854233da4fb6351f85902aa6a0cd03c9265959d72d7202b08de5d1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bigearthnet_dofa_real.py",
+      "bytes": 12812,
+      "sha256": "9e2723964941b9023b83874709acae7b82bfbe2745e54579a1fcb93e3ac5bae0",
+      "source_path": "tests/test_bigearthnet_dofa_real.py",
+      "source_sha256": "9e2723964941b9023b83874709acae7b82bfbe2745e54579a1fcb93e3ac5bae0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_balanced.py",
+      "bytes": 2091,
+      "sha256": "903e68b901bc887cd38dbe2963b02ff3a66b4ee0699f8c7e258fa571d5612df3",
+      "source_path": "tests/test_bwer_balanced.py",
+      "source_sha256": "903e68b901bc887cd38dbe2963b02ff3a66b4ee0699f8c7e258fa571d5612df3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_basic.py",
+      "bytes": 2062,
+      "sha256": "99e55970c9f48d257aa8447d777885218fa33543fdee0bc86046d5968e4624ec",
+      "source_path": "tests/test_bwer_basic.py",
+      "source_sha256": "99e55970c9f48d257aa8447d777885218fa33543fdee0bc86046d5968e4624ec",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_bootstrap.py",
+      "bytes": 1289,
+      "sha256": "c6858b2304508e377f91ec2f14c4c3b96309008a15f5574d0f191809ed8b8fc2",
+      "source_path": "tests/test_bwer_bootstrap.py",
+      "source_sha256": "c6858b2304508e377f91ec2f14c4c3b96309008a15f5574d0f191809ed8b8fc2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_missing_policy.py",
+      "bytes": 5114,
+      "sha256": "db4cffdf77f9bcccddc07bb3ba1dd4f52cea718af0c835c8d62dc910af03faf4",
+      "source_path": "tests/test_bwer_missing_policy.py",
+      "source_sha256": "db4cffdf77f9bcccddc07bb3ba1dd4f52cea718af0c835c8d62dc910af03faf4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_thresholds.py",
+      "bytes": 3160,
+      "sha256": "d03f7a1ae4fdaa36ef5953646e991a6518e1944aece3bfe33b72e3a666827690",
+      "source_path": "tests/test_bwer_thresholds.py",
+      "source_sha256": "d03f7a1ae4fdaa36ef5953646e991a6518e1944aece3bfe33b72e3a666827690",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_v2_posthoc.py",
+      "bytes": 8815,
+      "sha256": "d62c0ee7fa619050d430dbd325612e435f678ce5eeeb108e6ada5ab9600bb10f",
+      "source_path": "tests/test_bwer_v2_posthoc.py",
+      "source_sha256": "d62c0ee7fa619050d430dbd325612e435f678ce5eeeb108e6ada5ab9600bb10f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_bwer_v2_segmentation.py",
+      "bytes": 6428,
+      "sha256": "fb99b8e982db8310537d4558c574c6eb3acce1381132b3040f21d48de19e4855",
+      "source_path": "tests/test_bwer_v2_segmentation.py",
+      "source_sha256": "fb99b8e982db8310537d4558c574c6eb3acce1381132b3040f21d48de19e4855",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_cli_bwer.py",
+      "bytes": 8926,
+      "sha256": "8e574084babfdc363cbb73d3bc5973d56da5238ab4393b7609b9405e34677a1e",
+      "source_path": "tests/test_cli_bwer.py",
+      "source_sha256": "8e574084babfdc363cbb73d3bc5973d56da5238ab4393b7609b9405e34677a1e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_cluster_uncertainty.py",
+      "bytes": 1737,
+      "sha256": "2d864208a6ab547064e388e37a0c13f97c2f02f67d2fb530f20cabd040c8db57",
+      "source_path": "tests/test_cluster_uncertainty.py",
+      "source_sha256": "2d864208a6ab547064e388e37a0c13f97c2f02f67d2fb530f20cabd040c8db57",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_croma_adapter.py",
+      "bytes": 11946,
+      "sha256": "a0536feef9f62b6082530c559a73ef98f3bfe0e81f3e2977d757aed3629a4e9d",
+      "source_path": "tests/test_croma_adapter.py",
+      "source_sha256": "a0536feef9f62b6082530c559a73ef98f3bfe0e81f3e2977d757aed3629a4e9d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_dofa_checkpoint_compatibility.py",
+      "bytes": 8120,
+      "sha256": "1095235d0589b57c1bf48b622bdd283d4d823f6a3f0ad5acd84f68df09b85bcc",
+      "source_path": "tests/test_dofa_checkpoint_compatibility.py",
+      "source_sha256": "1095235d0589b57c1bf48b622bdd283d4d823f6a3f0ad5acd84f68df09b85bcc",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_dofa_pooling_inspection.py",
+      "bytes": 2126,
+      "sha256": "c44bcd46466014bf3876adf8cfb143b3135702ef6a794787ecb97640bd32c33d",
+      "source_path": "tests/test_dofa_pooling_inspection.py",
+      "source_sha256": "c44bcd46466014bf3876adf8cfb143b3135702ef6a794787ecb97640bd32c33d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_download_bigearthnet_hf_subset.py",
+      "bytes": 2927,
+      "sha256": "06c91ecc6aec1391d626c4ebc5864360e1213717a5576bb3a7ea3b909b66fa71",
+      "source_path": "tests/test_download_bigearthnet_hf_subset.py",
+      "source_sha256": "06c91ecc6aec1391d626c4ebc5864360e1213717a5576bb3a7ea3b909b66fa71",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_download_bigearthnet_lccol_subset.py",
+      "bytes": 5908,
+      "sha256": "975ed2ba357c22773bf0ac1ae166d0d62d3deb9c7c9e0eb393fc15fe249ba2b1",
+      "source_path": "tests/test_download_bigearthnet_lccol_subset.py",
+      "source_sha256": "975ed2ba357c22773bf0ac1ae166d0d62d3deb9c7c9e0eb393fc15fe249ba2b1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_drive_artifact_preflight.py",
+      "bytes": 1859,
+      "sha256": "848fa1f1825f56af6af17bf7708b93f7981c28d81986aea0543d519ba66e6c9f",
+      "source_path": "tests/test_drive_artifact_preflight.py",
+      "source_sha256": "848fa1f1825f56af6af17bf7708b93f7981c28d81986aea0543d519ba66e6c9f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_dummy_pipeline.py",
+      "bytes": 1867,
+      "sha256": "aa0dba37d66550d427f116309a6de881b7021e42a0cc2b4e4c4135f440d51268",
+      "source_path": "tests/test_dummy_pipeline.py",
+      "source_sha256": "aa0dba37d66550d427f116309a6de881b7021e42a0cc2b4e4c4135f440d51268",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_evidence_rebuild_v060.py",
+      "bytes": 6115,
+      "sha256": "087274ebc593b8c3a9951397a285686c5e7e54feefe50b9111935a7c1d3bd825",
+      "source_path": "tests/test_evidence_rebuild_v060.py",
+      "source_sha256": "087274ebc593b8c3a9951397a285686c5e7e54feefe50b9111935a7c1d3bd825",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_experiment8_9.py",
+      "bytes": 7728,
+      "sha256": "bf77ecf4f2b0cc0cb76cbd98beec178b34890e9c15330648028b6e19c994da35",
+      "source_path": "tests/test_experiment8_9.py",
+      "source_sha256": "49b10a77c053d023d5f2d69a925f55f55f918b71f8831afdfcdcee14b93a29cf",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_final_campaign_contracts.py",
+      "bytes": 4217,
+      "sha256": "38f4732fbfd01e1b6c745437cb33c3bf13f7daab224ae66179dadeea71260c1d",
+      "source_path": "tests/test_final_campaign_contracts.py",
+      "source_sha256": "38f4732fbfd01e1b6c745437cb33c3bf13f7daab224ae66179dadeea71260c1d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_final_paper_cleanup.py",
+      "bytes": 3019,
+      "sha256": "29541bda6193bf317fd93579017bd03526bec2ab0b09f73f7c8bbc671f712635",
+      "source_path": "tests/test_final_paper_cleanup.py",
+      "source_sha256": "29541bda6193bf317fd93579017bd03526bec2ab0b09f73f7c8bbc671f712635",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_conformal_selective_audit.py",
+      "bytes": 5749,
+      "sha256": "e7b416b2e46edc1cdcf60e24e046eba0417554f586334ad97321b2980b3e6598",
+      "source_path": "tests/test_fmow_conformal_selective_audit.py",
+      "source_sha256": "e7b416b2e46edc1cdcf60e24e046eba0417554f586334ad97321b2980b3e6598",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_dofav2_campaign.py",
+      "bytes": 7336,
+      "sha256": "999fbb8618d3806177c1040acb9cd65a3dd50cbb8208a5da8e8e9a60eb1f2bc8",
+      "source_path": "tests/test_fmow_dofav2_campaign.py",
+      "source_sha256": "999fbb8618d3806177c1040acb9cd65a3dd50cbb8208a5da8e8e9a60eb1f2bc8",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_formal_split.py",
+      "bytes": 2253,
+      "sha256": "d3d207eecbb52fce95cac4f20ce0fbb5fd7e6c2147312fa5d2d46356ef0f0f6e",
+      "source_path": "tests/test_fmow_formal_split.py",
+      "source_sha256": "d3d207eecbb52fce95cac4f20ce0fbb5fd7e6c2147312fa5d2d46356ef0f0f6e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_geography_contract.py",
+      "bytes": 22122,
+      "sha256": "c5729d64dcc61f15c3dad7c62c860c14bb183ce846115e161b3a181dbe5dc0a1",
+      "source_path": "tests/test_fmow_geography_contract.py",
+      "source_sha256": "c5729d64dcc61f15c3dad7c62c860c14bb183ce846115e161b3a181dbe5dc0a1",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_patch_size_diagnostics.py",
+      "bytes": 4707,
+      "sha256": "7a5ed5c6c1299166da1c3a32a6bfcb2c7e2ab7bab1307f59753cb7db389e5de3",
+      "source_path": "tests/test_fmow_patch_size_diagnostics.py",
+      "source_sha256": "7a5ed5c6c1299166da1c3a32a6bfcb2c7e2ab7bab1307f59753cb7db389e5de3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_resnet_completion_and_superclass_postprocess.py",
+      "bytes": 10464,
+      "sha256": "739f5bfcbd87a5e657af4a90cdcbc37cccab1dea09be43525a68d7cbcd57d420",
+      "source_path": "tests/test_fmow_resnet_completion_and_superclass_postprocess.py",
+      "source_sha256": "739f5bfcbd87a5e657af4a90cdcbc37cccab1dea09be43525a68d7cbcd57d420",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_sentinel_classification.py",
+      "bytes": 15026,
+      "sha256": "8525a903639350b23c78c25fc81e0688314185b6ed92f26d97d017fd9356036a",
+      "source_path": "tests/test_fmow_sentinel_classification.py",
+      "source_sha256": "efde395f71e943325fda33de5969435b533fbd044dd3d99fe6bc848106283489",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_fmow_sentinel_clean_subset.py",
+      "bytes": 6967,
+      "sha256": "a62f2c8e2bd2850e5a31c2dc1c25209443097955dcab31211d860cd2b4b302ee",
+      "source_path": "tests/test_fmow_sentinel_clean_subset.py",
+      "source_sha256": "ce894cefac21574a48efdbf78ef051279497584bd4c18ac0a951ba56ce24aac9",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_fmow_sentinel_enrichment.py",
+      "bytes": 6805,
+      "sha256": "a151e8e930e9ad8b3fb3f8ee5457e425cc1ec8bed8463b15c0951187be6003ab",
+      "source_path": "tests/test_fmow_sentinel_enrichment.py",
+      "source_sha256": "a151e8e930e9ad8b3fb3f8ee5457e425cc1ec8bed8463b15c0951187be6003ab",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_sentinel_preflight.py",
+      "bytes": 9431,
+      "sha256": "ab91d51c3e9d03862bc6a12dcc12cc6e469bd720d5952d1ef97b25e32cef77eb",
+      "source_path": "tests/test_fmow_sentinel_preflight.py",
+      "source_sha256": "329503570b80a5b1c4fad4139630acdb9ab71b211faf0878f071e888d3962e1d",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_fmow_spatial_upgrade_legacy.py",
+      "bytes": 8172,
+      "sha256": "e984db3422ffd666448fa843fe5da2b27704df0ebf49efc760e5a53f1663b6de",
+      "source_path": "tests/test_fmow_spatial_upgrade_legacy.py",
+      "source_sha256": "e984db3422ffd666448fa843fe5da2b27704df0ebf49efc760e5a53f1663b6de",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_step3_contract.py",
+      "bytes": 7519,
+      "sha256": "15132cfeeb612e09b1c23ff1fbb4dc67b68ac455464ecf78c605e7670804b184",
+      "source_path": "tests/test_fmow_step3_contract.py",
+      "source_sha256": "15132cfeeb612e09b1c23ff1fbb4dc67b68ac455464ecf78c605e7670804b184",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_fmow_superclass_feasibility.py",
+      "bytes": 9250,
+      "sha256": "5988c4543b1d26c77b132386359cd7cd3c47d8cb2513ca488fd82885afd72a93",
+      "source_path": "tests/test_fmow_superclass_feasibility.py",
+      "source_sha256": "5988c4543b1d26c77b132386359cd7cd3c47d8cb2513ca488fd82885afd72a93",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_formal_outputs.py",
+      "bytes": 6008,
+      "sha256": "7210725fc535f5d7ac811ea3bc7dfbffe4131c5a7a6cf504a9f1f2366a69df16",
+      "source_path": "tests/test_formal_outputs.py",
+      "source_sha256": "7210725fc535f5d7ac811ea3bc7dfbffe4131c5a7a6cf504a9f1f2366a69df16",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_frozen_evidence_reaudit.py",
+      "bytes": 2938,
+      "sha256": "4887e112ad855a12ef103d9e87da561ec0c120d3c8706fa01d5b8e04cc5040e3",
+      "source_path": "tests/test_frozen_evidence_reaudit.py",
+      "source_sha256": "0e34a97503703430dc69a421da4d20af32b32dcc3add7643bb537db993f75bf1",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_geobwer_api_and_adapters.py",
+      "bytes": 5938,
+      "sha256": "e1bead4dd003e647b14cdbc3e689a2bb4e6f10f72c403566f7de054c7a4de708",
+      "source_path": "tests/test_geobwer_api_and_adapters.py",
+      "source_sha256": "e1bead4dd003e647b14cdbc3e689a2bb4e6f10f72c403566f7de054c7a4de708",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_certification_v12.py",
+      "bytes": 5302,
+      "sha256": "e24debad0c92a9a2eca685f6f34422c36bca8b3b5f0274d12f511712c2f70862",
+      "source_path": "tests/test_geobwer_certification_v12.py",
+      "source_sha256": "e24debad0c92a9a2eca685f6f34422c36bca8b3b5f0274d12f511712c2f70862",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_core.py",
+      "bytes": 5093,
+      "sha256": "8d73039667ab52441544e586734ac2a5911f428180bf7457ad1f53e49d3d1d57",
+      "source_path": "tests/test_geobwer_core.py",
+      "source_sha256": "8d73039667ab52441544e586734ac2a5911f428180bf7457ad1f53e49d3d1d57",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_extensions.py",
+      "bytes": 16466,
+      "sha256": "33da7c016f0cb58a2a2581777e1882d80225d439deaf4e83a7b2ab894bbb0da6",
+      "source_path": "tests/test_geobwer_extensions.py",
+      "source_sha256": "33da7c016f0cb58a2a2581777e1882d80225d439deaf4e83a7b2ab894bbb0da6",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_inference.py",
+      "bytes": 6465,
+      "sha256": "034fcf7e66bc09da73958ec1f499f8de265966ab2c775087dd3b89d12b8ea10e",
+      "source_path": "tests/test_geobwer_inference.py",
+      "source_sha256": "034fcf7e66bc09da73958ec1f499f8de265966ab2c775087dd3b89d12b8ea10e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_panel.py",
+      "bytes": 3967,
+      "sha256": "d30114356e659bcbf515159cfe8fb4fa9a5e570b135266cd704c0d18925c1cbf",
+      "source_path": "tests/test_geobwer_panel.py",
+      "source_sha256": "d30114356e659bcbf515159cfe8fb4fa9a5e570b135266cd704c0d18925c1cbf",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_protocol_v12.py",
+      "bytes": 3170,
+      "sha256": "83c4d4132cbb7e87384ab2468bf047e6ae632913c77da0340aeae4a4d4434bab",
+      "source_path": "tests/test_geobwer_protocol_v12.py",
+      "source_sha256": "b71e16c181568b65f28ba6e3f77359cd3deecb37f51ce523ce5a008ab6474c21",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_geobwer_uncertainty.py",
+      "bytes": 3212,
+      "sha256": "83a6578d8084cb160ff0c074a75cc4cd127521ce3abc527bb166cf24802945b7",
+      "source_path": "tests/test_geobwer_uncertainty.py",
+      "source_sha256": "83a6578d8084cb160ff0c074a75cc4cd127521ce3abc527bb166cf24802945b7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geobwer_validation.py",
+      "bytes": 712,
+      "sha256": "4a58e825b18fff5523468d1c03ea1bdec9df7e3fec8d67f12ec45aab97e777ca",
+      "source_path": "tests/test_geobwer_validation.py",
+      "source_sha256": "4a58e825b18fff5523468d1c03ea1bdec9df7e3fec8d67f12ec45aab97e777ca",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geographic_risk_association.py",
+      "bytes": 8995,
+      "sha256": "567ff862df41cd77dc6544fef96bfb525b305aee74b29c2ba23f28066bf88e06",
+      "source_path": "tests/test_geographic_risk_association.py",
+      "source_sha256": "567ff862df41cd77dc6544fef96bfb525b305aee74b29c2ba23f28066bf88e06",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geographic_risk_atlas.py",
+      "bytes": 14815,
+      "sha256": "3860a4ddf01af221d73361819993c6f6261986a9c9ea347e51ff16de3800ddc3",
+      "source_path": "tests/test_geographic_risk_atlas.py",
+      "source_sha256": "3860a4ddf01af221d73361819993c6f6261986a9c9ea347e51ff16de3800ddc3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_geographic_risk_covariates.py",
+      "bytes": 11111,
+      "sha256": "7aeb8fd8225b975d62c45d718cc8b350191f9b8dcb96bf6b7b0d06fb71ce28b7",
+      "source_path": "tests/test_geographic_risk_covariates.py",
+      "source_sha256": "7aeb8fd8225b975d62c45d718cc8b350191f9b8dcb96bf6b7b0d06fb71ce28b7",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_io_csv.py",
+      "bytes": 968,
+      "sha256": "b8d2c180fc44e171b908d984ba137994fa6f70086e4892c857614edf639555ab",
+      "source_path": "tests/test_io_csv.py",
+      "source_sha256": "b8d2c180fc44e171b908d984ba137994fa6f70086e4892c857614edf639555ab",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_model_task_generalization_artifacts.py",
+      "bytes": 10275,
+      "sha256": "2b1e5d959dc3c4ebeeeb640b7fba459d7fdbddb226916767775b7f9f79c60588",
+      "source_path": "tests/test_model_task_generalization_artifacts.py",
+      "source_sha256": "2b1e5d959dc3c4ebeeeb640b7fba459d7fdbddb226916767775b7f9f79c60588",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_optimization_phase1.py",
+      "bytes": 17126,
+      "sha256": "cf47f24b75a7f3f58077271d783574516fe9498324a1f0c96040ed906d3a63cf",
+      "source_path": "tests/test_optimization_phase1.py",
+      "source_sha256": "cf47f24b75a7f3f58077271d783574516fe9498324a1f0c96040ed906d3a63cf",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_paired_cross_model_review.py",
+      "bytes": 2401,
+      "sha256": "99abc7522fba6c2b20fd140d407856c5ce7dbbc88450c4dadc9da3f941772805",
+      "source_path": "tests/test_paired_cross_model_review.py",
+      "source_sha256": "99abc7522fba6c2b20fd140d407856c5ce7dbbc88450c4dadc9da3f941772805",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_paper_supplementary.py",
+      "bytes": 9440,
+      "sha256": "a1400bc8203632901f944e9472c486a10962d2e0e9c87296f250267247b417c9",
+      "source_path": "tests/test_paper_supplementary.py",
+      "source_sha256": "a1400bc8203632901f944e9472c486a10962d2e0e9c87296f250267247b417c9",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_persistent_cache.py",
+      "bytes": 1355,
+      "sha256": "e0edda2f179c11dabe78fdc437985dc875703e90b956fbe5403cd5bb1894dae5",
+      "source_path": "tests/test_persistent_cache.py",
+      "source_sha256": "e0edda2f179c11dabe78fdc437985dc875703e90b956fbe5403cd5bb1894dae5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_prepare_bigearthnet_subset.py",
+      "bytes": 4870,
+      "sha256": "4785821f71b5940c847b055ba8febf416330636cc6c65b44d088b37254789625",
+      "source_path": "tests/test_prepare_bigearthnet_subset.py",
+      "source_sha256": "4785821f71b5940c847b055ba8febf416330636cc6c65b44d088b37254789625",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_prepare_geobwer_model_assets.py",
+      "bytes": 3978,
+      "sha256": "7af5a50afded2babb5bbb9ad3ecbb1974a534e98dcf6627e8193279af6e7157a",
+      "source_path": "tests/test_prepare_geobwer_model_assets.py",
+      "source_sha256": "7af5a50afded2babb5bbb9ad3ecbb1974a534e98dcf6627e8193279af6e7157a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_prithvi_sen1_inference_contract.py",
+      "bytes": 6159,
+      "sha256": "f476bfc7a06f781a60e7083d14ff4bbbd48589a350a56dd4f283e83bd65a83d1",
+      "source_path": "tests/test_prithvi_sen1_inference_contract.py",
+      "source_sha256": "2187b9d3d2de8fbda3326ee1e8dca3c2520ae9978094e13dc351a5facbe158cb",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_prithvi_sen1floods11.py",
+      "bytes": 21901,
+      "sha256": "a592163261febb00cc1fceb8ea4ab7106a91aa7f908d91ebd2101e7c730f80b0",
+      "source_path": "tests/test_prithvi_sen1floods11.py",
+      "source_sha256": "a592163261febb00cc1fceb8ea4ab7106a91aa7f908d91ebd2101e7c730f80b0",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_probe_selection.py",
+      "bytes": 3705,
+      "sha256": "7eb1b597d4c042c0a61c9203238cbaaf656861f8716af3378895b4182431cc9d",
+      "source_path": "tests/test_probe_selection.py",
+      "source_sha256": "7eb1b597d4c042c0a61c9203238cbaaf656861f8716af3378895b4182431cc9d",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_reben_data_benchmark.py",
+      "bytes": 5375,
+      "sha256": "3dff0923e561d699e5aed3c4f0fb47d8536a8797c9cfc9804cea6d063432a5ae",
+      "source_path": "tests/test_reben_data_benchmark.py",
+      "source_sha256": "3dff0923e561d699e5aed3c4f0fb47d8536a8797c9cfc9804cea6d063432a5ae",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_reben_labelwise_colab_runner.py",
+      "bytes": 1209,
+      "sha256": "9c037d7fa4aa8184979921592e82feae483d120823a820d2a04ecc3bd2f557c3",
+      "source_path": "tests/test_reben_labelwise_colab_runner.py",
+      "source_sha256": "9c037d7fa4aa8184979921592e82feae483d120823a820d2a04ecc3bd2f557c3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_reben_resnet50_diagnostic.py",
+      "bytes": 22166,
+      "sha256": "9e16af502706ff5839aa9a28be170d5c7d02f9337aec3a4cba2640d91b3ce668",
+      "source_path": "tests/test_reben_resnet50_diagnostic.py",
+      "source_sha256": "9e16af502706ff5839aa9a28be170d5c7d02f9337aec3a4cba2640d91b3ce668",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_reben_scientific_postprocess.py",
+      "bytes": 7120,
+      "sha256": "f300850cfc4f16a6231fb552a462ff15d14a8911549d6789c1ad79cdfb460147",
+      "source_path": "tests/test_reben_scientific_postprocess.py",
+      "source_sha256": "f300850cfc4f16a6231fb552a462ff15d14a8911549d6789c1ad79cdfb460147",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_reben_sensor_audit.py",
+      "bytes": 29008,
+      "sha256": "166a1ed5f635402d5893b026c007a18b324c7f815a1582aceca07fb0af2ba673",
+      "source_path": "tests/test_reben_sensor_audit.py",
+      "source_sha256": "12ecb2edf9b9eb9d209ba9a211cdbcccd8825ace35584604f77a06124359e007",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_reben_terramind_campaign.py",
+      "bytes": 3558,
+      "sha256": "9712fde78f907d2e669920177e3a67ca50304b42d32720d76d5b7cab7acece04",
+      "source_path": "tests/test_reben_terramind_campaign.py",
+      "source_sha256": "9712fde78f907d2e669920177e3a67ca50304b42d32720d76d5b7cab7acece04",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_release_portability.py",
+      "bytes": 4953,
+      "sha256": "b567b4818a2ef73fb0d3908635090daf93ffb184d555d8ce30e291e57311a902"
+    },
+    {
+      "path": "tests/test_segmentation_comparison.py",
+      "bytes": 7075,
+      "sha256": "b36cbc9f1060da0056dec592ae28c7998c42d252aff939a81d2dec77404c6f12",
+      "source_path": "tests/test_segmentation_comparison.py",
+      "source_sha256": "b36cbc9f1060da0056dec592ae28c7998c42d252aff939a81d2dec77404c6f12",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_19model_descriptive.py",
+      "bytes": 9465,
+      "sha256": "39d059e806d03a94eb40f1c1a232359d82ee973110301d3b945c3b3b5f738c57",
+      "source_path": "tests/test_sen1_19model_descriptive.py",
+      "source_sha256": "39d059e806d03a94eb40f1c1a232359d82ee973110301d3b945c3b3b5f738c57",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_amp_contract.py",
+      "bytes": 14553,
+      "sha256": "ef6bb539480ca458dd74264b96ecc52448da3b3a23161140d2719f7aaee578fd",
+      "source_path": "tests/test_sen1_amp_contract.py",
+      "source_sha256": "cfda43319f6e0d48320fd765fd097209ba163a059a7d21a0835d031ada0dd64b",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_sen1_complete_modality_missing.py",
+      "bytes": 9495,
+      "sha256": "cc1ad2ee3a609bd9f37b0e22a7921df601adeea999c2ad438798e34fd5f399ba",
+      "source_path": "tests/test_sen1_complete_modality_missing.py",
+      "source_sha256": "cc1ad2ee3a609bd9f37b0e22a7921df601adeea999c2ad438798e34fd5f399ba",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_gpu_smoke_runner.py",
+      "bytes": 6340,
+      "sha256": "3c546f3060e8ebb873af0accd10052974781e2c5a87320eb568c4f6a9af2dbb2",
+      "source_path": "tests/test_sen1_gpu_smoke_runner.py",
+      "source_sha256": "3c546f3060e8ebb873af0accd10052974781e2c5a87320eb568c4f6a9af2dbb2",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_prithvi_artifact_audit.py",
+      "bytes": 9025,
+      "sha256": "e4e93a6039a72e57903e86a0753876272c5bcab4f35f957b3ff382d243745542",
+      "source_path": "tests/test_sen1_prithvi_artifact_audit.py",
+      "source_sha256": "e4e93a6039a72e57903e86a0753876272c5bcab4f35f957b3ff382d243745542",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_prithvi_mask_gate.py",
+      "bytes": 5601,
+      "sha256": "66daea262075bdddfb460fb9c715c0be91dd89f285e42bf053a471b69cbc1ff3",
+      "source_path": "tests/test_sen1_prithvi_mask_gate.py",
+      "source_sha256": "66daea262075bdddfb460fb9c715c0be91dd89f285e42bf053a471b69cbc1ff3",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_prithvi_v0432_artifact_audit.py",
+      "bytes": 7398,
+      "sha256": "d03284e981df008ae91fd88158e95ea7ee310232f7bf114da2ea9d8cb0d5df24",
+      "source_path": "tests/test_sen1_prithvi_v0432_artifact_audit.py",
+      "source_sha256": "d03284e981df008ae91fd88158e95ea7ee310232f7bf114da2ea9d8cb0d5df24",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_supervised_campaign.py",
+      "bytes": 20607,
+      "sha256": "55e90a941ca9cb9153c8fbafe4f64cf1108403b4ce27fd3bdf290909644ad85e",
+      "source_path": "tests/test_sen1_supervised_campaign.py",
+      "source_sha256": "55e90a941ca9cb9153c8fbafe4f64cf1108403b4ce27fd3bdf290909644ad85e",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_terramind_v0434_artifact_audit.py",
+      "bytes": 12830,
+      "sha256": "2388c9950414c32761cdbf8a2ceb1078e6ec46be60b5ec82d90e599798b7967a",
+      "source_path": "tests/test_sen1_terramind_v0434_artifact_audit.py",
+      "source_sha256": "2388c9950414c32761cdbf8a2ceb1078e6ec46be60b5ec82d90e599798b7967a",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_unet_artifact_audit.py",
+      "bytes": 18007,
+      "sha256": "ebd8af071e871df0cc67cf8ab6fa6084eae1c6fb782f178511a8233299ea9646",
+      "source_path": "tests/test_sen1_unet_artifact_audit.py",
+      "source_sha256": "ebd8af071e871df0cc67cf8ab6fa6084eae1c6fb782f178511a8233299ea9646",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_sen1_validation_locked_threshold_profile.py",
+      "bytes": 5185,
+      "sha256": "b4fa74591c936466e7e206b3ca37eb9d91df72dfc738796c0b171a231725da5e",
+      "source_path": "tests/test_sen1_validation_locked_threshold_profile.py",
+      "source_sha256": "d2856054780f30bf4c8fe4da3dd0bc2910a89548998158700b9a81cbdd98ef51",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_sen1floods11_formal.py",
+      "bytes": 26397,
+      "sha256": "5109b72a844b326bbaf69bd51ea15fcf5e2fbcef838fa9e29b017c4ef44a00cd",
+      "source_path": "tests/test_sen1floods11_formal.py",
+      "source_sha256": "5109b72a844b326bbaf69bd51ea15fcf5e2fbcef838fa9e29b017c4ef44a00cd",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_slice_support_preflight.py",
+      "bytes": 8286,
+      "sha256": "0d178b31f912dcef075d9a9234e18bf9e682f4946c21b1755a1e2f5a0a363407",
+      "source_path": "tests/test_slice_support_preflight.py",
+      "source_sha256": "d29cd168c131af3f836d7003cc268ff3e6a9819c9fd513c9d66b10dd200d2b1d",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_slice_taxonomy.py",
+      "bytes": 1527,
+      "sha256": "f1fe8581363ad8e34c74ac70003a10b538e6386ce8b6a8d97c10f5f70b3342d5",
+      "source_path": "tests/test_slice_taxonomy.py",
+      "source_sha256": "f1fe8581363ad8e34c74ac70003a10b538e6386ce8b6a8d97c10f5f70b3342d5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_spatial_conformal.py",
+      "bytes": 2732,
+      "sha256": "8925e3d7aa31307e92f352353adc11d25dbc015595bd8da35ea38912de35f17c",
+      "source_path": "tests/test_spatial_conformal.py",
+      "source_sha256": "8925e3d7aa31307e92f352353adc11d25dbc015595bd8da35ea38912de35f17c",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_spectral_baseline.py",
+      "bytes": 3763,
+      "sha256": "b87e902c8665a2d5904fc594e3ab85c6310ea3e400633e14500096e9aa7ec258",
+      "source_path": "tests/test_spectral_baseline.py",
+      "source_sha256": "b87e902c8665a2d5904fc594e3ab85c6310ea3e400633e14500096e9aa7ec258",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_terramind_adapter.py",
+      "bytes": 4510,
+      "sha256": "cad20bfc15c3f9bc56bf44669ea3304b22d53caa31e1affcec6a0ec12f912956",
+      "source_path": "tests/test_terramind_adapter.py",
+      "source_sha256": "cad20bfc15c3f9bc56bf44669ea3304b22d53caa31e1affcec6a0ec12f912956",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_terramind_formal_runner_contract.py",
+      "bytes": 8915,
+      "sha256": "8a99312a9b9153daf306e9d1858547edf7c027b7759bb611e7d0d079cba4d2b5",
+      "source_path": "tests/test_terramind_formal_runner_contract.py",
+      "source_sha256": "8a99312a9b9153daf306e9d1858547edf7c027b7759bb611e7d0d079cba4d2b5",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_terramind_sen1_config.py",
+      "bytes": 32743,
+      "sha256": "b174250ba8475f8da1570db4f8d6347b750014c1a76a562d050693df4eadbdc3",
+      "source_path": "tests/test_terramind_sen1_config.py",
+      "source_sha256": "9131b102be0543b4303246644334866cbcdf6f6057827319351fd2192cdafc94",
+      "adaptation": "release_portability_or_test_isolation"
+    },
+    {
+      "path": "tests/test_terratorch_exports.py",
+      "bytes": 5586,
+      "sha256": "7d7ca1d5cd0ed56b3dd36fcde21d06337d6b2b40e98232b518a7a926e7a98ad4",
+      "source_path": "tests/test_terratorch_exports.py",
+      "source_sha256": "7d7ca1d5cd0ed56b3dd36fcde21d06337d6b2b40e98232b518a7a926e7a98ad4",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_terratorch_predict_cli.py",
+      "bytes": 7079,
+      "sha256": "1d9b0c179881eb53e8fd5dacce745fa18d42cc602158a2f767c4d227774baf5f",
+      "source_path": "tests/test_terratorch_predict_cli.py",
+      "source_sha256": "1d9b0c179881eb53e8fd5dacce745fa18d42cc602158a2f767c4d227774baf5f",
+      "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_unet_sen1floods11.py",
+      "bytes": 13316,
+      "sha256": "d534b0fa6914ccc7ecc858aead7d23569200babed2c49a181458c20650b0818d",
+      "source_path": "tests/test_unet_sen1floods11.py",
+      "source_sha256": "d534b0fa6914ccc7ecc858aead7d23569200babed2c49a181458c20650b0818d",
+      "adaptation": "unchanged_text"
+    }
+  ]
+}

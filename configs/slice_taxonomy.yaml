@@ -1,0 +1,93 @@
+datasets:
+  dummy:
+    task_type: multiclass_classification
+    primary_slices: [region, sensor, task, class_label]
+    secondary_slices: [region__class_label, sensor__class_label]
+    balance_variables: [class_label, sensor]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 5
+    min_positive_support: null
+    min_slices_required: 2
+    min_units_required: 10
+    bootstrap_cluster_key: null
+    notes: CPU smoke taxonomy for BWER tests and examples.
+
+  bigearthnet_lccol:
+    task_type: multilabel_classification
+    primary_slices: [region, sensor, class_label, season]
+    secondary_slices: [region__class_label, sensor__class_label]
+    balance_variables: [class_label, sensor, season]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 50
+    min_positive_support: null
+    min_slices_required: 2
+    min_units_required: 100
+    bootstrap_cluster_key: region
+    notes: lc-col BigEarthNet is S2-only and valid for optical smoke/pilot audits, not true sensor fairness.
+
+  ben_ge_800:
+    task_type: multilabel_classification
+    primary_slices: [sensor_mode, class_label, region, climatezone]
+    secondary_slices: [sensor_mode__class_label, climatezone__class_label]
+    balance_variables: [class_label, sensor_mode]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 30
+    min_positive_support: null
+    min_slices_required: 2
+    min_units_required: 60
+    bootstrap_cluster_key: null
+    notes: Lightweight paired S1/S2 CROMA sensor-mode audit taxonomy.
+
+  fmow_sentinel:
+    task_type: classification
+    primary_slices: [country, continent, un_region, region, latitude_band, season, category, class_label]
+    secondary_slices: [country__class_label, region__class_label, season__class_label, latitude_band__class_label, country__category, region__category, season__category, latitude_band__category]
+    balance_variables: [class_label, category, season]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 20
+    min_positive_support: null
+    min_slices_required: 2
+    min_units_required: 20
+    bootstrap_cluster_key: location_id
+    notes: fMoW-Sentinel Step 3 image-only scene-classification geography audit. Geography metadata is audit-only; do not feed country, region, coordinates, location_id, or timestamp into models.
+
+  sen1floods11:
+    task_type: segmentation
+    primary_slices: [event_id, event, country, region, month, season, class_label]
+    secondary_slices: [event_id__class_label, event__class_label]
+    balance_variables: [class_label, month, season, event_id, event]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 1
+    min_positive_support: 1000
+    min_valid_pixel_support: 1000
+    min_slices_required: 2
+    min_units_required: 1000
+    bootstrap_cluster_key: event_id
+    notes: Native segmentation audits use event-level aggregated pixel counts; small smoke runs are wiring validation only and paper-grade disaster conclusions need larger event-balanced subsets.
+
+  sen1floods11_classification:
+    task_type: classification
+    primary_slices: [event_id, event, country, region, month, season, class_label]
+    secondary_slices: [event_id__class_label, event__class_label]
+    balance_variables: [class_label, month, season, event_id, event]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 20
+    min_positive_support: null
+    min_slices_required: 2
+    min_units_required: 20
+    bootstrap_cluster_key: event_id
+    notes: Chip-level Sen1Floods11 classification sanity audits use sample-level support; pixel-level positive support thresholds do not apply.
+
+  sen1floods11_segmentation:
+    task_type: segmentation
+    primary_slices: [event_id, event, country, region, month, season, class_label]
+    secondary_slices: [event_id__class_label, event__class_label]
+    balance_variables: [class_label, month, season, event_id, event]
+    default_tail_fraction: 0.10
+    min_samples_per_slice: 1
+    min_positive_support: 1000
+    min_valid_pixel_support: 1000
+    min_slices_required: 2
+    min_units_required: 1000
+    bootstrap_cluster_key: event_id
+    notes: Pixel-level segmentation audits use aggregated TP/FP/FN/TN and effective pixel support; chip count alone is not sufficient for formal support.

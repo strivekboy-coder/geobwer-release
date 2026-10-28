@@ -1,0 +1,78 @@
+{
+  "schema": "geobwer.canonical_evidence_registry.v1",
+  "registry_version": "test-fixture",
+  "assets": [
+    {
+      "asset_id": "fmow_predictions_v3",
+      "task": "fmow_sentinel",
+      "role": "dofav2_frozen_predictions",
+      "status": "canonical_source",
+      "local_path": "data/test-fixtures/fmow_predictions_v3",
+      "immutable": true,
+      "allowed_use": [
+        "unit_test"
+      ],
+      "replaced_by": ""
+    },
+    {
+      "asset_id": "fmow_baseline_fixture",
+      "task": "fmow_sentinel",
+      "role": "resnet50_frozen_predictions",
+      "status": "canonical_source",
+      "local_path": "data/test-fixtures/fmow_baseline_fixture",
+      "immutable": true,
+      "allowed_use": [
+        "unit_test"
+      ],
+      "replaced_by": ""
+    },
+    {
+      "asset_id": "alphaearth_fixture",
+      "task": "alphaearth",
+      "role": "reference_predictions",
+      "status": "canonical_source",
+      "local_path": "data/test-fixtures/alphaearth_fixture",
+      "immutable": true,
+      "allowed_use": [
+        "unit_test"
+      ],
+      "replaced_by": ""
+    },
+    {
+      "asset_id": "alphaearth_spatial_v1_revoked",
+      "task": "alphaearth",
+      "role": "old_reference_predictions",
+      "status": "revoked",
+      "local_path": "data/test-fixtures/alphaearth_spatial_v1_revoked",
+      "immutable": true,
+      "allowed_use": [
+        "unit_test"
+      ],
+      "replaced_by": "alphaearth_fixture"
+    },
+    {
+      "asset_id": "sen1_fixture",
+      "task": "sen1floods11",
+      "role": "segmentation_predictions",
+      "status": "canonical_source",
+      "local_path": "data/test-fixtures/sen1_fixture",
+      "immutable": true,
+      "allowed_use": [
+        "unit_test"
+      ],
+      "replaced_by": ""
+    },
+    {
+      "asset_id": "sen1_prithvi_v0429_revoked",
+      "task": "sen1floods11",
+      "role": "old_segmentation_predictions",
+      "status": "revoked",
+      "local_path": "data/test-fixtures/sen1_prithvi_v0429_revoked",
+      "immutable": true,
+      "allowed_use": [
+        "unit_test"
+      ],
+      "replaced_by": "sen1_fixture"
+    }
+  ]
+}

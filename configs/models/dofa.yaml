@@ -1,0 +1,12 @@
+model_variant: vit_base_dofa
+repo_path: null
+checkpoint_path: null
+torch_hub_repo: zhu-xlab/DOFA
+allow_torch_hub_download: true
+device: auto
+batch_size: 4
+input_modality: S2
+band_profile: sentinel2_12_lccol
+expected_bands: 12
+image_size: 224
+embedding_layer: forward_features
