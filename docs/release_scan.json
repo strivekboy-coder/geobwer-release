@@ -1,7 +1,7 @@
 {
   "status": "pass",
   "file_count": 358,
-  "total_bytes": 4304634,
+  "total_bytes": 4305539,
   "counts_by_top_level": {
     ".gitattributes": 1,
     ".gitignore": 1,
@@ -68,5 +68,14 @@
         "reason": "Exact TerraTorch callback integration requires the frozen Colab runtime."
       }
     ]
+  },
+  "documentation_check": {
+    "base_commit": "b3fdef3fcf20c3fd0e991a24978c8981c7a45e94",
+    "change": "Project-focused README and verified quick-start example.",
+    "quick_start_output": "M=0.350, T=0.800, D=0.450",
+    "relative_links": "pass",
+    "code_configuration_and_tests_changed": false,
+    "full_suite_rerun": false,
+    "test_verification_basis": "Existing full-suite result applies to unchanged code; README example executed separately."
   }
 }

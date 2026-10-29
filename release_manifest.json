@@ -29,8 +29,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3972,
-      "sha256": "2ec085e955a25e1436625c114a558601ec86c1e7859f5126c6551a16c394d25c"
+      "bytes": 4418,
+      "sha256": "80b036cc347916c70a201733581abc9cd984789755a1f8f361258f1511822e3b"
     },
     {
       "path": "configs/analysis/geographic_risk_association_v1.yaml",
@@ -305,7 +305,7 @@
     },
     {
       "path": "docs/release_scan.json",
-      "bytes": 2776,
+      "bytes": 3235,
       "sha256": null
     },
     {
