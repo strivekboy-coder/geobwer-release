@@ -463,8 +463,10 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main() -> None:
-    args = build_parser().parse_args()
+def main(argv: list[str] | None = None, *, parser: argparse.ArgumentParser | None = None) -> None:
+    active_parser = parser if parser is not None else build_parser()
+    args = active_parser.parse_args(argv)
+    brand = "Tailgap" if active_parser.prog == "tailgap" else "GeoBWER"
     if args.command == "run-dummy":
         artifacts = run_dummy_pipeline(args.output_dir, num_samples=args.num_samples, seed=args.seed)
         print(f"Dummy fairness audit complete: {args.output_dir}")
@@ -877,7 +879,7 @@ def main() -> None:
             seed=args.seed,
         )
         artifacts = result.to_report(args.output_dir)
-        print(f"GeoBWER audit complete: {args.output_dir}")
+        print(f"{brand} audit complete: {args.output_dir}")
         for name, path in artifacts.items():
             print(f"{name}: {path}")
     elif args.command == "geobwer-compare":
@@ -926,12 +928,12 @@ def main() -> None:
         row["protocol_hash"] = protocol.signature
         write_csv(output / "geobwer_model_comparison.csv", [row])
         (output / "geobwer_model_comparison.json").write_text(json.dumps(row, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"GeoBWER paired comparison complete: {args.output_dir}")
+        print(f"{brand} paired comparison complete: {args.output_dir}")
     elif args.command == "geobwer-inventory":
         protocol = _load_geobwer_protocol(args.protocol)
         records = inventory_artifacts(args.input, protocol)
         artifacts = write_inventory_report(records, protocol, args.output_dir)
-        print(f"GeoBWER artifact inventory complete: {args.output_dir}")
+        print(f"{brand} artifact inventory complete: {args.output_dir}")
         for name, path in artifacts.items():
             print(f"{name}: {path}")
     elif args.command == "geobwer-multiclass-uncertainty":
@@ -949,7 +951,7 @@ def main() -> None:
             n_bootstrap=args.bootstrap,
             seed=args.seed,
         )
-        print(f"GeoBWER multiclass uncertainty audit complete: {args.output_dir}")
+        print(f"{brand} multiclass uncertainty audit complete: {args.output_dir}")
         for name, path in artifacts.items():
             print(f"{name}: {path}")
     elif args.command == "geobwer-multilabel-uncertainty":
@@ -966,7 +968,7 @@ def main() -> None:
             n_bootstrap=args.bootstrap,
             seed=args.seed,
         )
-        print(f"GeoBWER multilabel uncertainty audit complete: {args.output_dir}")
+        print(f"{brand} multilabel uncertainty audit complete: {args.output_dir}")
         for name, path in artifacts.items():
             print(f"{name}: {path}")
     elif args.command == "geobwer-spatial-conformal-upgrade":
@@ -984,7 +986,7 @@ def main() -> None:
             n_bootstrap=args.bootstrap,
             seed=args.seed,
         )
-        print(f"GeoBWER spatial conformal upgrade complete: {args.output_dir}")
+        print(f"{brand} spatial conformal upgrade complete: {args.output_dir}")
         for name, path in artifacts.items():
             print(f"{name}: {path}")
 

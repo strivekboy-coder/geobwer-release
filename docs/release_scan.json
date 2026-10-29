@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "file_count": 358,
-  "total_bytes": 4305539,
+  "file_count": 363,
+  "payload_bytes_excluding_generated_reports": 4161789,
   "counts_by_top_level": {
     ".gitattributes": 1,
     ".gitignore": 1,
     "CITATION.cff": 1,
     "configs": 33,
-    "docs": 5,
+    "docs": 6,
     "FILES.txt": 1,
     "LICENSE": 1,
     "pyproject.toml": 1,
@@ -19,29 +19,45 @@
     "requirements-test.in": 1,
     "requirements-test.lock.txt": 1,
     "scripts": 89,
-    "src": 116,
-    "tests": 102
+    "src": 119,
+    "tests": 103
   },
   "findings": [],
   "known_private_values_checked": 22,
   "original_tracked_files_verified": 517,
   "original_tracked_files_changed": 0,
   "scientific_core_unchanged": true,
-  "scope": "All release candidate files; existing source tree is read-only. New Git history is checked separately after the initial commit.",
-  "limits": "Pattern checks and known-value matching do not establish dataset redistribution rights. No external datasets/checkpoints are distributed.",
+  "scientific_configurations_unchanged": true,
+  "scope": "All distributed files and every reachable Git commit/blob; ignored local verification/build artifacts are excluded from distribution.",
+  "limits": "Pattern and known-value checks are not a proof of absence of all sensitive material or of dataset redistribution rights. No external datasets/checkpoints are distributed.",
+  "git_history": {
+    "commits_checked": 2,
+    "blobs_checked": 361,
+    "noreply_identities": true,
+    "checked_head": "fedc168065fd7dcdf09c68657a6055dd6fed100a",
+    "stage": "Snapshot of history and working files at validation time; the resulting commit is checked again before push."
+  },
+  "naming": {
+    "public_name": "Tailgap",
+    "distribution": "tailgap",
+    "python_package": "tailgap",
+    "cli": "tailgap",
+    "repository": "https://github.com/strivekboy-coder/tailgap",
+    "compatibility": "Legacy namespace, configuration paths, protocol IDs, hashes and result fields are retained."
+  },
   "test_verification": {
-    "clean_clone": true,
     "isolated_environment": true,
     "user_site_packages": false,
+    "clean_temporary_workspace": true,
     "platform": "Windows",
     "python": "3.12.14",
-    "test_cases": 628,
-    "passed": 622,
+    "test_cases": 633,
+    "passed": 627,
     "skipped": 6,
     "failures": 0,
     "errors": 0,
     "pip_check": "pass",
-    "cli_help_checks_passed": 14,
+    "public_api_and_cli_tests": 5,
     "skipped_integration_tests": [
       {
         "test": "tests.test_dofa_checkpoint_compatibility::test_official_dofav2_checkpoint_loads_exactly_through_adapter_when_assets_are_available",
@@ -68,14 +84,5 @@
         "reason": "Exact TerraTorch callback integration requires the frozen Colab runtime."
       }
     ]
-  },
-  "documentation_check": {
-    "base_commit": "b3fdef3fcf20c3fd0e991a24978c8981c7a45e94",
-    "change": "Project-focused README and verified quick-start example.",
-    "quick_start_output": "M=0.350, T=0.800, D=0.450",
-    "relative_links": "pass",
-    "code_configuration_and_tests_changed": false,
-    "full_suite_rerun": false,
-    "test_verification_basis": "Existing full-suite result applies to unchanged code; README example executed separately."
   }
 }

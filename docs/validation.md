@@ -1,10 +1,10 @@
 # Release verification
 
-Verification was executed from a fresh local Git clone in an isolated Python virtual environment.
-No system/user packages or pre-existing experiment outputs were used. Imported package paths were checked against the clone.
+The Tailgap naming update was verified after reinstalling the release in an isolated Python virtual environment.
+No system/user packages or pre-existing experiment outputs were used; tests create a clean temporary workspace.
 
 - Platform: Windows; Python 3.12.14.
-- Complete distributed suite: **622 passed, 6 skipped, 0 failures, 0 errors**.
+- Complete distributed suite: **627 passed, 6 skipped, 0 failures, 0 errors**.
 - Dependency consistency: `python -m pip check` passed.
 - Fourteen primary reproduction entrypoints passed `--help` import checks.
 - Runtime versions are pinned in `requirements-test.lock.txt`; the project itself is installed separately.
@@ -45,3 +45,10 @@ The source repository tracked-file hashes and the seven central statistical modu
 A separate pre-push gate checks the new repository history and noreply commit identity.
 
 Dataset/checkpoint redistribution rights are not inferred by this scan. No such external assets are distributed.
+
+## Tailgap compatibility verification
+
+The public Python API and command parser were checked against the established implementation,
+including protocol identity, required arguments, inference defaults, and a real inventory dispatch.
+All seven central statistical modules and all scientific configuration files are unchanged.
+See [naming and compatibility](migration.md).

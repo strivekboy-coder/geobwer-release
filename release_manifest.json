@@ -1,6 +1,6 @@
 {
-  "schema": "geobwer.release.manifest.v1",
-  "note": "Generated report hashes are omitted to avoid self-reference. All paths are relative.",
+  "schema": "tailgap.release.manifest.v1",
+  "note": "Generated report sizes and hashes are omitted to avoid self-reference. All paths are relative.",
   "files": [
     {
       "path": ".gitattributes",
@@ -14,23 +14,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 565,
-      "sha256": "1db4cfc44124d43ce9ecb0c4ab31308b12014e2562156b337c240fd2d3b7d1db"
-    },
-    {
-      "path": "FILES.txt",
-      "bytes": 15277,
-      "sha256": null
-    },
-    {
-      "path": "LICENSE",
-      "bytes": 1069,
-      "sha256": "49d0fab216809fb211470eaf116df9fe34df0ddbbeb40d922a3df6f40f7c0e5e"
-    },
-    {
-      "path": "README.md",
-      "bytes": 4418,
-      "sha256": "80b036cc347916c70a201733581abc9cd984789755a1f8f361258f1511822e3b"
+      "bytes": 557,
+      "sha256": "c414e00dd484cc7f22f1317e47b884e3a710fb0485782c0e9b378ab47f722716"
     },
     {
       "path": "configs/analysis/geographic_risk_association_v1.yaml",
@@ -299,13 +284,18 @@
       "sha256": "ebcc326c4fff9aa85e0a351bc3c4eaf0ef1e0dd51fac0bb8b0d7b3d0ab1571d9"
     },
     {
+      "path": "docs/migration.md",
+      "bytes": 1843,
+      "sha256": "748f88d77346d2ea2f5a18b7ade7356dd50adfcfe33767cdf88288a2a5598dc3"
+    },
+    {
       "path": "docs/models.md",
       "bytes": 1204,
       "sha256": "ee55b8623a934fa9a21c9d1422edc323095ff5f07c1238a29801d2d9c6084a9e"
     },
     {
       "path": "docs/release_scan.json",
-      "bytes": 3235,
+      "bytes": null,
       "sha256": null
     },
     {
@@ -315,17 +305,32 @@
     },
     {
       "path": "docs/validation.md",
-      "bytes": 3293,
+      "bytes": null,
       "sha256": null
     },
     {
+      "path": "FILES.txt",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1069,
+      "sha256": "49d0fab216809fb211470eaf116df9fe34df0ddbbeb40d922a3df6f40f7c0e5e"
+    },
+    {
       "path": "pyproject.toml",
-      "bytes": 1132,
-      "sha256": "584db983016c96eb9ac2811b61a503836c3e8e5dc30490b66d44885918862370"
+      "bytes": 1153,
+      "sha256": "f24e2db52d636676390e19dd27212bab9069f4fd555e3846cbdb099ef370be57"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4865,
+      "sha256": "e0f9e901c8b49e73c0d4b3609073e61020708f33e32036506d2111839628fec3"
     },
     {
       "path": "release_manifest.json",
-      "bytes": 129932,
+      "bytes": null,
       "sha256": null
     },
     {
@@ -1307,11 +1312,11 @@
     },
     {
       "path": "src/rsfm_fairness_audit/cli.py",
-      "bytes": 58081,
-      "sha256": "3a8d26915624c942aae9e16f8679830e4fc3534c2524215c930a2dd90e1b3943",
+      "bytes": 58304,
+      "sha256": "9a753c5830a282096b43287b675bbc1efbc0d989c97bf6d40b3ad2490e21e9b6",
       "source_path": "src/rsfm_fairness_audit/cli.py",
       "source_sha256": "3a8d26915624c942aae9e16f8679830e4fc3534c2524215c930a2dd90e1b3943",
-      "adaptation": "unchanged_text"
+      "adaptation": "release_portability_and_compatible_tailgap_cli_dispatch"
     },
     {
       "path": "src/rsfm_fairness_audit/cluster_eligibility.py",
@@ -1994,14 +1999,24 @@
       "adaptation": "unchanged_text"
     },
     {
+      "path": "src/tailgap/__init__.py",
+      "bytes": 1008,
+      "sha256": "748d13c44dbb087f7b7ee84d1adc2f45ca4e6b294a270fe6b58a978d0bba9bcd"
+    },
+    {
+      "path": "src/tailgap/__main__.py",
+      "bytes": 107,
+      "sha256": "8731816d355e4724a78ae0d4f1545bf28996c34f2cde79dd1e3ac48ff3bcb8b8"
+    },
+    {
+      "path": "src/tailgap/cli.py",
+      "bytes": 1427,
+      "sha256": "68684cd6e41d2cbd20dabad5ddce18d0b142e4577a33118726c4800bc3596dae"
+    },
+    {
       "path": "tests/conftest.py",
       "bytes": 1119,
       "sha256": "a9965b1d4f55c14d5e741f529d213e19530aa3a207d781398aabd3befd2c01fa"
-    },
-    {
-      "path": "tests/fixtures/README.md",
-      "bytes": 350,
-      "sha256": "3132b69ee21d5abcdb3884a967b6d78577cca42a0be0e27eb12c4173df79c738"
     },
     {
       "path": "tests/fixtures/evidence_registry.yaml",
@@ -2017,6 +2032,11 @@
       "path": "tests/fixtures/paper_supplementary/reben_label_audit.csv",
       "bytes": 274,
       "sha256": "3719151dd677546d8e486fbdd0b109a2429820de8165629cd89459ba3d4ab6be"
+    },
+    {
+      "path": "tests/fixtures/README.md",
+      "bytes": 350,
+      "sha256": "3132b69ee21d5abcdb3884a967b6d78577cca42a0be0e27eb12c4173df79c738"
     },
     {
       "path": "tests/test_advanced_closure.py",
@@ -2742,6 +2762,11 @@
       "source_path": "tests/test_spectral_baseline.py",
       "source_sha256": "b87e902c8665a2d5904fc594e3ab85c6310ea3e400633e14500096e9aa7ec258",
       "adaptation": "unchanged_text"
+    },
+    {
+      "path": "tests/test_tailgap_public_api.py",
+      "bytes": 2919,
+      "sha256": "a4ec02b73afc6673600addcd2b79981e83b71bdf67828a7b4da033813e410187"
     },
     {
       "path": "tests/test_terramind_adapter.py",

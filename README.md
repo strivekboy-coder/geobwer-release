@@ -1,8 +1,8 @@
-# GeoBWER
+# Tailgap
 
 **Geospatial deployment-tail risk auditing for remote sensing.**
 
-GeoBWER examines how prediction risk is distributed across deployment slices,
+Tailgap examines how prediction risk is distributed across deployment slices,
 such as countries, locations, events, and classes. It complements aggregate
 performance by measuring the concentration of risk in the upper tail of a
 specified deployment distribution.
@@ -25,7 +25,7 @@ and tail risks.
 - Paired model comparisons on common support.
 - Risk profiles, tables, figures, and structured reports.
 
-GeoBWER operates on losses or normalised audit tables. Task adapters connect
+Tailgap operates on losses or normalised audit tables. Task adapters connect
 classification, multi-label classification, segmentation, and reference-map
 agreement workflows to the same audit framework.
 
@@ -35,8 +35,8 @@ Python 3.10+ and Git are required. The pinned environment was verified on
 Windows with Python 3.12 and CPU PyTorch.
 
 ```bash
-git clone https://github.com/strivekboy-coder/geobwer-release.git
-cd geobwer-release
+git clone https://github.com/strivekboy-coder/tailgap.git
+cd tailgap
 python -m venv .venv
 ```
 
@@ -57,9 +57,9 @@ This small synthetic example computes descriptive point estimates for four
 equally represented regions:
 
 ```python
-from rsfm_fairness_audit import BWERProtocol, audit
+from tailgap import TailgapProtocol, audit
 
-protocol = BWERProtocol(
+protocol = TailgapProtocol(
     beta=0.25,
     audit_measure="observed",
     deployment_weighting="empirical",
@@ -75,12 +75,24 @@ result = audit(
 )
 
 point = result.axes[0].point
-print(f"M={point.mean_risk:.3f}, T={point.tail_risk:.3f}, D={point.bwer:.3f}")
+M, T = point.mean_risk, point.tail_risk
+D = T - M
+print(f"M={M:.3f}, T={T:.3f}, D={D:.3f}")
 # M=0.350, T=0.800, D=0.450
 ```
 
 For inferential analyses, specify the task protocol, independent units,
 clusters or spatial blocks, and applicable support/calibration requirements.
+
+The command-line interface accepts the same audit tables and protocols:
+
+```bash
+tailgap --help
+tailgap audit --audit-table data/audit.csv --protocol configs/geobwer/default.yaml --output-dir outputs/audit
+```
+
+Run commands from the cloned repository root. `python -m tailgap` is equivalent
+to `tailgap`. See the [compatibility guide](docs/migration.md) for existing workflows.
 
 ## Applications
 
@@ -97,7 +109,8 @@ Task protocols and experiment entrypoints are listed in the
 ## Repository structure
 
 ```text
-src/rsfm_fairness_audit/  Core methods, task adapters, and analysis modules
+src/tailgap/              Public Python API and command-line interface
+src/rsfm_fairness_audit/  Shared implementation and compatible experiment runners
 scripts/                 Data preparation, experiment, and plotting entrypoints
 configs/                 Scientific protocols and model/task settings
 tests/                   Mathematical, adapter, and workflow regression tests
